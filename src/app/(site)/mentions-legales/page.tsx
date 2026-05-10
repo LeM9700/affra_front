@@ -13,7 +13,7 @@ export default function MentionsLegalesPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-invert prose-slate">
         <h1 className="text-3xl font-bold text-white mb-8">Mentions légales</h1>
         <p className="text-amber-300 text-sm border border-amber-400/40 rounded-lg p-4 mb-8">
-          Les informations juridiques marquees "a completer" doivent etre remplies pour la conformite legale et SEO.
+          Les informations juridiques marquees &quot;a completer&quot; doivent etre remplies pour la conformite legale et SEO.
         </p>
 
         <h2 className="text-xl font-semibold text-white mt-8 mb-2">Éditeur du site</h2>
