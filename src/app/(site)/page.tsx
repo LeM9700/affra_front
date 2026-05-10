@@ -11,6 +11,8 @@ import CTABand from '@/components/shared/CTABand'
 import SchemaOrg from '@/components/shared/SchemaOrg'
 import { getPortfolioItems } from '@/lib/api/portfolio'
 
+export const dynamic = 'force-dynamic'
+
 const customerReviews = [
   {
     author: 'Marc D.',

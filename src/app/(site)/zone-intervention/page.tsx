@@ -7,6 +7,7 @@ import ZoneMap from '@/components/map/ZoneMap'
 import SchemaOrg from '@/components/shared/SchemaOrg'
 
 export const revalidate = false // ISR on-demand
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = buildMetadata({
   title: "Zone d'intervention — Hérault (34) et Gard (30)",
