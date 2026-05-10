@@ -2,8 +2,6 @@
 
 [build]
   command = "npm run build"
-  publish = ".next/standalone"
-  functions = ".next/server"
 
 [build.environment]
   # Environment variables for build time
@@ -70,4 +68,3 @@
 
 [context.production]
   command = "npm run build"
-  publish = ".next/standalone"
