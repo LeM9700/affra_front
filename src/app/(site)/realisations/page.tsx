@@ -6,6 +6,7 @@ import { getPortfolioItems } from '@/lib/api/portfolio'
 import { buildMetadata } from '@/lib/utils/metadata'
 
 export const revalidate = false // ISR on-demand
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Nos réalisations — Installations IRVE',
