@@ -34,10 +34,10 @@ export default async function BlogPage() {
               <h2 className="text-2xl font-bold text-slate-900">Ressources techniques en cours de publication</h2>
               <p className="mt-4 text-slate-600">
                 Nous publions des guides pratiques IRVE: choix de borne, budget, conformité et conseils
-                d'installation pour particuliers et professionnels.
+                d&apos;installation pour particuliers et professionnels.
               </p>
               <p className="mt-3 text-slate-600">
-                Besoin d'une réponse rapide sur votre projet ? Notre équipe peut vous orienter dès
+                Besoin d&apos;une réponse rapide sur votre projet ? Notre équipe peut vous orienter dès
                 maintenant.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

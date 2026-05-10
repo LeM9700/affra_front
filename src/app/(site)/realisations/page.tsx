@@ -32,13 +32,13 @@ export default async function RealisationsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {items.length === 0 ? (
             <div className="mx-auto max-w-3xl rounded-2xl border border-slate-200 bg-white p-10 text-center shadow-sm">
-              <h2 className="text-2xl font-bold text-slate-900">Un niveau d'exigence constant, chantier après chantier</h2>
+              <h2 className="text-2xl font-bold text-slate-900">Un niveau d&apos;exigence constant, chantier après chantier</h2>
               <p className="mt-4 text-slate-600">
                 Nos études de cas détaillées sont en cours de publication. Chaque projet présenté est
-                documenté avec méthode, conformité IRVE et qualité d'exécution.
+                documenté avec méthode, conformité IRVE et qualité d&apos;exécution.
               </p>
               <p className="mt-3 text-slate-600">
-                En attendant, notre équipe vous accompagne de l'audit technique à la mise en service,
+                En attendant, notre équipe vous accompagne de l&apos;audit technique à la mise en service,
                 avec un pilotage clair des délais et des normes.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
