@@ -50,16 +50,19 @@ export default function RealisationsSection({ items }: RealisationsSectionProps)
                   </div>
                 </div>
               ))
-            : // Placeholders pendant le chargement initial
-              Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm">
-                  <PhotoPlaceholder width={600} height={400} label="portfolio_items.image_urls[0]" />
-                  <div className="p-5">
-                    <div className="h-4 bg-slate-200 rounded w-1/3 mb-2" />
-                    <div className="h-5 bg-slate-200 rounded w-2/3" />
-                  </div>
-                </div>
-              ))}
+            : (
+              <div className="md:col-span-3 rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+                <h3 className="text-xl font-bold text-slate-900">Des réalisations documentées avec rigueur</h3>
+                <p className="mt-3 text-slate-600">
+                  Nos études de cas sont en préparation afin de présenter des projets complets,
+                  conformes IRVE, avec contexte technique et résultats concrets.
+                </p>
+                <p className="mt-2 text-slate-600">
+                  Notre équipe intervient déjà sur des projets résidentiels, collectifs et
+                  professionnels dans le 34, le 30 et le 13.
+                </p>
+              </div>
+            )}
         </div>
 
         <div className="text-center mt-10">

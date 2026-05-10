@@ -16,6 +16,7 @@ const legalLinks = [
   { href: '/a-propos', label: 'À propos' },
   { href: '/mentions-legales', label: 'Mentions légales' },
   { href: '/politique-confidentialite', label: 'Politique de confidentialité' },
+  { href: '/temoignages/partager', label: 'Partager un témoignage' },
 ]
 
 const certifications = [

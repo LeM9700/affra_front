@@ -13,27 +13,6 @@ import { getPortfolioItems } from '@/lib/api/portfolio'
 
 export const dynamic = 'force-dynamic'
 
-const customerReviews = [
-  {
-    author: 'Marc D.',
-    reviewBody:
-      'Equipe tres professionnelle, installation soignee et rapide. La borne fonctionne parfaitement.',
-    reviewRating: 5,
-  },
-  {
-    author: 'Sophie L.',
-    reviewBody:
-      'Tres bon accompagnement pour mon projet en copropriete. Equipe reactive et installation soignee.',
-    reviewRating: 5,
-  },
-  {
-    author: 'Thomas R.',
-    reviewBody:
-      "Installation de bornes pour notre flotte d'entreprise. Delais respectes et excellent suivi.",
-    reviewRating: 5,
-  },
-]
-
 export const metadata: Metadata = {
   title: 'AFFRA Réseaux — Installation de bornes de recharge IRVE | Hérault et Gard',
   description:
@@ -74,25 +53,8 @@ const localBusinessSchema = {
   areaServed: [
     { '@type': 'State', name: 'Hérault', identifier: '34' },
     { '@type': 'State', name: 'Gard', identifier: '30' },
+    { '@type': 'State', name: 'Bouches-du-Rhône', identifier: '13' },
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5',
-    reviewCount: String(customerReviews.length),
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: customerReviews.map((review) => ({
-    '@type': 'Review',
-    author: { '@type': 'Person', name: review.author },
-    reviewBody: review.reviewBody,
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: String(review.reviewRating),
-      bestRating: '5',
-      worstRating: '1',
-    },
-  })),
   hasCredential: 'Certification IRVE P1-P2',
 }
 
