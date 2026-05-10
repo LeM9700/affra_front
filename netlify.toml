@@ -24,12 +24,6 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "accelerometer=(), camera=(), microphone=(), geolocation=()"
 
-# Enable compression
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Encoding = "gzip"
-
 # Cache control for static assets
 [[headers]]
   for = "/_next/static/*"
