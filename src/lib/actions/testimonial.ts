@@ -19,14 +19,24 @@ export async function submitTestimonial(payload: TestimonialPayload) {
     return { success: true as const }
   }
 
-  const res = await fetch(`${API_URL}/internal/testimonials/collect`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-API-Key': API_SECRET_KEY,
-    },
-    body: JSON.stringify(parsed.data),
-  })
+  let res: Response
+  try {
+    res = await fetch(`${API_URL}/internal/testimonials/collect`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': API_SECRET_KEY,
+      },
+      body: JSON.stringify(parsed.data),
+    })
+  } catch {
+    return {
+      success: false as const,
+      errors: {
+        _form: ['Le service est momentanément indisponible. Merci de réessayer.'],
+      } as Record<string, string[]>,
+    }
+  }
 
   if (!res.ok) {
     if (res.status === 429) {

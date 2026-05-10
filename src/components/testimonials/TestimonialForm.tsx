@@ -34,17 +34,21 @@ export default function TestimonialForm() {
     setFormError(null)
     setSuccess(false)
 
-    const result = await submitTestimonial(values)
+    try {
+      const result = await submitTestimonial(values)
 
-    if (!result.success) {
-      setFormError(result.errors?._form?.[0] ?? 'Une erreur est survenue. Merci de reessayer.')
+      if (!result.success) {
+        setFormError(result.errors?._form?.[0] ?? 'Une erreur est survenue. Merci de reessayer.')
+        return
+      }
+
+      setSuccess(true)
+      reset(defaultValues)
+    } catch {
+      setFormError('Une erreur est survenue. Merci de reessayer.')
+    } finally {
       setSubmitting(false)
-      return
     }
-
-    setSuccess(true)
-    reset(defaultValues)
-    setSubmitting(false)
   }
 
   return (

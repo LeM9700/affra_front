@@ -32,11 +32,16 @@ export default function DevisWizard() {
     const fullData = { ...data, ...screenData } as DevisFormData & { website?: string }
     setSubmitting(true)
     setFormError(null)
-    const result = await submitDevis(fullData)
-    if (result && !result.success) {
-      setFormError(result.errors?.['_form']?.[0] ?? 'Une erreur est survenue. Veuillez reessayer.')
+    try {
+      const result = await submitDevis(fullData)
+      if (result && !result.success) {
+        setFormError(result.errors?.['_form']?.[0] ?? 'Une erreur est survenue. Veuillez reessayer.')
+      }
+    } catch {
+      setFormError('Une erreur est survenue. Veuillez reessayer.')
+    } finally {
+      setSubmitting(false)
     }
-    setSubmitting(false)
   }
 
   const showProgress = screen >= 2
