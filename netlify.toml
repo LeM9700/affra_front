@@ -7,7 +7,6 @@
 
 [build.environment]
   # Environment variables for build time
-  NODE_ENV = "production"
   NODE_VERSION = "20"
 
 # Rewrite for Next.js API routes and ISR
