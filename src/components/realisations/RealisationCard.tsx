@@ -38,7 +38,7 @@ export default function RealisationCard({ item }: RealisationCardProps) {
         </div>
         <h3 className="text-slate-900 font-bold mb-1">{item.titre}</h3>
         {item.puissance_kw && (
-          <p className="text-slate-500 text-sm">{item.type_borne} — {item.puissance_kw} kW</p>
+          <p className="text-slate-500 text-sm">{item.type_borne} {item.puissance_kw} kW</p>
         )}
 
       </div>

@@ -9,9 +9,9 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const revalidate = false // ISR on-demand
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Blog — Conseils et actualités IRVE',
+  title: 'Blog Conseils et actualités IRVE',
   description:
-    "Conseils d'installation, actualités IRVE et retours d'expérience — le blog d'AFFRA Réseaux.",
+    "Conseils d'installation, actualités IRVE et retours d'expérience, le blog d'AFFRA Réseaux.",
   path: '/blog',
 })
 
@@ -22,7 +22,7 @@ export default async function BlogPage() {
     <>
       <PageHero
         imageSrc="/images/hero/blog-hero.webp"
-        imageAlt="Blog AFFRA Réseaux — conseils installation borne de recharge"
+        imageAlt="Blog AFFRA Réseaux conseils installation borne de recharge"
         title="Blog"
         subtitle="Conseils, actualités IRVE et retours d'expérience terrain."
       />

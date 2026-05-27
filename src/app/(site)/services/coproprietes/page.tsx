@@ -9,7 +9,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Bornes de recharge en copropriété',
   description:
-    'Solution de recharge collective certifiée IRVE pour copropriétés en Hérault (34) et Gard (30). Droits à la prise, installation clé en main.',
+    'Solution de recharge collective certifiée IRVE pour copropriétés en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales. Droits à la prise, installation clé en main.',
   path: '/services/coproprietes',
 })
 
@@ -81,7 +81,7 @@ export default function CopropriétésPage() {
         imageSrc="/images/hero/coproprietes-hero.webp"
         imageAlt="Parking collectif de copropriété avec bornes de recharge AFFRA Réseaux"
         title="Recharge électrique en copropriété"
-        subtitle="Solution collective IRVE certifiée — droits à la prise et infrastructure évolutive."
+        subtitle="Solution collective IRVE certifiée, droits à la prise et infrastructure évolutive."
       />
       <ServiceFeatures features={features} />
       <ServiceFAQ items={faq} />

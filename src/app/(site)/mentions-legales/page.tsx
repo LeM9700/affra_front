@@ -36,8 +36,8 @@ export default function MentionsLegalesPage() {
         <h2 className="text-xl font-semibold text-white mt-8 mb-2">Hébergement</h2>
         <p className="text-slate-300">
           Ce site est hébergé par :<br />
-          <strong>Railway</strong> (backend) — Railway Corp., 340 S Lemon Ave #4133, Walnut, CA 91789, USA<br />
-          <strong>Vercel</strong> (frontend) — Vercel Inc., 340 Pine Street, Suite 1270, San Francisco, CA 94104, USA
+          <strong>Railway</strong> (backend) Railway Corp., 340 S Lemon Ave #4133, Walnut, CA 91789, USA<br />
+          <strong>Vercel</strong> (frontend) Vercel Inc., 340 Pine Street, Suite 1270, San Francisco, CA 94104, USA
         </p>
 
         <h2 className="text-xl font-semibold text-white mt-8 mb-2">Propriété intellectuelle</h2>

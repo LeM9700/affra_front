@@ -10,9 +10,9 @@ export const revalidate = false // ISR on-demand
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Nos réalisations — Installations IRVE',
+  title: 'Nos réalisations Installations IRVE',
   description:
-    'Découvrez nos installations de bornes de recharge réalisées en Hérault (34) et dans le Gard (30) pour particuliers, copropriétés et professionnels.',
+    'Découvrez nos installations de bornes de recharge réalisées en Occitanie et PACA pour particuliers, copropriétés et professionnels.',
   path: '/realisations',
 })
 
@@ -23,9 +23,9 @@ export default async function RealisationsPage() {
     <>
       <PageHero
         imageSrc="/images/hero/realisations-hero.webp"
-        imageAlt="Réalisations AFFRA Réseaux — installations de bornes de recharge"
+        imageAlt="Réalisations AFFRA Réseaux installations de bornes de recharge"
         title="Nos réalisations"
-        subtitle="Installations certifiées IRVE en Hérault et dans le Gard."
+        subtitle="Installations certifiées IRVE en Occitanie et PACA."
       />
 
       <section className="bg-slate-50 py-20">

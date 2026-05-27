@@ -17,7 +17,7 @@ const FALLBACK_AVIS = [
     ville: 'Montpellier',
     departement: '34',
     type_client: 'maison',
-    type_projet: 'Maison individuelle — borne 7,4 kW',
+    type_projet: 'Maison individuelle borne 7,4 kW',
     resultat: null,
     temoignage: "Équipe très professionnelle, installation soignée et rapide. La borne fonctionne parfaitement. Je recommande vivement AFFRA Réseaux !",
     id: 'fallback-1',
@@ -28,7 +28,7 @@ const FALLBACK_AVIS = [
     ville: 'Nîmes',
     departement: '30',
     type_client: 'copropriete',
-    type_projet: 'Copropriété — accompagnement dossier et installation',
+    type_projet: 'Copropriété accompagnement dossier et installation',
     resultat: null,
     temoignage: "Très bon accompagnement pour mon projet en copropriété. Équipe réactive et installation soignée, je recommande.",
     id: 'fallback-2',
@@ -39,7 +39,7 @@ const FALLBACK_AVIS = [
     ville: 'Béziers',
     departement: '34',
     type_client: 'entreprise',
-    type_projet: "Entreprise — infrastructure pour flotte professionnelle",
+    type_projet: "Entreprise infrastructure pour flotte professionnelle",
     resultat: null,
     temoignage: "Installation de 8 bornes pour notre flotte d'entreprise. Travail sérieux, délais respectés, excellent rapport qualité-prix.",
     id: 'fallback-3',
@@ -49,7 +49,7 @@ const FALLBACK_AVIS = [
 
 function AvisCard({ avis, index }: { avis: TestimonialSeoItem; index: number }) {
   const typeLabel = TYPE_CLIENT_LABELS[avis.type_client] ?? 'Client'
-  const projectTag = avis.type_projet ?? `${typeLabel} — ${avis.ville} (${avis.departement})`
+  const projectTag = avis.type_projet ?? `${typeLabel} ${avis.ville} (${avis.departement})`
 
   return (
     <FadeIn delay={index * 0.1}>
@@ -100,7 +100,7 @@ export default async function AvisSection() {
         <SectionTitle
           eyebrow="Retours clients"
           title="Retours d'expérience de terrain"
-          subtitle="Témoignages issus de missions réalisées en Hérault, Gard et Bouches-du-Rhône."
+          subtitle="Témoignages issus de missions réalisées en Occitanie et PACA."
           accentWord="clients"
         />
 

@@ -1,9 +1,9 @@
 import AnimatedStat from '@/components/shared/AnimatedStat'
 
 const stats = [
-  { value: '200+', label: 'Bornes installées', sub: 'en Hérault & Gard' },
+  { value: '200+', label: 'Bornes installées', sub: 'en Occitanie & PACA' },
   { value: '5 ans', label: "d'expérience IRVE", sub: 'certifiée AFNOR' },
-  { value: '2', label: 'Départements', sub: 'Hérault (34) & Gard (30)' },
+  { value: '6', label: 'Départements', sub: 'Occitanie & PACA' },
   { value: '100%', label: 'Clients satisfaits', sub: 'avis vérifiés' },
 ]
 

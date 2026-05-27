@@ -82,7 +82,10 @@ export default function TestimonialForm() {
           <select id="departement" {...register('departement')} className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-800 outline-none focus:ring-2 focus:ring-[#5BBF8A]">
             <option value="34">34 - Herault</option>
             <option value="30">30 - Gard</option>
+            <option value="84">84 - Vaucluse</option>
             <option value="13">13 - Bouches-du-Rhone</option>
+            <option value="11">11 - Aude</option>
+            <option value="66">66 - Pyrenees-Orientales</option>
           </select>
           {errors.departement && <p className="text-xs text-red-500 mt-1">{errors.departement.message}</p>}
         </div>

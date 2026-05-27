@@ -20,10 +20,8 @@ const legalLinks = [
 ]
 
 const certifications = [
-  'Certification IRVE P1-P2',
-  'Qualification RGE',
+  'Certification IRVE P1–P2–P3',
   'AFNOR NF C 15-100',
-  'Assurance décennale',
 ]
 
 export default function Footer() {
@@ -57,12 +55,12 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm leading-relaxed text-slate-500 mb-5">
-              Spécialiste de l&apos;installation de bornes de recharge électrique IRVE en Hérault (34) et Gard (30).
+              Spécialiste de l&apos;installation de bornes de recharge électrique IRVE en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales.
             </p>
             <div className="flex flex-col gap-2 text-sm">
               <div className="flex items-center gap-2 text-slate-400">
                 <MapPin className="h-3.5 w-3.5 flex-shrink-0 text-[#5BBF8A]" strokeWidth={1.75} />
-                Hérault (34) &amp; Gard (30)
+                Occitanie &amp; PACA
               </div>
               <a href="tel:+33766304687" className="flex items-center gap-2 text-slate-400 transition-colors hover:text-[#5BBF8A]">
                 <Phone className="h-3.5 w-3.5 flex-shrink-0 text-[#5BBF8A]" strokeWidth={1.75} />
@@ -134,7 +132,7 @@ export default function Footer() {
         {/* Signature gradient */}
         <div className="mt-12 flex flex-col items-center gap-4 border-t border-slate-800 pt-8 sm:flex-row sm:justify-between">
           <p className="text-xs text-slate-600">
-            © {new Date().getFullYear()} AFFRA Réseaux — Tous droits réservés
+            © {new Date().getFullYear()} AFFRA Réseaux Tous droits réservés
           </p>
           <div className="h-px w-24 rounded-full bg-gradient-to-r from-[#5BBF8A] to-[#29ABE2]" />
         </div>

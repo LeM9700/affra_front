@@ -9,7 +9,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Borne de recharge pour particuliers',
   description:
-    'Installation de borne de recharge à domicile par un électricien certifié IRVE en Hérault (34) et Gard (30). Devis gratuit, intervention certifiée.',
+    'Installation de borne de recharge à domicile par un électricien certifié IRVE en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales. Devis gratuit, intervention certifiée.',
   path: '/services/particuliers',
 })
 
@@ -30,7 +30,7 @@ const features = [
     icon: '🔌',
     title: 'Toutes les puissances',
     description:
-      'De la prise renforcée 3,7 kW à la wallbox 22 kW — nous sélectionnons la solution adaptée à votre véhicule et votre installation.',
+      'De la prise renforcée 3,7 kW à la wallbox 22 kW, nous sélectionnons la solution adaptée à votre véhicule et votre installation.',
   },
   {
     icon: '🛡️',
@@ -42,7 +42,7 @@ const features = [
     icon: '🏠',
     title: 'Maisons individuelles & garages',
     description:
-      'Garage intégré, box extérieure, abri de jardin — nous trouvons la meilleure solution pour votre configuration.',
+      'Garage intégré, box extérieure, abri de jardin, nous trouvons la meilleure solution pour votre configuration.',
   },
   {
     icon: '📋',
@@ -91,7 +91,7 @@ export default function ParticuliersPage() {
         imageSrc="/images/hero/particuliers-hero.webp"
         imageAlt="Borne de recharge installée dans un garage résidentiel"
         title="Installation borne de recharge pour particuliers"
-        subtitle="Votre wallbox à domicile, installée par un expert certifié IRVE en Hérault et dans le Gard."
+        subtitle="Votre wallbox à domicile, installée par un expert certifié IRVE en Occitanie et PACA."
       />
       <ServiceFeatures features={features} />
       <ServiceFAQ items={faq} />

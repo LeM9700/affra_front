@@ -7,7 +7,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Infrastructure IRVE pour promoteurs immobiliers',
   description:
-    "Solution d'infrastructure de recharge IRVE pour promoteurs immobiliers en Hérault (34) et Gard (30). RT 2020, pré-équipement, solution clé en main.",
+    "Solution d'infrastructure de recharge IRVE pour promoteurs immobiliers en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales. RT 2020, pré-équipement, solution clé en main.",
   path: '/services/promoteurs',
 })
 
@@ -30,7 +30,7 @@ const features = [
   {
     icon: '📋',
     title: 'Documentation réglementaire',
-    description: "Attestations IRVE, CONSUEL — toute la documentation réglementaire pour la livraison du programme.",
+    description: "Attestations IRVE, CONSUEL, toute la documentation réglementaire pour la livraison du programme.",
   },
   {
     icon: '🤝',
@@ -51,7 +51,7 @@ export default function PromoteursPage() {
         imageSrc="/images/hero/promoteurs-hero.webp"
         imageAlt="Chantier neuf avec infrastructure IRVE intégrée"
         title="Infrastructure IRVE pour promoteurs"
-        subtitle="Solution clé en main RT 2020 — pré-équipement et équipement dès la construction."
+        subtitle="Solution clé en main RT 2020, pré-équipement et équipement dès la construction."
       />
       <ServiceFeatures features={features} />
       <CTABand />

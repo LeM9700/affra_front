@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer'
 import { buildMetadata } from '@/lib/utils/metadata'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Demande envoyée — Merci !',
+  title: 'Demande envoyée Merci !',
   description: 'Votre demande de devis a bien été reçue. AFFRA Réseaux vous contacte sous 24h.',
   path: '/devis/merci',
 })
@@ -33,7 +33,7 @@ export default function DevisMerciPage() {
           </p>
           <p className="text-slate-500 mb-8">
             Un membre de l&apos;équipe AFFRA Réseaux vous contactera dans un délai de 24h (jours ouvrés).
-            Pensez à vérifier votre boîte de réception — un accusé de réception vous a été envoyé.
+            Pensez à vérifier votre boîte de réception, un accusé de réception vous a été envoyé.
           </p>
           <Link
             href="/"

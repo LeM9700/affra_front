@@ -19,7 +19,7 @@ export default function CTABand() {
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
         {/* Eyebrow */}
         <span className="mb-5 inline-block rounded-full border border-[#5BBF8A]/25 bg-[#5BBF8A]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#5BBF8A]">
-          Devis gratuit — sans engagement
+          Devis gratuit sans engagement
         </span>
 
         {/* Titre très grand */}

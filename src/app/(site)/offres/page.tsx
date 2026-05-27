@@ -6,7 +6,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Nos offres de recharge électrique',
   description:
-    'Découvrez nos solutions de recharge : prise renforcée Green\'up Legrand, borne DazeBox Home T et V2C Trydan. Installation certifiée IRVE en Hérault (34) et Gard (30).',
+    'Découvrez nos solutions de recharge : prise renforcée Green\'up Legrand, borne DazeBox Home T et V2C Trydan. Installation certifiée IRVE en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales.',
   path: '/offres',
 })
 
@@ -19,7 +19,7 @@ export default function OffresPage() {
             Nos solutions de recharge
           </h1>
           <p className="text-slate-500 text-lg max-w-2xl mx-auto">
-            Borne électrique ou prise renforcée — on sélectionne pour vous le matériel le plus adapté à votre usage et à votre budget.
+            Borne électrique ou prise renforcée, on sélectionne pour vous le matériel le plus adapté à votre usage et à votre budget.
           </p>
         </div>
       </section>

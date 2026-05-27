@@ -4,29 +4,8 @@ import SectionTitle from '@/components/shared/SectionTitle'
 const certifications = [
   {
     src: '/images/certifications/logo-irve.webp',
-    alt: 'Certification IRVE P1-P2',
-    label: 'IRVE P1-P2',
-    width: 160,
-    height: 64,
-  },
-  {
-    src: '/images/certifications/logo-qualifelec.webp',
-    alt: 'Logo Qualifelec',
-    label: 'Qualifelec',
-    width: 160,
-    height: 64,
-  },
-  {
-    src: '/images/certifications/logo-rge.webp',
-    alt: 'Reconnu Garant de l\'Environnement',
-    label: 'RGE',
-    width: 160,
-    height: 64,
-  },
-  {
-    src: '/images/certifications/logo-advenir.webp',
-    alt: 'Programme Advenir',
-    label: 'Advenir',
+    alt: 'Certification IRVE P1–P2–P3',
+    label: 'IRVE P1–P2–P3',
     width: 160,
     height: 64,
   },

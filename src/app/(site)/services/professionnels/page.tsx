@@ -9,7 +9,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Bornes de recharge pour professionnels',
   description:
-    "Installation de bornes de recharge pour flottes d'entreprise, PME et sites professionnels en Hérault (34) et Gard (30). Certifié IRVE.",
+    "Installation de bornes de recharge pour flottes d'entreprise, PME et sites professionnels en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales. Certifié IRVE.",
   path: '/services/professionnels',
 })
 
@@ -17,7 +17,7 @@ const features = [
   {
     icon: '🚗',
     title: "Électrification de flottes",
-    description: "De 2 à plus de 50 bornes pour vos véhicules de société — pilotage centralisé et gestion des accès.",
+    description: "De 2 à plus de 50 bornes pour vos véhicules de société, pilotage centralisé et gestion des accès.",
   },
   {
     icon: '📈',
@@ -32,7 +32,7 @@ const features = [
   {
     icon: '💼',
     title: "Avantages fiscaux",
-    description: "Déduction des coûts d'installation, TVA récupérable, amortissement — nous vous accompagnons dans les démarches.",
+    description: "Déduction des coûts d'installation, TVA récupérable, amortissement, nous vous accompagnons dans les démarches.",
   },
   {
     icon: '🔐',
@@ -82,7 +82,7 @@ export default function ProfessionnelsPage() {
         imageSrc="/images/hero/professionnels-hero.webp"
         imageAlt="Flotte d'entreprise en charge sur un parking professionnel"
         title="Bornes de recharge pour professionnels"
-        subtitle="Électrification de flottes, PME et sites industriels — IRVE certifié en Hérault et dans le Gard."
+        subtitle="Électrification de flottes, PME et sites industriels, IRVE certifié en Occitanie et PACA."
       />
       <ServiceFeatures features={features} />
       <ServiceFAQ items={faq} />

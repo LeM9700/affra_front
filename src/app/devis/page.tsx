@@ -19,7 +19,7 @@ export default function DevisPage() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h1 className="text-3xl font-bold text-slate-900 mb-3">Demande de devis gratuit</h1>
-            <p className="text-slate-500">Réponse sous 24h — sans engagement</p>
+            <p className="text-slate-500">Réponse sous 24h sans engagement</p>
           </div>
           <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
             <DevisWizard />

@@ -32,7 +32,7 @@ export default function HeroSection() {
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#5BBF8A]/25 bg-[#5BBF8A]/8 px-4 py-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-[#5BBF8A] shadow-[0_0_8px_rgba(91,191,138,0.8)]" />
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#3a9e6c]">
-                Certifié IRVE — Hérault &amp; Gard
+                Certifié IRVE P1–P2–P3 en Occitanie & PACA
               </span>
             </div>
 
@@ -45,7 +45,7 @@ export default function HeroSection() {
 
             {/* Sous-titre */}
             <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-xl">
-              La solution de recharge la plus adaptée à votre usage et votre budget — installée par un expert certifié IRVE.
+              La solution de recharge la plus adaptée à votre usage et votre budget, installée par un expert certifié IRVE.
             </p>
 
             {/* CTA */}
@@ -113,7 +113,7 @@ export default function HeroSection() {
                     <Award className="h-4 w-4 text-white" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-900">Certifié IRVE P1-P2</p>
+                    <p className="text-xs font-bold text-slate-900">Certifié IRVE P1–P2–P3</p>
                     <p className="text-xs text-slate-500">NF C 15-100 · Assurance décennale</p>
                   </div>
                 </div>

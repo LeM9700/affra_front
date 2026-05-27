@@ -74,7 +74,7 @@ export default function Header() {
           <div className="flex items-center gap-2 sm:gap-3">
             <div className="hidden lg:flex items-center gap-2 rounded-full border border-slate-100 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
               <span className="h-2 w-2 rounded-full bg-[#5BBF8A] shadow-[0_0_8px_rgba(91,191,138,0.6)]" />
-              Hérault & Gard
+              Occitanie & PACA
             </div>
             <Link
               href="/devis"

@@ -10,9 +10,9 @@ export const revalidate = false // ISR on-demand
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = buildMetadata({
-  title: "Zone d'intervention — Hérault (34), Gard (30) et Bouches-du-Rhône (13)",
+  title: "Zone d'intervention Hérault (34), Gard (30), Vaucluse (84), Bouches-du-Rhône (13), Aude (11) et Pyrénées-Orientales (66)",
   description:
-    "AFFRA Réseaux intervient dans l'Hérault (34), le Gard (30) et les Bouches-du-Rhône (13) pour l'installation de bornes de recharge IRVE. Découvrez les communes couvertes.",
+    "AFFRA Réseaux intervient en Hérault (34), Gard (30), Vaucluse (84), Bouches-du-Rhône (13), Aude (11) et Pyrénées-Orientales (66) pour l'installation de bornes de recharge IRVE. Découvrez les communes couvertes.",
   path: '/zone-intervention',
 })
 
@@ -78,9 +78,9 @@ export default async function ZoneInterventionPage() {
       <SchemaOrg schema={areaSchema} />
       <PageHero
         imageSrc="/images/hero/zone-hero.webp"
-        imageAlt="Zone d'intervention AFFRA Réseaux — Hérault, Gard et Bouches-du-Rhône"
+        imageAlt="Zone d'intervention AFFRA Réseaux en Occitanie et PACA"
         title="Zone d'intervention"
-        subtitle="Nous couvrons l'Hérault (34), le Gard (30) et les Bouches-du-Rhône (13), de Montpellier à Nîmes et Arles."
+        subtitle="Nous couvrons l'Hérault (34), le Gard (30), Vaucluse (84), les Bouches-du-Rhône (13), l'Aude (11) et les Pyrénées-Orientales (66)."
       />
 
       <section className="bg-white py-20">
@@ -92,7 +92,7 @@ export default async function ZoneInterventionPage() {
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
             <div>
               <h2 className="text-2xl font-bold text-slate-900 mb-6">
-                Hérault — Département 34
+                Hérault Département 34
               </h2>
               <div className="flex flex-wrap gap-2">
                 {displayed34.map((ville) => (
@@ -104,7 +104,7 @@ export default async function ZoneInterventionPage() {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-slate-900 mb-6">
-                Gard — Département 30
+                Gard Département 30
               </h2>
               <div className="flex flex-wrap gap-2">
                 {displayed30.map((ville) => (
@@ -116,7 +116,7 @@ export default async function ZoneInterventionPage() {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-slate-900 mb-6">
-                Bouches-du-Rhône — Département 13
+                Bouches-du-Rhône Département 13
               </h2>
               <div className="flex flex-wrap gap-2">
                 {displayed13.map((ville) => (

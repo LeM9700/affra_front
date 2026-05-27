@@ -49,23 +49,23 @@ const BLOCS: Bloc[] = [
   {
     num: '04',
     Icon: Wrench,
-    titre: 'Une offre sur mesure, pas un catalogue',
+    titre: 'Une solution vraiment sur mesure',
     points: [
-      'Choix de la borne adapté à votre véhicule',
-      'Devis transparent, sans surprise',
-      'Pose soignée et discrète',
-      "Accompagnement jusqu'à la mise en service",
+      'Borne ou prise renforcée selon votre usage',
+      'Étude personnalisée',
+      'Aucun suréquipement inutile',
+      'Vous payez uniquement ce dont vous avez besoin',
     ],
   },
   {
     num: '05',
     Icon: Battery,
-    titre: 'Matériel fiable et garanti',
+    titre: 'Du matériel fiable et sélectionné',
     points: [
-      'Bornes des marques leaders (Legrand, Hager, V2C…)',
-      'Garantie fabricant 2 à 3 ans',
-      'SAV assuré directement par nos équipes',
-      'Compatible tous véhicules électriques',
+      'Protections électriques de qualité (Legrand)',
+      'Bornes performantes et connectées',
+      'Matériel testé et approuvé',
+      'On choisit le meilleur pour vous, pas le plus simple à poser',
     ],
   },
 ]
@@ -126,7 +126,7 @@ export default function PourquoiNousChoisirSection() {
         <SectionTitle
           eyebrow="Pourquoi nous choisir"
           title="Ce qui nous distingue"
-          subtitle="Pas un catalogue en ligne — un expert local qui se déplace et travaille avec vous."
+          subtitle="Pas un catalogue en ligne, un expert local qui se déplace et travaille avec vous."
           accentWord="distingue"
         />
 

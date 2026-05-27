@@ -41,7 +41,7 @@ export default function RealisationsSection({ items }: RealisationsSectionProps)
                   </div>
                   <div className="p-5">
                     <span className="text-xs text-[#5BBF8A] font-semibold uppercase tracking-wide">
-                      {item.type_client} — {item.ville}
+                      {item.type_client} {item.ville}
                     </span>
                     <h3 className="text-slate-900 font-bold mt-1 mb-2">{item.titre}</h3>
                     {item.puissance_kw && (

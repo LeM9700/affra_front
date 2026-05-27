@@ -39,7 +39,7 @@ export default function ProcessSection() {
         <SectionTitle
           eyebrow="Comment ça se passe"
           title="Simple, transparent, certifié"
-          subtitle="De la demande à la mise en service — vous savez à chaque étape où en est votre projet."
+          subtitle="De la demande à la mise en service, vous savez à chaque étape où en est votre projet."
           accentWord="certifié"
         />
 

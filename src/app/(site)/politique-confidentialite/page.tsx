@@ -3,7 +3,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Politique de confidentialité',
-  description: 'Politique de confidentialité et traitement des données personnelles — AFFRA Réseaux.',
+  description: 'Politique de confidentialité et traitement des données personnelles AFFRA Réseaux.',
   path: '/politique-confidentialite',
 })
 

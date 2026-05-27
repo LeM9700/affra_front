@@ -24,7 +24,7 @@ export default function DevisScreen1Accroche({ onStart }: Props) {
       >
         Commencer
       </button>
-      <p className="text-xs text-slate-400 mt-4">Étude gratuite, sans engagement — on vous rappelle sous 24h</p>
+      <p className="text-xs text-slate-400 mt-4">Étude gratuite, sans engagement, on vous rappelle sous 24h</p>
     </div>
   )
 }
