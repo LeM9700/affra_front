@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import SectionTitle from '@/components/shared/SectionTitle'
 import FadeIn from '@/components/shared/FadeIn'
-import { getTestimonials } from '@/lib/api/testimonials'
+import AvisMarquee from '@/components/home/AvisMarquee'
+import { getMergedReviews } from '@/lib/reviews'
 import type { TestimonialSeoItem } from '@/types/testimonial'
 
 const TYPE_CLIENT_LABELS: Record<string, string> = {
@@ -91,8 +92,7 @@ function AvisCard({ avis, index }: { avis: TestimonialSeoItem; index: number }) 
 }
 
 export default async function AvisSection() {
-  const avis = await getTestimonials().catch(() => [] as TestimonialSeoItem[])
-  const displayed = avis.length > 0 ? avis.slice(0, 3) : FALLBACK_AVIS
+  const merged = await getMergedReviews().catch(() => [])
 
   return (
     <section className="bg-white py-20 sm:py-28">
@@ -104,11 +104,17 @@ export default async function AvisSection() {
           accentWord="clients"
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3">
-          {displayed.map((a, i) => (
-            <AvisCard key={a.id} avis={a} index={i} />
-          ))}
-        </div>
+        {merged.length > 0 ? (
+          <div className="mt-14">
+            <AvisMarquee reviews={merged} />
+          </div>
+        ) : (
+          <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3">
+            {FALLBACK_AVIS.map((a, i) => (
+              <AvisCard key={a.id} avis={a} index={i} />
+            ))}
+          </div>
+        )}
 
         <p className="mt-8 text-center text-xs text-slate-500">
           Témoignages publiés avec anonymisation (initiales + ville), sur la base de retours clients.
