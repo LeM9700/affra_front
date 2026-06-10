@@ -10,6 +10,7 @@ import AvisSection from '@/components/home/AvisSection'
 import CTABand from '@/components/shared/CTABand'
 import SchemaOrg from '@/components/shared/SchemaOrg'
 import { getPortfolioItems } from '@/lib/api/portfolio'
+import { getGoogleReviews } from '@/lib/google-places'
 
 export const dynamic = 'force-dynamic'
 
@@ -93,11 +94,38 @@ const localBusinessSchema = {
 }
 
 export default async function HomePage() {
-  const portfolioItems = await getPortfolioItems().catch(() => [])
+  const [portfolioItems, googleData] = await Promise.all([
+    getPortfolioItems().catch(() => []),
+    getGoogleReviews().catch(() => null),
+  ])
+
+  const googleReviewsWithText = googleData?.reviews.filter((r) => r.text?.text) ?? []
+
+  const aggregateRating = googleData
+    ? {
+        '@type': 'AggregateRating',
+        ratingValue: googleData.rating.toFixed(1),
+        reviewCount: String(googleData.userRatingCount),
+        bestRating: '5',
+        worstRating: '1',
+      }
+    : localBusinessSchema.aggregateRating
+
+  const review =
+    googleReviewsWithText.length > 0
+      ? googleReviewsWithText.slice(0, 5).map((r) => ({
+          '@type': 'Review',
+          author: { '@type': 'Person', name: r.authorAttribution.displayName },
+          reviewRating: { '@type': 'Rating', ratingValue: String(r.rating), bestRating: '5' },
+          reviewBody: r.text!.text,
+        }))
+      : localBusinessSchema.review
+
+  const schema = { ...localBusinessSchema, aggregateRating, review }
 
   return (
     <>
-      <SchemaOrg schema={localBusinessSchema} />
+      <SchemaOrg schema={schema} />
       <HeroSection />
       <OffresSection />
       <PourquoiNousChoisirSection />
