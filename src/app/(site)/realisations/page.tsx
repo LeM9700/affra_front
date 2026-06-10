@@ -132,7 +132,7 @@ export default async function RealisationsPage() {
       <SchemaOrg schema={faqSchema} />
 
       <PageHero
-        imageSrc="/images/hero/realisations-hero.webp"
+        imageSrc="/images/hero/homepage-hero.webp"
         imageAlt="Réalisations AFFRA Réseaux — installations de bornes de recharge IRVE en Occitanie et PACA"
         title="Nos réalisations"
         subtitle="Installateur IRVE certifié — Occitanie &amp; PACA"

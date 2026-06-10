@@ -31,7 +31,7 @@ export default function RealisationsGallery() {
           {photos.map((photo, i) => (
             <FadeIn key={i} delay={i * 0.06} className="break-inside-avoid">
               <div className="group relative overflow-hidden rounded-xl border border-slate-200 shadow-sm">
-                {isDev ? (
+                {isDev && !photo.src.endsWith('.webp') ? (
                   <PhotoPlaceholder
                     width={600}
                     height={i % 3 === 0 ? 500 : 400}

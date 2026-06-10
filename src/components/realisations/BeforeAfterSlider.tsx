@@ -13,6 +13,8 @@ interface BeforeAfterSliderProps {
   afterAlt: string
   title: string
   badge: string
+  /** Classe Tailwind d'aspect-ratio du conteneur (ex: "aspect-[4/3]", "aspect-square") */
+  aspectRatio?: string
 }
 
 export default function BeforeAfterSlider({
@@ -22,6 +24,7 @@ export default function BeforeAfterSlider({
   afterAlt,
   title,
   badge,
+  aspectRatio = 'aspect-[4/3]',
 }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -53,7 +56,7 @@ export default function BeforeAfterSlider({
     <div className="flex flex-col gap-3">
       <div
         ref={containerRef}
-        className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 shadow-card cursor-col-resize select-none"
+        className={`relative ${aspectRatio} w-full overflow-hidden rounded-2xl border border-slate-200 shadow-card cursor-col-resize select-none`}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
         onMouseLeave={onMouseUp}

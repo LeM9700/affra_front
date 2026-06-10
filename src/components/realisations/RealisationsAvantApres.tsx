@@ -10,6 +10,7 @@ const transformations = [
     afterAlt: 'Installation borne de recharge Wallbox terminée par AFFRA Réseaux',
     title: 'Transformation chez un particulier',
     badge: 'Installation Wallbox',
+    aspectRatio: 'aspect-[4/3]',
   },
   {
     beforeSrc: '/images/realisations/avant-2.webp',
@@ -18,6 +19,7 @@ const transformations = [
     afterAlt: 'Borne de recharge installée dans garage particulier par AFFRA Réseaux',
     title: 'Transformation chez un particulier',
     badge: 'Installation IRVE',
+    aspectRatio: 'aspect-square',
   },
 ]
 
@@ -44,6 +46,7 @@ export default function RealisationsAvantApres() {
                 afterAlt={t.afterAlt}
                 title={t.title}
                 badge={t.badge}
+                aspectRatio={t.aspectRatio}
               />
             </FadeIn>
           ))}
