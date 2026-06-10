@@ -3,14 +3,21 @@ import SectionTitle from '@/components/shared/SectionTitle'
 
 const certifications = [
   {
-    src: '/images/certifications/logo-irve.webp',
+    src: '/images/certifications/irve-p1-p2-p3.webp',
     alt: 'Certification IRVE P1–P2–P3',
     label: 'IRVE P1–P2–P3',
     width: 160,
     height: 64,
   },
   {
-    src: '/images/AFNOR LOGO.png',
+    src: '/images/certifications/AFNOR LOGO.webp',
+    alt: 'AFNOR Certification',
+    label: 'AFNOR',
+    width: 180,
+    height: 72,
+  },
+   {
+    src: '/images/certifications/irveFrance.webp',
     alt: 'AFNOR Certification',
     label: 'AFNOR',
     width: 180,

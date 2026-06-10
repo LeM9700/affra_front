@@ -5,6 +5,7 @@ import Link from 'next/link'
 import ArticleContent from '@/components/blog/ArticleContent'
 import CTABand from '@/components/shared/CTABand'
 import SchemaOrg from '@/components/shared/SchemaOrg'
+import Breadcrumb from '@/components/shared/Breadcrumb'
 import { getBlogPost, getBlogPosts } from '@/lib/api/blog'
 import { formatDateFR } from '@/lib/utils/date'
 import PhotoPlaceholder from '@/components/shared/PhotoPlaceholder'
@@ -95,6 +96,13 @@ export default async function BlogPostPage({ params }: Props) {
 
       <article className="bg-slate-900 py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb
+            items={[
+              { label: 'Accueil', href: '/' },
+              { label: 'Blog', href: '/blog' },
+              { label: post.titre },
+            ]}
+          />
           <ArticleContent markdown={post.contenu_markdown ?? ''} />
 
           <div className="mt-10 rounded-2xl border border-slate-700 bg-slate-800/70 p-6">

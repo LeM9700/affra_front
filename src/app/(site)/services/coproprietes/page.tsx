@@ -4,6 +4,7 @@ import ServiceFeatures from '@/components/services/ServiceFeatures'
 import ServiceFAQ from '@/components/services/ServiceFAQ'
 import CTABand from '@/components/shared/CTABand'
 import SchemaOrg from '@/components/shared/SchemaOrg'
+import Breadcrumb from '@/components/shared/Breadcrumb'
 import { buildMetadata } from '@/lib/utils/metadata'
 
 export const metadata: Metadata = buildMetadata({
@@ -73,9 +74,21 @@ const faqSchema = {
   })),
 }
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Installation borne de recharge en copropriété',
+  description:
+    'Solution de recharge collective certifiée IRVE pour copropriétés en Occitanie et PACA. Droit à la prise, installation clé en main.',
+  provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude, Pyrénées-Orientales' },
+  serviceType: 'Installation IRVE — Borne de recharge copropriété',
+}
+
 export default function CopropriétésPage() {
   return (
     <>
+      <SchemaOrg schema={serviceSchema} />
       <SchemaOrg schema={faqSchema} />
       <ServiceHero
         imageSrc="/images/hero/coproprietes-hero.webp"
@@ -83,6 +96,17 @@ export default function CopropriétésPage() {
         title="Recharge électrique en copropriété"
         subtitle="Solution collective IRVE certifiée, droits à la prise et infrastructure évolutive."
       />
+      <div className="bg-white pt-8 pb-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb
+            items={[
+              { label: 'Accueil', href: '/' },
+              { label: 'Services', href: '/services/coproprietes' },
+              { label: 'Copropriétés' },
+            ]}
+          />
+        </div>
+      </div>
       <ServiceFeatures features={features} />
       <ServiceFAQ items={faq} />
       <CTABand />

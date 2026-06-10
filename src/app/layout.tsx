@@ -24,19 +24,19 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/icons/affra_logo.png',
-        width: 800,
-        height: 800,
-        alt: 'AFFRA Réseaux Installateur certifié IRVE P1–P2–P3',
+        url: '/images/og/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'AFFRA Réseaux — Installateur certifié IRVE en Occitanie et PACA',
       },
     ],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'AFFRA Réseaux Installation de bornes de recharge IRVE',
     description:
       'Spécialiste certifié IRVE en Hérault (34), Gard (30), Vaucluse (84), Bouches-du-Rhône (13), Aude (11) et Pyrénées-Orientales (66). Installation de bornes de recharge pour particuliers, copropriétés et professionnels.',
-    images: ['/icons/affra_logo.png'],
+    images: ['/images/og/og-default.png'],
   },
 }
 
@@ -47,6 +47,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={inter.variable}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_API_URL ?? 'https://affra-api.up.railway.app'} />
+      </head>
       <body className="bg-[#F8FAFC] text-slate-900 antialiased font-sans">
         {children}
       </body>

@@ -59,6 +59,37 @@ const localBusinessSchema = {
     { '@type': 'State', name: 'Pyrénées-Orientales', identifier: '66' },
   ],
   hasCredential: 'Certification IRVE P1–P2–P3',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    reviewCount: '3',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: [
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'M. D.' },
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewBody: 'Équipe très professionnelle, installation soignée et rapide. La borne fonctionne parfaitement. Je recommande vivement AFFRA Réseaux !',
+    },
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'S. L.' },
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewBody: 'Très bon accompagnement pour mon projet en copropriété. Équipe réactive et installation soignée, je recommande.',
+    },
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'T. R.' },
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewBody: "Installation de 8 bornes pour notre flotte d'entreprise. Travail sérieux, délais respectés, excellent rapport qualité-prix.",
+    },
+  ],
+  sameAs: [
+    'https://maps.app.goo.gl/rTF6fF7CvZyWMEn68',
+    'https://www.linkedin.com/company/affra-reseaux',
+  ],
 }
 
 export default async function HomePage() {

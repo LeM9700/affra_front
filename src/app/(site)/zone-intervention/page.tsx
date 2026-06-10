@@ -1,10 +1,14 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import PageHero from '@/components/shared/PageHero'
 import CTABand from '@/components/shared/CTABand'
 import { buildMetadata } from '@/lib/utils/metadata'
 import { getZones } from '@/lib/api/zones'
 import ZoneMap from '@/components/map/ZoneMap'
 import SchemaOrg from '@/components/shared/SchemaOrg'
+import { villesSeo } from '@/data/villes-seo'
+
+const nameToSlug = Object.fromEntries(villesSeo.map((v) => [v.nom, v.slug]))
 
 export const revalidate = false // ISR on-demand
 export const dynamic = 'force-dynamic'
@@ -95,11 +99,22 @@ export default async function ZoneInterventionPage() {
                 Hérault Département 34
               </h2>
               <div className="flex flex-wrap gap-2">
-                {displayed34.map((ville) => (
-                  <span key={`34-${ville}`} className="bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-full text-sm">
-                    {ville}
-                  </span>
-                ))}
+                {displayed34.map((ville) => {
+                  const slug = nameToSlug[ville]
+                  return slug ? (
+                    <Link
+                      key={`34-${ville}`}
+                      href={`/zone-intervention/${slug}`}
+                      className="bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 hover:border-blue-400 px-3 py-1.5 rounded-full text-sm transition-colors"
+                    >
+                      {ville}
+                    </Link>
+                  ) : (
+                    <span key={`34-${ville}`} className="bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-full text-sm">
+                      {ville}
+                    </span>
+                  )
+                })}
               </div>
             </div>
             <div>
@@ -107,11 +122,22 @@ export default async function ZoneInterventionPage() {
                 Gard Département 30
               </h2>
               <div className="flex flex-wrap gap-2">
-                {displayed30.map((ville) => (
-                  <span key={`30-${ville}`} className="bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-full text-sm">
-                    {ville}
-                  </span>
-                ))}
+                {displayed30.map((ville) => {
+                  const slug = nameToSlug[ville]
+                  return slug ? (
+                    <Link
+                      key={`30-${ville}`}
+                      href={`/zone-intervention/${slug}`}
+                      className="bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 hover:border-blue-400 px-3 py-1.5 rounded-full text-sm transition-colors"
+                    >
+                      {ville}
+                    </Link>
+                  ) : (
+                    <span key={`30-${ville}`} className="bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-full text-sm">
+                      {ville}
+                    </span>
+                  )
+                })}
               </div>
             </div>
             <div>
@@ -119,11 +145,22 @@ export default async function ZoneInterventionPage() {
                 Bouches-du-Rhône Département 13
               </h2>
               <div className="flex flex-wrap gap-2">
-                {displayed13.map((ville) => (
-                  <span key={`13-${ville}`} className="bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-full text-sm">
-                    {ville}
-                  </span>
-                ))}
+                {displayed13.map((ville) => {
+                  const slug = nameToSlug[ville]
+                  return slug ? (
+                    <Link
+                      key={`13-${ville}`}
+                      href={`/zone-intervention/${slug}`}
+                      className="bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 hover:border-blue-400 px-3 py-1.5 rounded-full text-sm transition-colors"
+                    >
+                      {ville}
+                    </Link>
+                  ) : (
+                    <span key={`13-${ville}`} className="bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-full text-sm">
+                      {ville}
+                    </span>
+                  )
+                })}
               </div>
             </div>
           </div>

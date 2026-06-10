@@ -8,12 +8,6 @@
   # Environment variables for build time
   NODE_VERSION = "20"
 
-# Rewrite for Next.js API routes and ISR
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-
 # Security headers
 [[headers]]
   for = "/*"

@@ -4,8 +4,8 @@ import { CheckCircle, MapPin, Award } from 'lucide-react'
 
 const stats = [
   { icon: CheckCircle, value: '200+', label: 'bornes installées' },
-  { icon: Award,       value: 'IRVE',  label: 'certifié P1-P2' },
-  { icon: MapPin,      value: '2',     label: 'départements' },
+  { icon: Award,       value: 'IRVE',  label: 'certifié P1-P2-P3' },
+  { icon: MapPin,      value: '6',     label: 'départements' },
 ]
 
 export default function HeroSection() {
@@ -32,7 +32,7 @@ export default function HeroSection() {
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#5BBF8A]/25 bg-[#5BBF8A]/8 px-4 py-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-[#5BBF8A] shadow-[0_0_8px_rgba(91,191,138,0.8)]" />
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#3a9e6c]">
-                Certifié IRVE P1–P2–P3 en Occitanie & PACA
+                Installation borne de recharge IRVE · Certifié P1–P2–P3 Occitanie & PACA
               </span>
             </div>
 

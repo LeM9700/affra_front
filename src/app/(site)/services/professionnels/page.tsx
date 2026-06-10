@@ -4,6 +4,7 @@ import ServiceFeatures from '@/components/services/ServiceFeatures'
 import ServiceFAQ from '@/components/services/ServiceFAQ'
 import CTABand from '@/components/shared/CTABand'
 import SchemaOrg from '@/components/shared/SchemaOrg'
+import Breadcrumb from '@/components/shared/Breadcrumb'
 import { buildMetadata } from '@/lib/utils/metadata'
 
 export const metadata: Metadata = buildMetadata({
@@ -74,9 +75,21 @@ const faqSchema = {
   })),
 }
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Installation bornes de recharge pour professionnels',
+  description:
+    "Installation de bornes de recharge pour flottes d'entreprise, PME et sites professionnels en Occitanie et PACA.",
+  provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude, Pyrénées-Orientales' },
+  serviceType: 'Installation IRVE — Borne de recharge professionnels',
+}
+
 export default function ProfessionnelsPage() {
   return (
     <>
+      <SchemaOrg schema={serviceSchema} />
       <SchemaOrg schema={faqSchema} />
       <ServiceHero
         imageSrc="/images/hero/professionnels-hero.webp"
@@ -84,6 +97,17 @@ export default function ProfessionnelsPage() {
         title="Bornes de recharge pour professionnels"
         subtitle="Électrification de flottes, PME et sites industriels, IRVE certifié en Occitanie et PACA."
       />
+      <div className="bg-white pt-8 pb-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb
+            items={[
+              { label: 'Accueil', href: '/' },
+              { label: 'Services', href: '/services/professionnels' },
+              { label: 'Professionnels' },
+            ]}
+          />
+        </div>
+      </div>
       <ServiceFeatures features={features} />
       <ServiceFAQ items={faq} />
       <CTABand />

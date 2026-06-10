@@ -12,17 +12,18 @@ export default function MentionsLegalesPage() {
     <section className="bg-slate-900 py-20 min-h-screen">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-invert prose-slate">
         <h1 className="text-3xl font-bold text-white mb-8">Mentions légales</h1>
-        <p className="text-amber-300 text-sm border border-amber-400/40 rounded-lg p-4 mb-8">
-          Les informations juridiques marquees &quot;a completer&quot; doivent etre remplies pour la conformite legale et SEO.
-        </p>
 
         <h2 className="text-xl font-semibold text-white mt-8 mb-2">Éditeur du site</h2>
         <p className="text-slate-300">
           <strong>AFFRA Réseaux</strong><br />
           Raison sociale : AFFRA Réseaux<br />
-          Forme juridique : [a completer]<br />
+          Forme juridique : Société à responsabilité limitée (SARL)<br />
+          Capital social : 5 000,00 €<br />
           SIRET : 98445144300027<br />
-          Siège social : 95 A RUE DE LA HASE, 30900 NIMES, France<br />
+          N° TVA intracommunautaire : FR94984451443<br />
+          Code NAF/APE : 43.21A — Travaux d&apos;installation électrique dans tous locaux<br />
+          Date de création : 09/02/2024<br />
+          Siège social : 95 A RUE DE LA HASE, 30900 NÎMES, France<br />
           Téléphone : +33 7 66 30 46 87<br />
           E-mail : affrareseaux@gmail.com
         </p>

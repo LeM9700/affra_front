@@ -4,6 +4,7 @@ import ServiceFeatures from '@/components/services/ServiceFeatures'
 import ServiceFAQ from '@/components/services/ServiceFAQ'
 import CTABand from '@/components/shared/CTABand'
 import SchemaOrg from '@/components/shared/SchemaOrg'
+import Breadcrumb from '@/components/shared/Breadcrumb'
 import { buildMetadata } from '@/lib/utils/metadata'
 
 export const metadata: Metadata = buildMetadata({
@@ -70,6 +71,17 @@ const faq = [
   },
 ]
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Installation borne de recharge pour particuliers',
+  description:
+    'Installation de borne de recharge à domicile par un électricien certifié IRVE en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales.',
+  provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude, Pyrénées-Orientales' },
+  serviceType: 'Installation IRVE — Borne de recharge électrique',
+}
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -86,6 +98,7 @@ const faqSchema = {
 export default function ParticuliersPage() {
   return (
     <>
+      <SchemaOrg schema={serviceSchema} />
       <SchemaOrg schema={faqSchema} />
       <ServiceHero
         imageSrc="/images/hero/particuliers-hero.webp"
@@ -93,6 +106,17 @@ export default function ParticuliersPage() {
         title="Installation borne de recharge pour particuliers"
         subtitle="Votre wallbox à domicile, installée par un expert certifié IRVE en Occitanie et PACA."
       />
+      <div className="bg-white pt-8 pb-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb
+            items={[
+              { label: 'Accueil', href: '/' },
+              { label: 'Services', href: '/services/particuliers' },
+              { label: 'Particuliers' },
+            ]}
+          />
+        </div>
+      </div>
       <ServiceFeatures features={features} />
       <ServiceFAQ items={faq} />
       <CTABand />

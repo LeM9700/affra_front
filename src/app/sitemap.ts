@@ -1,9 +1,11 @@
 import { MetadataRoute } from 'next'
+import { villesSeo } from '@/data/villes-seo'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://affra-reseaux.fr'
 
 const staticRoutes: { path: string; priority: number; changefreq: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
   { path: '', priority: 1.0, changefreq: 'weekly' },
+  { path: '/offres', priority: 0.9, changefreq: 'monthly' },
   { path: '/services/particuliers', priority: 0.9, changefreq: 'monthly' },
   { path: '/services/coproprietes', priority: 0.9, changefreq: 'monthly' },
   { path: '/services/professionnels', priority: 0.9, changefreq: 'monthly' },
@@ -48,5 +50,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  return [...staticEntries, ...blogEntries]
+  const villeEntries: MetadataRoute.Sitemap = villesSeo.map((v) => ({
+    url: `${BASE_URL}/zone-intervention/${v.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
+  return [...staticEntries, ...blogEntries, ...villeEntries]
 }

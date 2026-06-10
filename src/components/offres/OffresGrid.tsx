@@ -1,5 +1,5 @@
-﻿import Link from 'next/link'
-import PhotoPlaceholder from '@/components/shared/PhotoPlaceholder'
+import Link from 'next/link'
+import Image from 'next/image'
 
 const OFFRES = [
   {
@@ -11,24 +11,25 @@ const OFFRES = [
     highlight: false,
     features: [
       'Solution économique et sécurisée',
-      'Recharge plus performante qu\'une prise classique',
+      "Recharge plus performante qu'une prise classique",
       'Idéal pour les petits trajets du quotidien',
       'Compatible avec la majorité des véhicules électriques et hybrides rechargeables',
       'Installation discrète et rapide',
       'Parfait pour une recharge de nuit',
     ],
     recommandePour: 'Recommandé pour les utilisateurs avec un faible kilométrage quotidien.',
-    imageLabel: "Green'up Legrand",
+    imageAlt: "Prise renforcée Green'up Legrand installée par AFFRA Réseaux",
+    image: '/images/GREEN UP LEGRAND.webp',
   },
   {
     badge: 'Notre best-seller',
     badgeColor: 'bg-[#5BBF8A]/10 text-[#5BBF8A]',
     titre: 'DazeBox Home T',
-    soustitre: 'Câble Type 2 attaché 5m jusqu\'\u00e0 22kW',
+    soustitre: "Câble Type 2 attaché 5m jusqu'à 22kW",
     prix: 'À partir de 1 250€ TTC',
     highlight: true,
     features: [
-      'Recharge rapide jusqu\'\u00e0 22kW',
+      "Recharge rapide jusqu'à 22kW",
       'Câble Type 2 attaché 5 mètres',
       'Compatible monophasé et triphasé',
       'Gestion intelligente de la puissance (délestage)',
@@ -39,17 +40,18 @@ const OFFRES = [
       'Écran intégré pour le suivi de charge',
     ],
     recommandePour: 'Le meilleur équilibre entre performance, confort et budget.',
-    imageLabel: 'DazeBox Home T',
+    imageAlt: 'Borne de recharge DazeBox Home T installée par AFFRA Réseaux',
+    image: '/images/DAZEBOX HOME T.webp',
   },
   {
     badge: 'La borne premium ultra connectée',
     badgeColor: 'bg-[#29ABE2]/10 text-[#29ABE2]',
     titre: 'V2C Trydan',
-    soustitre: 'Câble Type 2 attaché 5m jusqu\'\u00e0 22kW',
+    soustitre: "Câble Type 2 attaché 5m jusqu'à 22kW",
     prix: 'À partir de 1 350€ TTC',
     highlight: false,
     features: [
-      'Recharge jusqu\'\u00e0 22kW',
+      "Recharge jusqu'à 22kW",
       'Câble Type 2 attaché 5 mètres',
       'Compatible monophasé et triphasé',
       'Gestion dynamique de la puissance incluse',
@@ -60,13 +62,14 @@ const OFFRES = [
       'Design premium avec éclairage LED',
     ],
     recommandePour: 'Idéal pour les utilisateurs recherchant une solution haut de gamme et évolutive.',
-    imageLabel: 'V2C Trydan',
+    imageAlt: 'Borne de recharge V2C Trydan installée par AFFRA Réseaux',
+    image: '/images/V2C TRYDAN.webp',
   },
 ]
 
 export default function OffresGrid() {
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
       <div className="grid gap-10 md:grid-cols-3 items-start">
         {OFFRES.map((offre) => (
           <div
@@ -76,7 +79,15 @@ export default function OffresGrid() {
             }`}
           >
             <div className="overflow-hidden rounded-t-2xl">
-              <PhotoPlaceholder width={700} height={394} label={offre.imageLabel} />
+              <Image
+                src={offre.image}
+                alt={offre.imageAlt}
+                width={700}
+                height={394}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                priority={offre.highlight}
+                className="w-full h-auto object-cover"
+              />
             </div>
             <div className="flex flex-1 flex-col p-6">
               <span className={`mb-2 inline-block self-start rounded-full px-2 py-0.5 text-xs font-semibold ${offre.badgeColor}`}>
