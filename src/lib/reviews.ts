@@ -44,7 +44,9 @@ export async function getMergedReviews(): Promise<UnifiedReview[]> {
 
   const unified: UnifiedReview[] = [
     ...siteReviews.map(siteReviewToUnified),
-    ...(googleData?.reviews ?? []).map(googleReviewToUnified),
+    ...(googleData?.reviews ?? [])
+      .filter((r) => r.text?.text)
+      .map(googleReviewToUnified),
   ]
 
   return unified
