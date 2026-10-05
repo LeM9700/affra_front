@@ -9,6 +9,8 @@ import Breadcrumb from '@/components/shared/Breadcrumb'
 import { getBlogPost, getBlogPosts } from '@/lib/api/blog'
 import { formatDateFR } from '@/lib/utils/date'
 import PhotoPlaceholder from '@/components/shared/PhotoPlaceholder'
+import { TrackedPhoneLink } from '@/components/attribution/TrackedLinks'
+import { CONTACT_PHONE_DISPLAY_NATIONAL, CONTACT_PHONE_E164 } from '@/lib/contact'
 
 export const revalidate = false // ISR on-demand
 
@@ -117,12 +119,13 @@ export default async function BlogPostPage({ params }: Props) {
               >
                 Demander un devis
               </Link>
-              <a
-                href="tel:+33766304687"
+              <TrackedPhoneLink
+                phone={CONTACT_PHONE_E164}
+                placement="blog_article"
                 className="inline-flex items-center justify-center rounded-lg border border-slate-600 px-5 py-3 font-semibold text-slate-200 transition-colors hover:bg-slate-700"
               >
-                Appeler le 07 66 30 46 87
-              </a>
+                Appeler le {CONTACT_PHONE_DISPLAY_NATIONAL}
+              </TrackedPhoneLink>
               <Link
                 href="/offres"
                 className="inline-flex items-center justify-center rounded-lg border border-slate-600 px-5 py-3 font-semibold text-slate-200 transition-colors hover:bg-slate-700"

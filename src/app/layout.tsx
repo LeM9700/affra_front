@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import AttributionTracker from '@/components/attribution/AttributionTracker'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -54,6 +55,7 @@ export default function RootLayout({
       </head>
       <body className="bg-[#F8FAFC] text-slate-900 antialiased font-sans">
         {children}
+        <AttributionTracker />
       </body>
     </html>
   );

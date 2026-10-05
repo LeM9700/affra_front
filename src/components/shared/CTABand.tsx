@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import { ArrowRight, Phone } from 'lucide-react'
 
+import { TrackedPhoneLink } from '@/components/attribution/TrackedLinks'
+import { CONTACT_PHONE_E164 } from '@/lib/contact'
+
 export default function CTABand() {
   return (
     <section className="relative overflow-hidden bg-slate-900 py-24">
@@ -44,13 +47,14 @@ export default function CTABand() {
             Demander un devis gratuit
             <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
           </Link>
-          <a
-            href="tel:+33XXXXXXXXX"
+          <TrackedPhoneLink
+            phone={CONTACT_PHONE_E164}
+            placement="cta_band"
             className="inline-flex items-center gap-2.5 rounded-2xl border border-slate-700 bg-slate-800/60 px-8 py-4 text-base font-semibold text-slate-300 transition-all duration-200 hover:border-slate-600 hover:bg-slate-800 hover:text-white"
           >
             <Phone className="h-4 w-4" strokeWidth={1.75} />
             Nous appeler
-          </a>
+          </TrackedPhoneLink>
         </div>
 
         <p className="mt-6 text-xs text-slate-500">

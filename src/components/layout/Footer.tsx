@@ -2,6 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react'
 
+import { TrackedEmailLink, TrackedPhoneLink } from '@/components/attribution/TrackedLinks'
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164 } from '@/lib/contact'
+
 const navLinks = [
   { href: '/services/particuliers', label: 'Particuliers' },
   { href: '/services/coproprietes', label: 'Copropriétés' },
@@ -62,14 +65,14 @@ export default function Footer() {
                 <MapPin className="h-3.5 w-3.5 flex-shrink-0 text-[#5BBF8A]" strokeWidth={1.75} />
                 Occitanie &amp; PACA
               </div>
-              <a href="tel:+33766304687" className="flex items-center gap-2 text-slate-400 transition-colors hover:text-[#5BBF8A]">
+              <TrackedPhoneLink phone={CONTACT_PHONE_E164} placement="footer" className="flex items-center gap-2 text-slate-400 transition-colors hover:text-[#5BBF8A]">
                 <Phone className="h-3.5 w-3.5 flex-shrink-0 text-[#5BBF8A]" strokeWidth={1.75} />
-                +33 7 66 30 46 87
-              </a>
-              <a href="mailto:affrareseaux@gmail.com" className="flex items-center gap-2 text-slate-400 transition-colors hover:text-[#5BBF8A]">
+                {CONTACT_PHONE_DISPLAY}
+              </TrackedPhoneLink>
+              <TrackedEmailLink email={CONTACT_EMAIL} placement="footer" className="flex items-center gap-2 text-slate-400 transition-colors hover:text-[#5BBF8A]">
                 <Mail className="h-3.5 w-3.5 flex-shrink-0 text-[#5BBF8A]" strokeWidth={1.75} />
-                affrareseaux@gmail.com
-              </a>
+                {CONTACT_EMAIL}
+              </TrackedEmailLink>
             </div>
           </div>
 

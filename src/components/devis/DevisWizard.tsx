@@ -9,6 +9,7 @@ import DevisScreen5Delai from './DevisScreen5Delai'
 import DevisScreen6Tableau from './DevisScreen6Tableau'
 import DevisScreen7Coordonnees from './DevisScreen7Coordonnees'
 import { submitDevis } from '@/lib/actions/devis'
+import { trackEvent } from '@/lib/attribution/events'
 import type { DevisFormData } from '@/types/devis'
 
 type PartialDevis = Partial<DevisFormData>
@@ -27,6 +28,11 @@ export default function DevisWizard() {
   }
 
   const back = () => setScreen((s) => Math.max(s - 1, 1))
+
+  const start = () => {
+    trackEvent('QUOTE_STARTED')
+    setScreen(2)
+  }
 
   const handleSubmit = async (screenData: PartialDevis) => {
     const fullData = { ...data, ...screenData } as DevisFormData & { website?: string }
@@ -65,7 +71,7 @@ export default function DevisWizard() {
         </div>
       )}
 
-      {screen === 1 && <DevisScreen1Accroche onStart={() => setScreen(2)} />}
+      {screen === 1 && <DevisScreen1Accroche onStart={start} />}
       {screen === 2 && <DevisScreen2Projet defaultValues={data} onNext={next} />}
       {screen === 3 && <DevisScreen3Vehicule defaultValues={data} onNext={next} onBack={back} />}
       {screen === 4 && <DevisScreen4Distance defaultValues={data} onNext={next} onBack={back} />}

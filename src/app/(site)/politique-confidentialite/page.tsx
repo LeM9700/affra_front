@@ -13,7 +13,7 @@ export default function PolitiqueConfidentialitePage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-white mb-8">Politique de confidentialité</h1>
 
-        <p className="text-slate-400 mb-8">Dernière mise à jour : janvier 2026</p>
+        <p className="text-slate-400 mb-8">Dernière mise à jour : octobre 2026</p>
 
         {[
           {
@@ -54,7 +54,7 @@ export default function PolitiqueConfidentialitePage() {
           {
             title: '8. Cookies',
             content:
-              "Ce site n'utilise pas de cookies de traçage ou publicitaires. Aucun cookie tiers n'est déposé sans votre consentement.",
+              "Ce site n'utilise aucun cookie publicitaire ni cookie tiers. Il dépose un unique cookie first-party, « affra_vid », contenant un identifiant aléatoire (aucune donnée personnelle, aucune empreinte de navigateur). Il sert à mesurer la provenance des visites (moteur de recherche, fiche Google, assistant IA, campagne…) et à la rattacher à une éventuelle demande de devis ou à un clic sur nos coordonnées, afin d'évaluer l'efficacité de nos actions de communication. Il expire au bout de 13 mois ; les données de visite associées sont supprimées au-delà de cette durée lorsqu'elles ne sont liées à aucune demande. Vous pouvez le supprimer à tout moment depuis les paramètres de votre navigateur.",
           },
           {
             title: '9. Sécurité',
