@@ -6,7 +6,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'À propos AFFRA Réseaux',
   description:
-    "Découvrez AFFRA Réseaux, installateur certifié IRVE P1–P2–P3 en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales : notre équipe, nos certifications et notre engagement pour la mobilité électrique.",
+    "Découvrez AFFRA Réseaux, installateur certifié IRVE P1–P2–P3 dans le Gard et l’Hérault : notre équipe, nos certifications et notre engagement pour la mobilité électrique.",
   path: '/a-propos',
 })
 
@@ -17,7 +17,7 @@ export default function AProposPage() {
         imageSrc="/images/hero/a-propos-hero.webp"
         imageAlt="Équipe AFFRA Réseaux sur un chantier d'installation IRVE"
         title="À propos d'AFFRA Réseaux"
-        subtitle="Expert certifié IRVE P1–P2–P3 depuis 5 ans en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales."
+        subtitle="Expert certifié IRVE P1–P2–P3 depuis 5 ans dans le Gard et l’Hérault."
       />
 
       <section className="bg-white py-20">
@@ -26,7 +26,7 @@ export default function AProposPage() {
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Notre mission</h2>
             <p className="text-slate-600 text-lg leading-relaxed">
               AFFRA Réseaux accompagne la transition vers la mobilité électrique en installant des bornes de recharge
-              certifiées IRVE pour particuliers, copropriétés et professionnels en Occitanie et PACA.
+              certifiées IRVE pour particuliers, copropriétés et professionnels dans le Gard et l’Hérault.
               Notre priorité : une installation fiable, conforme et durable.
             </p>
           </div>

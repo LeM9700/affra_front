@@ -13,7 +13,7 @@ import { getGoogleReviews } from '@/lib/google-places'
 export const metadata: Metadata = buildMetadata({
   title: 'Nos offres de recharge électrique',
   description:
-    "Découvrez nos solutions de recharge : prise renforcée Green'up Legrand, borne DazeBox Home T et V2C Trydan. Installation certifiée IRVE en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales.",
+    "Découvrez nos solutions de recharge : prise renforcée Green'up Legrand, borne DazeBox Home T et V2C Trydan. Installation certifiée IRVE dans le Gard et l’Hérault.",
   path: '/offres',
 })
 
@@ -38,7 +38,7 @@ const PRODUCTS = [
   {
     name: "Green'up Legrand",
     description:
-      "Prise renforcée sécurisée pour véhicule électrique, solution économique et discrète. Installée par AFFRA Réseaux, techniciens certifiés IRVE en Occitanie et PACA.",
+      "Prise renforcée sécurisée pour véhicule électrique, solution économique et discrète. Installée par AFFRA Réseaux, techniciens certifiés IRVE dans le Gard et l’Hérault.",
     image: `${BASE_URL}/images/GREEN UP LEGRAND.webp`,
     brand: 'Legrand',
     minPrice: '499',

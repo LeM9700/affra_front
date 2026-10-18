@@ -10,7 +10,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Bornes de recharge pour professionnels',
   description:
-    "Installation de bornes de recharge pour flottes d'entreprise, PME et sites professionnels en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales. Certifié IRVE.",
+    "Installation de bornes de recharge pour flottes d'entreprise, PME et sites professionnels dans le Gard et l’Hérault. Certifié IRVE.",
   path: '/services/professionnels',
 })
 
@@ -80,9 +80,9 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Installation bornes de recharge pour professionnels',
   description:
-    "Installation de bornes de recharge pour flottes d'entreprise, PME et sites professionnels en Occitanie et PACA.",
+    "Installation de bornes de recharge pour flottes d'entreprise, PME et sites professionnels dans le Gard et l’Hérault.",
   provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
-  areaServed: { '@type': 'AdministrativeArea', name: 'Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude, Pyrénées-Orientales' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Gard, Hérault' },
   serviceType: 'Installation IRVE — Borne de recharge professionnels',
 }
 
@@ -95,7 +95,7 @@ export default function ProfessionnelsPage() {
         imageSrc="/images/hero/professionnels-hero.webp"
         imageAlt="Flotte d'entreprise en charge sur un parking professionnel"
         title="Bornes de recharge pour professionnels"
-        subtitle="Électrification de flottes, PME et sites industriels, IRVE certifié en Occitanie et PACA."
+        subtitle="Électrification de flottes, PME et sites industriels, IRVE certifié dans le Gard et l’Hérault."
       />
       <div className="bg-white pt-8 pb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

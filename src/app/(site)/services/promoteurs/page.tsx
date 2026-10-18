@@ -10,7 +10,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Infrastructure IRVE pour promoteurs immobiliers',
   description:
-    "Solution d'infrastructure de recharge IRVE pour promoteurs immobiliers en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales. RT 2020, pré-équipement, solution clé en main.",
+    "Solution d'infrastructure de recharge IRVE pour promoteurs immobiliers dans le Gard et l’Hérault. RT 2020, pré-équipement, solution clé en main.",
   path: '/services/promoteurs',
 })
 
@@ -88,9 +88,9 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Infrastructure IRVE pour promoteurs immobiliers',
   description:
-    "Solution d'infrastructure de recharge IRVE pour promoteurs immobiliers en Occitanie et PACA. RT 2020, pré-équipement, solution clé en main.",
+    "Solution d'infrastructure de recharge IRVE pour promoteurs immobiliers dans le Gard et l’Hérault. RT 2020, pré-équipement, solution clé en main.",
   provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
-  areaServed: { '@type': 'AdministrativeArea', name: 'Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude, Pyrénées-Orientales' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Gard, Hérault' },
   serviceType: 'Infrastructure IRVE — Promoteurs immobiliers RT 2020',
 }
 

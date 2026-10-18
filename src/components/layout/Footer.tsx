@@ -58,7 +58,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm leading-relaxed text-slate-500 mb-5">
-              Spécialiste de l&apos;installation de bornes de recharge électrique IRVE en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales.
+              Spécialiste de l&apos;installation de bornes de recharge électrique IRVE dans le Gard et l’Hérault.
             </p>
             <div className="flex flex-col gap-2 text-sm">
               <div className="flex items-center gap-2 text-slate-400">

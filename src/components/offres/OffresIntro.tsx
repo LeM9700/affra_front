@@ -2,7 +2,7 @@ export default function OffresIntro() {
   return (
     <section className="mx-auto max-w-4xl px-4 sm:px-6 py-10 text-slate-700">
       <p className="text-base leading-relaxed mb-4">
-        AFFRA Réseaux installe des bornes de recharge pour véhicules électriques certifiées IRVE en Occitanie et PACA.
+        AFFRA Réseaux installe des bornes de recharge pour véhicules électriques certifiées IRVE dans le Gard et l’Hérault.
         Spécialiste de la recharge à domicile, nous vous proposons trois solutions adaptées à chaque profil : du
         particulier qui roule peu au conducteur recherchant une recharge rapide et connectée.
       </p>

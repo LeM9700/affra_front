@@ -10,7 +10,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Bornes de recharge en copropriété',
   description:
-    'Solution de recharge collective certifiée IRVE pour copropriétés en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales. Droits à la prise, installation clé en main.',
+    'Solution de recharge collective certifiée IRVE pour copropriétés dans le Gard et l’Hérault. Droits à la prise, installation clé en main.',
   path: '/services/coproprietes',
 })
 
@@ -79,9 +79,9 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Installation borne de recharge en copropriété',
   description:
-    'Solution de recharge collective certifiée IRVE pour copropriétés en Occitanie et PACA. Droit à la prise, installation clé en main.',
+    'Solution de recharge collective certifiée IRVE pour copropriétés dans le Gard et l’Hérault. Droit à la prise, installation clé en main.',
   provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
-  areaServed: { '@type': 'AdministrativeArea', name: 'Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude, Pyrénées-Orientales' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Gard, Hérault' },
   serviceType: 'Installation IRVE — Borne de recharge copropriété',
 }
 
