@@ -1,60 +1,26 @@
-const villes = [
-  'Nîmes', 'Montpellier', 'Toulouse', 'Marseille', 'Nice',
-  'Toulon', 'Aix-en-Provence', 'Avignon', 'Perpignan',
-  'Béziers', 'Sète', 'Alès', 'Aubagne', 'La Seyne-sur-Mer',
-]
-
 export default function RealisationsSeoText() {
   return (
     <section className="bg-slate-50 py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-          Votre installateur IRVE certifié en Occitanie et PACA
+          Installation de bornes de recharge dans le Gard et l’Hérault
         </h2>
-        <p className="mt-5 text-slate-600 leading-relaxed">
-          AFFRA Réseaux intervient dans l&apos;ensemble de la région Occitanie — Gard, Hérault, Haute-Garonne,
-          Hérault, Aude, Pyrénées-Orientales — ainsi que dans toute la région PACA : Bouches-du-Rhône, Var,
-          Alpes-Maritimes, Vaucluse et Alpes-de-Haute-Provence. Chaque installation de borne de recharge
-          est réalisée par un technicien certifié IRVE, garant de la conformité électrique et de la sécurité
-          de votre équipement.
+        <p className="mt-5 leading-relaxed text-slate-600">
+          Basée à Nîmes, AFFRA RESEAUX accompagne les particuliers et les petites entreprises dans leurs projets
+          d’installation de bornes de recharge électrique.
         </p>
-
-        <h3 className="mt-10 text-xl font-bold text-slate-900">
-          Installation pour particuliers, copropriétés et professionnels
-        </h3>
-        <p className="mt-3 text-slate-600 leading-relaxed">
-          Que vous soyez propriétaire d&apos;une maison individuelle souhaitant installer une Wallbox dans votre
-          garage, un syndic de copropriété souhaitant déployer des bornes partagées, ou une entreprise cherchant
-          à équiper son parc de stationnement, AFFRA Réseaux adapte chaque projet à vos besoins. Notre
-          certification IRVE (Infrastructure de Recharge pour Véhicules Électriques) est le gage d&apos;une
-          installation conforme aux normes NF C 15-100 et aux exigences du décret IRVE.
+        <p className="mt-4 leading-relaxed text-slate-600">
+          Nous intervenons dans le Gard et l’Hérault, notamment autour de Nîmes, Montpellier et des communes
+          environnantes.
         </p>
-
-        <h3 className="mt-10 text-xl font-bold text-slate-900">
-          Nos zones d&apos;intervention
-        </h3>
-        <p className="mt-3 text-slate-600 leading-relaxed">
-          Nous intervenons dans les principales villes d&apos;Occitanie et de PACA pour l&apos;installation de
-          bornes de recharge pour voitures électriques :
+        <p className="mt-4 leading-relaxed text-slate-600">
+          Installation d’une borne à domicile, remplacement d’un équipement existant ou création d’un point de recharge
+          pour une petite entreprise : nous étudions chaque projet sur place afin de proposer une solution adaptée à
+          votre installation électrique, à votre véhicule et à vos habitudes de recharge.
         </p>
-        <ul className="mt-4 flex flex-wrap gap-x-2 gap-y-2" aria-label="Villes d'intervention AFFRA Réseaux">
-          {villes.map((ville, i) => (
-            <li
-              key={ville}
-              className="inline-flex items-center gap-1 text-slate-600 text-sm"
-            >
-              <span className="text-[#5BBF8A] font-bold" aria-hidden="true">·</span>
-              {ville}
-              {i < villes.length - 1 && <span className="sr-only">,</span>}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-5 text-slate-500 text-sm">
-          Vous ne trouvez pas votre ville ?{' '}
-          <a href="/devis" className="text-[#29B4C5] underline underline-offset-2 hover:text-[#5BBF8A] transition-colors">
-            Contactez-nous
-          </a>{' '}
-          — nous étudions toute demande en Occitanie et PACA.
+        <p className="mt-4 leading-relaxed text-slate-600">
+          Notre approche repose sur un accompagnement personnalisé, une visite technique gratuite et un interlocuteur
+          dédié tout au long de votre projet.
         </p>
       </div>
     </section>

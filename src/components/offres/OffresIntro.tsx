@@ -13,8 +13,8 @@ export default function OffresIntro() {
         situation et vous recommandent la solution la mieux adaptée, installation comprise.
       </p>
       <p className="text-base leading-relaxed">
-        Chaque installation est réalisée dans le respect des normes NF C 15-100 par un professionnel qualifié.
-        Intervention dans toute la région, devis gratuit sous 24 h.
+        Chaque installation est réalisée dans le respect des normes en vigueur par un professionnel qualifié.
+        Intervention dans le Gard et l&apos;Hérault, devis gratuit sous 24 h.
       </p>
     </section>
   )

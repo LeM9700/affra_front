@@ -14,9 +14,9 @@ export const revalidate = false // ISR on-demand
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = buildMetadata({
-  title: "Zone d'intervention Hérault (34), Gard (30), Vaucluse (84), Bouches-du-Rhône (13), Aude (11) et Pyrénées-Orientales (66)",
+  title: "Zone d'intervention : Gard (30) et Hérault (34)",
   description:
-    "AFFRA Réseaux intervient en Hérault (34), Gard (30), Vaucluse (84), Bouches-du-Rhône (13), Aude (11) et Pyrénées-Orientales (66) pour l'installation de bornes de recharge IRVE. Découvrez les communes couvertes.",
+    "AFFRA RESEAUX intervient dans le Gard (30) et l’Hérault (34) pour l’installation de bornes de recharge, notamment autour de Nîmes et de Montpellier. Découvrez les communes couvertes.",
   path: '/zone-intervention',
 })
 
@@ -82,9 +82,9 @@ export default async function ZoneInterventionPage() {
       <SchemaOrg schema={areaSchema} />
       <PageHero
         imageSrc="/images/hero/zone-hero.webp"
-        imageAlt="Zone d'intervention AFFRA Réseaux en Occitanie et PACA"
+        imageAlt="Zone d'intervention AFFRA Réseaux dans le Gard et l’Hérault"
         title="Zone d'intervention"
-        subtitle="Nous couvrons l'Hérault (34), le Gard (30), Vaucluse (84), les Bouches-du-Rhône (13), l'Aude (11) et les Pyrénées-Orientales (66)."
+        subtitle="Nous intervenons dans le Gard (30) et l’Hérault (34), notamment autour de Nîmes, Montpellier et des communes environnantes."
       />
 
       <section className="bg-white py-20">
