@@ -21,11 +21,11 @@ export const villesSeo: VilleData[] = [
     nomDept: 'Hérault',
     lat: 43.6108,
     lng: 3.8767,
-    metaTitle: 'Installation borne de recharge Montpellier — IRVE certifié P1-P2-P3',
+    metaTitle: 'Installation borne de recharge Montpellier — entreprise qualifiée IRVE',
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Montpellier et dans la métropole (34). Electricien certifié IRVE P1-P2-P3. Devis gratuit sous 24h.",
+      "AFFRA Réseaux installe vos bornes de recharge à Montpellier et dans la métropole (34). Entreprise qualifiée IRVE. Devis gratuit sous 24h.",
     intro:
-      "AFFRA Réseaux intervient à Montpellier et dans toute la métropole pour l'installation de bornes de recharge IRVE. Que vous soyez dans le centre-ville, à Port-Marianne, à La Paillade ou dans les communes périphériques, nos techniciens certifiés P1-P2-P3 assurent une installation conforme à la norme NF C 15-100 et aux exigences du programme Advenir.",
+      "AFFRA Réseaux intervient à Montpellier et dans toute la métropole pour l'installation de bornes de recharge IRVE. Que vous soyez dans le centre-ville, à Port-Marianne, à La Paillade ou dans les communes périphériques, nos techniciens qualifiés IRVE assurent une installation conforme à la norme NF C 15-100 et aux exigences du programme Advenir.",
     quartiers: [
       'Centre historique',
       'Port-Marianne',
@@ -166,11 +166,11 @@ export const villesSeo: VilleData[] = [
     nomDept: 'Gard',
     lat: 43.8367,
     lng: 4.3601,
-    metaTitle: "Installation borne de recharge Nîmes — IRVE certifié P1-P2-P3 Gard",
+    metaTitle: "Installation borne de recharge Nîmes — entreprise qualifiée IRVE Gard",
     metaDescription:
       "AFFRA Réseaux installe vos bornes de recharge à Nîmes et dans le Gard (30). Electricien certifié IRVE. Particuliers, copropriétés, entreprises. Devis gratuit.",
     intro:
-      "AFFRA Réseaux, basé à Nîmes, est votre installateur IRVE de proximité dans le Gard. Nous réalisons l'installation de bornes de recharge pour particuliers, copropriétés et professionnels dans tous les quartiers de Nîmes ainsi que dans les communes du Grand Nîmes Métropole. Nos techniciens certifiés P1-P2-P3 interviennent rapidement — généralement sous 5 jours ouvrés — et garantissent une installation 100 % conforme à la réglementation IRVE.",
+      "AFFRA Réseaux, basé à Nîmes, est votre installateur IRVE de proximité dans le Gard. Nous réalisons l'installation de bornes de recharge pour particuliers, copropriétés et professionnels dans tous les quartiers de Nîmes ainsi que dans les communes du Grand Nîmes Métropole. Nos techniciens qualifiés IRVE interviennent rapidement — généralement sous 5 jours ouvrés — et garantissent une installation 100 % conforme à la réglementation IRVE.",
     quartiers: [
       'Centre-ville',
       'Mas de Mingue',
@@ -397,7 +397,7 @@ export const villesSeo: VilleData[] = [
     lng: 4.4186,
     metaTitle: "Installation borne de recharge Garons — IRVE Gard (30)",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Garons, à 10 min de Nîmes (30). Electricien certifié IRVE P1-P2-P3. Devis gratuit.",
+      "AFFRA Réseaux installe vos bornes de recharge à Garons, à 10 min de Nîmes (30). Entreprise qualifiée IRVE. Devis gratuit.",
     intro:
       "AFFRA Réseaux intervient à Garons, commune péri-urbaine au sud de Nîmes, pour l'installation de bornes de recharge IRVE. Zone pavillonnaire en fort développement et zone d'activité aéroportuaire : nous répondons aux besoins des particuliers en maison individuelle et des entreprises installées autour de l'aéroport Nîmes-Alès-Camargue-Cévennes. Notre siège nîmois nous permet d'intervenir à Garons sous 48h.",
     quartiers: ['Garons centre', 'Zone Aéroport', 'Milhaud', 'Caveirac', 'Bernis'],
@@ -461,7 +461,7 @@ export const villesSeo: VilleData[] = [
     lng: 4.6274,
     metaTitle: "Installation borne de recharge Arles — Electricien IRVE certifié (13)",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Arles et en Camargue arlésienne (13). Electricien certifié IRVE P1-P2-P3. Devis gratuit sous 24h.",
+      "AFFRA Réseaux installe vos bornes de recharge à Arles et en Camargue arlésienne (13). Entreprise qualifiée IRVE. Devis gratuit sous 24h.",
     intro:
       "AFFRA Réseaux étend son expertise IRVE jusqu'à Arles et en Camargue arlésienne. Première commune de France par sa superficie, Arles présente des besoins très variés : appartements en centre-ville historique, mas camarguais isolés, hôtels touristiques ou exploitations agricoles. Nos équipes interviennent depuis Nîmes (35 km) avec les mêmes délais et garanties que pour nos chantiers gardois.",
     quartiers: ['Centre-ville', 'Trinquetaille', 'Barriol', 'Le Sambuc', 'Saintes-Maries-de-la-Mer', 'Tarascon'],

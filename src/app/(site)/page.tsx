@@ -3,8 +3,6 @@ import HeroSection from '@/components/home/HeroSection'
 import OffresSection from '@/components/home/OffresSection'
 import PourquoiNousChoisirSection from '@/components/home/PourquoiNousChoisirSection'
 import ServicesSection from '@/components/home/ServicesSection'
-import ProcessSection from '@/components/home/ProcessSection'
-import CertificationsSection from '@/components/home/CertificationsSection'
 import RealisationsSection from '@/components/home/RealisationsSection'
 import AvisSection from '@/components/home/AvisSection'
 import CTABand from '@/components/shared/CTABand'
@@ -15,16 +13,16 @@ import { getGoogleReviews } from '@/lib/google-places'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'AFFRA Réseaux Installation de bornes de recharge IRVE | Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales',
+  title: 'Installation de bornes de recharge dans le Gard et l’Hérault | AFFRA Réseaux',
   description:
-    'Spécialiste certifié IRVE en Hérault (34), Gard (30), Vaucluse (84), Bouches-du-Rhône (13), Aude (11) et Pyrénées-Orientales (66). Installation de bornes de recharge pour particuliers, copropriétés, professionnels et promoteurs. Devis gratuit.',
+    'Entreprise qualifiée IRVE basée à Nîmes : installation de bornes de recharge dans le Gard (30) et l’Hérault (34) pour les particuliers et les petites entreprises. Visite technique gratuite à domicile.',
 }
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'ElectricalContractor'],
   name: 'AFFRA Réseaux',
-  description: 'Installation de bornes de recharge électrique IRVE en Occitanie et PACA',
+  description: 'Installation de bornes de recharge électrique dans le Gard et l’Hérault',
   url: 'https://affra-reseaux.fr',
   telephone: '+33766304687',
   email: 'affrareseaux@gmail.com',
@@ -52,14 +50,9 @@ const localBusinessSchema = {
   ],
   priceRange: '€€',
   areaServed: [
-    { '@type': 'State', name: 'Hérault', identifier: '34' },
     { '@type': 'State', name: 'Gard', identifier: '30' },
-    { '@type': 'State', name: 'Vaucluse', identifier: '84' },
-    { '@type': 'State', name: 'Bouches-du-Rhône', identifier: '13' },
-    { '@type': 'State', name: 'Aude', identifier: '11' },
-    { '@type': 'State', name: 'Pyrénées-Orientales', identifier: '66' },
+    { '@type': 'State', name: 'Hérault', identifier: '34' },
   ],
-  hasCredential: 'Certification IRVE P1–P2–P3',
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '5',
@@ -130,8 +123,6 @@ export default async function HomePage() {
       <OffresSection />
       <PourquoiNousChoisirSection />
       <ServicesSection />
-      <ProcessSection />
-      <CertificationsSection />
       <RealisationsSection items={portfolioItems} />
       <AvisSection />
       <CTABand />

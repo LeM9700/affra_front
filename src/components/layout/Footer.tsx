@@ -23,8 +23,7 @@ const legalLinks = [
 ]
 
 const certifications = [
-  'Certification IRVE P1–P2–P3',
-  'AFNOR NF C 15-100',
+  'Entreprise qualifiée IRVE',
 ]
 
 export default function Footer() {
@@ -63,7 +62,7 @@ export default function Footer() {
             <div className="flex flex-col gap-2 text-sm">
               <div className="flex items-center gap-2 text-slate-400">
                 <MapPin className="h-3.5 w-3.5 flex-shrink-0 text-[#5BBF8A]" strokeWidth={1.75} />
-                Occitanie &amp; PACA
+                Gard (30) &amp; Hérault (34)
               </div>
               <TrackedPhoneLink phone={CONTACT_PHONE_E164} placement="footer" className="flex items-center gap-2 text-slate-400 transition-colors hover:text-[#5BBF8A]">
                 <Phone className="h-3.5 w-3.5 flex-shrink-0 text-[#5BBF8A]" strokeWidth={1.75} />
@@ -96,7 +95,7 @@ export default function Footer() {
 
           {/* Colonne 3 — Certifications */}
           <div>
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-slate-300">Certifications</p>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-slate-300">Qualification</p>
             <ul className="space-y-2.5">
               {certifications.map((cert) => (
                 <li key={cert} className="flex items-start gap-2 text-sm text-slate-400">

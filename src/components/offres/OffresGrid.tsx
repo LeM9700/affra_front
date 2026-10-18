@@ -22,7 +22,7 @@ const OFFRES = [
     image: '/images/GREEN UP LEGRAND.webp',
   },
   {
-    badge: 'Notre best-seller',
+    badge: 'Notre recommandation',
     badgeColor: 'bg-[#5BBF8A]/10 text-[#5BBF8A]',
     titre: 'DazeBox Home T',
     soustitre: "Câble Type 2 attaché 5m jusqu'à 22kW",
@@ -44,7 +44,7 @@ const OFFRES = [
     image: '/images/DAZEBOX HOME T.webp',
   },
   {
-    badge: 'La borne premium ultra connectée',
+    badge: 'La recharge connectée et polyvalente',
     badgeColor: 'bg-[#29ABE2]/10 text-[#29ABE2]',
     titre: 'V2C Trydan',
     soustitre: "Câble Type 2 attaché 5m jusqu'à 22kW",
@@ -70,7 +70,7 @@ const OFFRES = [
 export default function OffresGrid() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
-      <div className="grid gap-10 md:grid-cols-3 items-start">
+      <div className="grid gap-10 md:grid-cols-3 md:items-stretch">
         {OFFRES.map((offre) => (
           <div
             key={offre.titre}
@@ -90,9 +90,11 @@ export default function OffresGrid() {
               />
             </div>
             <div className="flex flex-1 flex-col p-6">
-              <span className={`mb-2 inline-block self-start rounded-full px-2 py-0.5 text-xs font-semibold ${offre.badgeColor}`}>
-                {offre.badge}
-              </span>
+              <div className="mb-2 md:min-h-[3rem] lg:min-h-0">
+                <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${offre.badgeColor}`}>
+                  {offre.badge}
+                </span>
+              </div>
               <h3 className="text-xl font-bold text-slate-900">{offre.titre}</h3>
               <p className="mt-1 text-sm text-slate-500">{offre.soustitre}</p>
               <p className="mt-3 bg-gradient-to-r from-[#5BBF8A] to-[#29ABE2] bg-clip-text text-2xl font-bold text-transparent">

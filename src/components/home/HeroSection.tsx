@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { CheckCircle, MapPin, Award } from 'lucide-react'
+import { Home, UserCheck, MapPin, Award } from 'lucide-react'
 
 const stats = [
-  { icon: CheckCircle, value: '200+', label: 'bornes installées' },
-  { icon: Award,       value: 'IRVE',  label: 'certifié P1-P2-P3' },
-  { icon: MapPin,      value: '6',     label: 'départements' },
+  { icon: Home,      value: 'Visite offerte', label: 'À votre domicile' },
+  { icon: UserCheck, value: 'Expert dédié',   label: 'De A à Z' },
+  { icon: MapPin,    value: 'Gard & Hérault', label: '30 • 34' },
 ]
 
 export default function HeroSection() {
@@ -29,10 +29,10 @@ export default function HeroSection() {
           <div className="max-w-2xl">
 
             {/* Eyebrow */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#5BBF8A]/25 bg-[#5BBF8A]/8 px-4 py-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#5BBF8A] shadow-[0_0_8px_rgba(91,191,138,0.8)]" />
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#3a9e6c]">
-                Installation borne de recharge IRVE · Certifié P1–P2–P3 Occitanie & PACA
+            <div className="mb-6 inline-flex max-w-full items-start gap-2 rounded-3xl border border-[#5BBF8A]/25 bg-[#5BBF8A]/8 px-4 py-2 sm:items-center sm:rounded-full sm:py-1.5">
+              <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#5BBF8A] shadow-[0_0_8px_rgba(91,191,138,0.8)] sm:mt-0" />
+              <span className="text-xs font-semibold uppercase leading-snug tracking-[0.12em] text-[#3a9e6c] sm:tracking-[0.18em]">
+                Installation de bornes de recharge dans le Gard et l&apos;Hérault • Entreprise qualifiée IRVE
               </span>
             </div>
 
@@ -45,7 +45,7 @@ export default function HeroSection() {
 
             {/* Sous-titre */}
             <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-xl">
-              La solution de recharge la plus adaptée à votre usage et votre budget, installée par un expert certifié IRVE.
+              Un expert IRVE local vous accompagne de A à Z : visite technique gratuite à domicile, conseils personnalisés et installation adaptée à vos besoins et à votre budget.
             </p>
 
             {/* CTA */}
@@ -113,8 +113,8 @@ export default function HeroSection() {
                     <Award className="h-4 w-4 text-white" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-900">Certifié IRVE P1–P2–P3</p>
-                    <p className="text-xs text-slate-500">NF C 15-100 · Assurance décennale</p>
+                    <p className="text-xs font-bold text-slate-900">Entreprise qualifiée IRVE</p>
+                    <p className="text-xs text-slate-500">Qualification délivrée par AFNOR Certification</p>
                   </div>
                 </div>
               </div>
