@@ -5,6 +5,8 @@ const nextConfig = {
   
   // Image optimization
   images: {
+    // AVIF en priorité (plus léger), WebP en repli
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',

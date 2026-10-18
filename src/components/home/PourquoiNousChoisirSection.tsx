@@ -1,144 +1,157 @@
-﻿import { MapPin, UserCheck, ShieldCheck, Wrench, Battery } from 'lucide-react'
+import type { CSSProperties } from 'react'
+import { PhoneCall, MapPin, FileText, ShieldCheck, BatteryCharging, type LucideIcon } from 'lucide-react'
 import SectionTitle from '@/components/shared/SectionTitle'
 import FadeIn from '@/components/shared/FadeIn'
-import type { LucideIcon } from 'lucide-react'
 
-interface Bloc {
+interface Etape {
   num: string
   Icon: LucideIcon
   titre: string
-  points: string[]
-  featured?: boolean
+  texte: string
+  /** Position (en %) sur l'ellipse du parcours desktop, centre du conteneur = 50/50. */
+  x: number
+  y: number
 }
 
-const BLOCS: Bloc[] = [
+/**
+ * Cinq étapes réparties à 72° d'écart sur une ellipse (rx 35 %, ry 38 %) :
+ * haut, haut-droite, bas-droite, bas-gauche, haut-gauche — sens horaire depuis le haut.
+ */
+const ETAPES: Etape[] = [
   {
     num: '01',
-    Icon: MapPin,
-    titre: 'Une visite technique sur place, pas en visio',
-    points: [
-      "Déplacement d'un technicien certifié IRVE",
-      'Analyse réelle de votre installation',
-      'Conseils adaptés à votre situation',
-      "Pas d'estimation approximative",
-    ],
-    featured: true,
+    Icon: PhoneCall,
+    titre: 'Premier contact avec un expert IRVE',
+    texte:
+      'Nous prenons connaissance de votre projet, répondons à vos premières questions et planifions une visite technique.',
+    x: 50,
+    y: 12,
   },
   {
     num: '02',
-    Icon: UserCheck,
-    titre: 'Un installateur local et réactif',
-    points: [
-      'Intervention rapide dans votre région',
-      'Un interlocuteur unique',
-      'Échanges simples, sans intermédiaire',
-      'Vous savez à qui vous parlez',
-    ],
+    Icon: MapPin,
+    titre: 'Visite technique sur place, sans frais',
+    texte:
+      'Nous nous déplaçons à votre domicile pour analyser votre installation et établir un devis cohérent. Pas d’estimation approximative à distance.',
+    x: 83.3,
+    y: 38.3,
   },
   {
     num: '03',
-    Icon: ShieldCheck,
-    titre: 'Certifié AFNOR NF C 15-100 & IRVE',
-    points: [
-      'Qualification RGE IRVE',
-
-      'Conformité totale aux normes',
-      'Garantie assurance décennale',
-    ],
+    Icon: FileText,
+    titre: 'Transmission du devis et suivi personnalisé',
+    texte: 'Le devis vous est transmis et expliqué par le même expert IRVE qui vous accompagne depuis le premier échange.',
+    x: 70.6,
+    y: 80.7,
   },
   {
     num: '04',
-    Icon: Wrench,
-    titre: 'Une solution vraiment sur mesure',
-    points: [
-      'Borne ou prise renforcée selon votre usage',
-      'Étude personnalisée',
-      'Aucun suréquipement inutile',
-      'Vous payez uniquement ce dont vous avez besoin',
-    ],
+    Icon: ShieldCheck,
+    titre: 'Installation par des experts qualifiés IRVE',
+    texte: 'Votre borne est installée par des professionnels qualifiés IRVE, dans le respect des règles en vigueur.',
+    x: 29.4,
+    y: 80.7,
   },
   {
     num: '05',
-    Icon: Battery,
-    titre: 'Du matériel fiable et sélectionné',
-    points: [
-      'Protections électriques de qualité (Legrand)',
-      'Bornes performantes et connectées',
-      'Matériel testé et approuvé',
-      'On choisit le meilleur pour vous, pas le plus simple à poser',
-    ],
+    Icon: BatteryCharging,
+    titre: 'Prenez le contrôle de votre recharge',
+    texte: 'Nous vous aidons à prendre en main votre installation pour profiter pleinement de votre véhicule électrique au quotidien.',
+    x: 16.7,
+    y: 38.3,
   },
 ]
 
-function BlocCard({ bloc }: { bloc: Bloc }) {
-  const { num, Icon, titre, points, featured } = bloc
-  return (
-    <div
-      className={[
-        'group relative overflow-hidden rounded-2xl border p-6 transition-all duration-300',
-        featured
-          ? 'border-[#5BBF8A]/30 bg-gradient-to-br from-[#5BBF8A]/8 to-[#29ABE2]/5 shadow-[var(--shadow-card)]'
-          : 'border-slate-200/80 bg-white shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-card)] hover:-translate-y-0.5',
-      ].join(' ')}
-    >
-      {/* Numéro décoratif en fond */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-2 -top-4 select-none text-[80px] font-black leading-none text-slate-100 transition-colors duration-300 group-hover:text-slate-50"
-      >
-        {num}
-      </span>
-
-      {/* Icône */}
-      <div
-        className={[
-          'relative mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl',
-          featured
-            ? 'bg-gradient-to-br from-[#5BBF8A] to-[#29ABE2]'
-            : 'bg-gradient-to-br from-[#5BBF8A]/15 to-[#29ABE2]/10',
-        ].join(' ')}
-      >
-        <Icon
-          className={featured ? 'h-5 w-5 text-white' : 'h-5 w-5 text-[#29B4C5]'}
-          strokeWidth={1.75}
-        />
-      </div>
-
-      <h3 className="relative mb-3 font-bold text-slate-900 leading-snug">{titre}</h3>
-
-      <ul className="relative space-y-1.5">
-        {points.map((p) => (
-          <li key={p} className="flex items-start gap-2 text-sm text-slate-600">
-            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#5BBF8A]" />
-            {p}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
 export default function PourquoiNousChoisirSection() {
-  const [featured, ...rest] = BLOCS
   return (
     <section className="bg-white py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <SectionTitle
-          eyebrow="Pourquoi nous choisir"
-          title="Ce qui nous distingue"
-          subtitle="Pas un catalogue en ligne, un expert local qui se déplace et travaille avec vous."
-          accentWord="distingue"
+          eyebrow="Pourquoi nous choisir ?"
+          title="Pas un simple catalogue en ligne : un expert local avec un accompagnement clair et structuré"
+          subtitle="Chez AFFRA RESEAUX, vous êtes accompagné par un expert IRVE local à chaque étape de votre projet, du premier contact jusqu’à l’installation de votre borne de recharge."
+          accentWord="un expert local"
+          size="md"
         />
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <FadeIn delay={0}>
-            <BlocCard bloc={featured} />
-          </FadeIn>
-          {rest.map((bloc, i) => (
-            <FadeIn key={bloc.num} delay={(i + 1) * 0.08}>
-              <BlocCard bloc={bloc} />
-            </FadeIn>
-          ))}
+        <div className="relative mt-14 lg:h-[720px]">
+          {/* Desktop : anneau reliant les étapes autour du centre */}
+          <svg
+            aria-hidden
+            className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="parcours-ring" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#5BBF8A" stopOpacity="0.55" />
+                <stop offset="100%" stopColor="#29ABE2" stopOpacity="0.55" />
+              </linearGradient>
+            </defs>
+            <ellipse
+              cx="50"
+              cy="50"
+              rx="35"
+              ry="38"
+              fill="none"
+              stroke="url(#parcours-ring)"
+              strokeWidth="2"
+              strokeDasharray="2 6"
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+
+          {/* Centre du parcours (desktop) */}
+          <div className="absolute left-1/2 top-1/2 hidden h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-gradient-to-br from-[#5BBF8A] to-[#29ABE2] p-6 text-center shadow-[0_12px_40px_rgba(41,171,226,0.30)] lg:flex">
+            <BatteryCharging className="mb-2 h-7 w-7 text-white" strokeWidth={1.75} aria-hidden />
+            <p className="text-base font-bold leading-snug text-white">Votre projet de recharge</p>
+          </div>
+
+          {/* Centre du parcours (mobile / tablette) */}
+          <p className="mb-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#5BBF8A] to-[#29ABE2] px-5 py-2.5 text-sm font-bold text-white lg:hidden">
+            <BatteryCharging className="h-4 w-4" strokeWidth={2} aria-hidden />
+            Votre projet de recharge
+          </p>
+
+          <ol className="relative lg:absolute lg:inset-0">
+            {ETAPES.map(({ num, Icon, titre, texte, x, y }, i) => (
+              <li
+                key={num}
+                style={{ '--x': `${x}%`, '--y': `${y}%` } as CSSProperties}
+                className="relative flex gap-4 lg:absolute lg:left-[var(--x)] lg:top-[var(--y)] lg:block lg:w-[270px] lg:-translate-x-1/2 lg:-translate-y-1/2"
+              >
+                {/* Mobile : numéro + connecteur vertical chronologique */}
+                <div className="flex flex-col items-center lg:hidden" aria-hidden>
+                  <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#5BBF8A] to-[#29ABE2] text-sm font-bold text-white shadow-[0_4px_12px_rgba(91,191,138,0.35)]">
+                    {num}
+                  </span>
+                  {i < ETAPES.length - 1 && (
+                    <span className="mt-2 min-h-[1.5rem] w-0.5 flex-1 bg-gradient-to-b from-[#5BBF8A]/50 to-[#29ABE2]/10" />
+                  )}
+                </div>
+
+                <FadeIn delay={i * 0.08} className="flex-1 pb-8 lg:pb-0">
+                  <div className="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[var(--shadow-card)]">
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute -right-1 -top-3 hidden select-none text-[64px] font-black leading-none text-slate-100 lg:block"
+                    >
+                      {num}
+                    </span>
+                    <div className="relative mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#5BBF8A]/15 to-[#29ABE2]/10">
+                      <Icon className="h-5 w-5 text-[#29B4C5]" strokeWidth={1.75} aria-hidden />
+                    </div>
+                    <p className="relative text-xs font-semibold uppercase tracking-[0.15em] text-[#3a9e6c]">
+                      Étape {num}
+                    </p>
+                    <h3 className="relative mt-1 text-base font-bold leading-snug text-slate-900">{titre}</h3>
+                    <p className="relative mt-2 text-sm leading-relaxed text-slate-600">{texte}</p>
+                  </div>
+                </FadeIn>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

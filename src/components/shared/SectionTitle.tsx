@@ -4,6 +4,8 @@ interface SectionTitleProps {
   subtitle?: string
   centered?: boolean
   accentWord?: string
+  /** `md` réduit le titre H2, pour les formulations longues. */
+  size?: 'lg' | 'md'
 }
 
 export default function SectionTitle({
@@ -12,6 +14,7 @@ export default function SectionTitle({
   subtitle,
   centered = true,
   accentWord,
+  size = 'lg',
 }: SectionTitleProps) {
   const titleContent = accentWord
     ? title.split(accentWord).map((part, i, arr) =>
@@ -33,7 +36,11 @@ export default function SectionTitle({
           {eyebrow}
         </span>
       )}
-      <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+      <h2
+        className={`font-bold tracking-tight text-slate-900 ${
+          size === 'md' ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'
+        }`}
+      >
         {titleContent}
       </h2>
       {subtitle && (

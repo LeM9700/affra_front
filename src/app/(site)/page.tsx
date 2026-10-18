@@ -7,8 +7,9 @@ import RealisationsSection from '@/components/home/RealisationsSection'
 import AvisSection from '@/components/home/AvisSection'
 import CTABand from '@/components/shared/CTABand'
 import SchemaOrg from '@/components/shared/SchemaOrg'
-import { getPortfolioItems } from '@/lib/api/portfolio'
 import { getGoogleReviews } from '@/lib/google-places'
+import { selectDisplayReviews } from '@/lib/reviews/select'
+import { VERIFIED_GOOGLE_REVIEWS } from '@/data/google-reviews'
 
 export const dynamic = 'force-dynamic'
 
@@ -53,33 +54,6 @@ const localBusinessSchema = {
     { '@type': 'State', name: 'Gard', identifier: '30' },
     { '@type': 'State', name: 'Hérault', identifier: '34' },
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5',
-    reviewCount: '3',
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: [
-    {
-      '@type': 'Review',
-      author: { '@type': 'Person', name: 'M. D.' },
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      reviewBody: 'Équipe très professionnelle, installation soignée et rapide. La borne fonctionne parfaitement. Je recommande vivement AFFRA Réseaux !',
-    },
-    {
-      '@type': 'Review',
-      author: { '@type': 'Person', name: 'S. L.' },
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      reviewBody: 'Très bon accompagnement pour mon projet en copropriété. Équipe réactive et installation soignée, je recommande.',
-    },
-    {
-      '@type': 'Review',
-      author: { '@type': 'Person', name: 'T. R.' },
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      reviewBody: "Installation de 8 bornes pour notre flotte d'entreprise. Travail sérieux, délais respectés, excellent rapport qualité-prix.",
-    },
-  ],
   sameAs: [
     'https://maps.app.goo.gl/rTF6fF7CvZyWMEn68',
     'https://www.linkedin.com/company/affra-reseaux',
@@ -87,13 +61,10 @@ const localBusinessSchema = {
 }
 
 export default async function HomePage() {
-  const [portfolioItems, googleData] = await Promise.all([
-    getPortfolioItems().catch(() => []),
-    getGoogleReviews().catch(() => null),
-  ])
+  const googleData = await getGoogleReviews().catch(() => null)
+  const reviews = selectDisplayReviews(googleData?.reviews, VERIFIED_GOOGLE_REVIEWS)
 
-  const googleReviewsWithText = googleData?.reviews.filter((r) => r.text?.text) ?? []
-
+  // Note moyenne et total : uniquement ceux publiés par Google, jamais de valeur en dur.
   const aggregateRating = googleData
     ? {
         '@type': 'AggregateRating',
@@ -102,19 +73,18 @@ export default async function HomePage() {
         bestRating: '5',
         worstRating: '1',
       }
-    : localBusinessSchema.aggregateRating
+    : undefined
 
-  const review =
-    googleReviewsWithText.length > 0
-      ? googleReviewsWithText.slice(0, 5).map((r) => ({
-          '@type': 'Review',
-          author: { '@type': 'Person', name: r.authorAttribution.displayName },
-          reviewRating: { '@type': 'Rating', ratingValue: String(r.rating), bestRating: '5' },
-          reviewBody: r.text!.text,
-        }))
-      : localBusinessSchema.review
-
-  const schema = { ...localBusinessSchema, aggregateRating, review }
+  const schema = {
+    ...localBusinessSchema,
+    ...(aggregateRating && { aggregateRating }),
+    review: reviews.map((r) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: r.author },
+      reviewRating: { '@type': 'Rating', ratingValue: String(r.rating), bestRating: '5' },
+      reviewBody: r.text,
+    })),
+  }
 
   return (
     <>
@@ -123,8 +93,8 @@ export default async function HomePage() {
       <OffresSection />
       <PourquoiNousChoisirSection />
       <ServicesSection />
-      <RealisationsSection items={portfolioItems} />
-      <AvisSection />
+      <RealisationsSection />
+      <AvisSection reviews={reviews} />
       <CTABand />
     </>
   )

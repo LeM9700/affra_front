@@ -1,78 +1,97 @@
 import Link from 'next/link'
-import { Home, Building2, Briefcase, HardHat, ArrowRight } from 'lucide-react'
+import { Home, Briefcase, ArrowRight, type LucideIcon } from 'lucide-react'
 import SectionTitle from '@/components/shared/SectionTitle'
 import FadeIn from '@/components/shared/FadeIn'
+import { DEVIS_HREF } from '@/lib/devis/projet'
 
-const services = [
+interface Segment {
+  id: string
+  Icon: LucideIcon
+  titre: string
+  accroche: string
+  description: string
+  cta: { href: string; label: string }
+  enSavoirPlus: { href: string; label: string }
+  prioritaire: boolean
+}
+
+const SEGMENTS: Segment[] = [
   {
-    href: '/services/particuliers',
+    id: 'particuliers',
     Icon: Home,
-    title: 'Particuliers',
-    description: 'Borne de recharge dans votre garage, installation rapide, certifiée et conforme.',
-    color: 'from-[#5BBF8A]/15 to-[#5BBF8A]/5',
-    iconColor: 'text-[#5BBF8A]',
+    titre: 'Particuliers',
+    accroche: 'Rechargez chez vous, en toute simplicité.',
+    description:
+      'Borne de recharge ou prise renforcée ? Nous vous conseillons et installons la solution adaptée à votre véhicule, à vos habitudes et à votre budget.',
+    cta: { href: DEVIS_HREF.particulier, label: 'Planifier ma visite gratuite' },
+    enSavoirPlus: { href: '/services/particuliers', label: 'Solutions pour les particuliers' },
+    prioritaire: true,
   },
   {
-    href: '/services/coproprietes',
-    Icon: Building2,
-    title: 'Copropriétés',
-    description: 'Solution collective certifiée IRVE, plusieurs bornes, un seul interlocuteur expert.',
-    color: 'from-[#29B4C5]/15 to-[#29B4C5]/5',
-    iconColor: 'text-[#29B4C5]',
-  },
-  {
-    href: '/services/professionnels',
+    id: 'independants-tpe-pme',
     Icon: Briefcase,
-    title: 'Professionnels',
-    description: "Électrification de flottes et parkings d'entreprise, de 2 à plus de 10 bornes.",
-    color: 'from-[#29ABE2]/15 to-[#29ABE2]/5',
-    iconColor: 'text-[#29ABE2]',
-  },
-  {
-    href: '/services/promoteurs',
-    Icon: HardHat,
-    title: 'Promoteurs',
-    description: 'Infrastructure IRVE intégrée dès la conception, solution clé en main.',
-    color: 'from-[#5BBF8A]/15 to-[#29ABE2]/5',
-    iconColor: 'text-[#5BBF8A]',
+    titre: 'Indépendants, TPE & PME',
+    accroche: 'Une solution de recharge adaptée à votre activité.',
+    description:
+      'Artisans, commerces, professions libérales et petites entreprises : nous installons une à deux bornes de recharge adaptées à vos véhicules, à vos locaux et à vos besoins professionnels.',
+    cta: { href: DEVIS_HREF.entreprise, label: 'Étudier mon projet' },
+    enSavoirPlus: { href: '/services/professionnels', label: 'Solutions pour les professionnels' },
+    prioritaire: false,
   },
 ]
 
 export default function ServicesSection() {
   return (
     <section className="bg-slate-50/60 py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
           eyebrow="Nos solutions"
-          title="Une expertise pour chaque projet"
-          subtitle="Quelle que soit votre situation, AFFRA Réseaux a la solution IRVE adaptée."
-          accentWord="chaque projet"
+          title="Votre borne de recharge, chez vous ou dans votre entreprise"
+          subtitle="Particulier, indépendant ou dirigeant d’une petite entreprise ? AFFRA RESEAUX vous accompagne dans le choix et l’installation de votre solution de recharge dans le Gard et l’Hérault."
+          accentWord="chez vous ou dans votre entreprise"
+          size="md"
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map(({ href, Icon, title, description, color, iconColor }, i) => (
-            <FadeIn key={href} delay={i * 0.08}>
-            <Link
-              href={href}
-              className="group relative flex flex-col rounded-2xl border border-slate-200/80 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[var(--shadow-card-hover)]"
-            >
-              {/* Icône */}
-              <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${color} transition-transform duration-300 group-hover:scale-110`}>
-                <Icon className={`h-5 w-5 ${iconColor}`} strokeWidth={1.75} />
-              </div>
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 md:items-stretch">
+          {SEGMENTS.map(({ id, Icon, titre, accroche, description, cta, enSavoirPlus, prioritaire }, i) => (
+            <FadeIn key={id} delay={i * 0.1} className="h-full">
+              <article
+                className={[
+                  'flex h-full flex-col rounded-3xl bg-white p-7 sm:p-9 transition-shadow duration-300',
+                  prioritaire
+                    ? 'shadow-[0_8px_32px_rgba(91,191,138,0.18),0_24px_64px_rgba(41,171,226,0.10)] ring-2 ring-[#5BBF8A]/60'
+                    : 'border border-slate-200/80 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]',
+                ].join(' ')}
+              >
+                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#5BBF8A]/15 to-[#29ABE2]/10">
+                  <Icon className="h-6 w-6 text-[#29B4C5]" strokeWidth={1.75} aria-hidden />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900">{titre}</h3>
+                <p className="mt-2 text-base font-semibold text-slate-800">{accroche}</p>
+                <p className="mt-3 flex-1 leading-relaxed text-slate-600">{description}</p>
 
-              {/* Texte */}
-              <h3 className="mb-2 text-base font-bold text-slate-900 group-hover:text-[#29B4C5] transition-colors duration-200">
-                {title}
-              </h3>
-              <p className="flex-1 text-sm text-slate-500 leading-relaxed">{description}</p>
-
-              {/* Arrow indicator */}
-              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-[#29B4C5] opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-1">
-                En savoir plus
-                <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
-              </div>
-            </Link>
+                <div className="mt-8 flex flex-col gap-4">
+                  <Link
+                    href={cta.href}
+                    className={[
+                      'inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold transition-all duration-200',
+                      prioritaire
+                        ? 'bg-gradient-to-r from-[#5BBF8A] to-[#29ABE2] text-white hover:-translate-y-0.5'
+                        : 'border border-slate-300 bg-white text-slate-700 hover:border-[#5BBF8A]/60 hover:bg-slate-50',
+                    ].join(' ')}
+                    style={prioritaire ? { boxShadow: 'var(--shadow-green)' } : undefined}
+                  >
+                    {cta.label}
+                    <ArrowRight className="h-4 w-4" strokeWidth={2} aria-hidden />
+                  </Link>
+                  <Link
+                    href={enSavoirPlus.href}
+                    className="text-center text-sm font-medium text-[#29B4C5] underline-offset-4 hover:underline"
+                  >
+                    {enSavoirPlus.label}
+                  </Link>
+                </div>
+              </article>
             </FadeIn>
           ))}
         </div>
