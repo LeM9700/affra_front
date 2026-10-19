@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation'
 
 import { backendHeaders, readVisitorIdFromRequest } from '@/lib/attribution/server'
+import { IS_PREVIEW } from '@/lib/site-env'
 import { devisSchema } from '@/lib/validations/devis'
 import type { DevisPayload } from '@/types/devis'
 
@@ -18,6 +19,11 @@ export async function submitDevis(payload: DevisPayload) {
   // Honeypot check
   if (payload.website) {
     // Silently succeed to not leak honeypot logic
+    redirect('/devis/merci')
+  }
+
+  // Pré-production : parcours complet (validation + page de confirmation) sans créer de vrai devis.
+  if (IS_PREVIEW) {
     redirect('/devis/merci')
   }
 

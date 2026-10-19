@@ -19,6 +19,12 @@ const nextConfig = {
   // Performance optimizations (Turbopack handles this)
   productionBrowserSourceMaps: false,
 
+  // Pré-production (NEXT_PUBLIC_SITE_ENV=preview) : en-tête noindex sur toutes les réponses.
+  async headers() {
+    if (process.env.NEXT_PUBLIC_SITE_ENV?.trim().toLowerCase() !== 'preview') return []
+    return [{ source: '/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] }]
+  },
+
   async redirects() {
     return [
       // Zone recentrée sur le Gard et l'Hérault : l'ancienne page Arles (13) reste indexée,
