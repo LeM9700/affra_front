@@ -18,6 +18,14 @@ const nextConfig = {
   
   // Performance optimizations (Turbopack handles this)
   productionBrowserSourceMaps: false,
+
+  async redirects() {
+    return [
+      // Zone recentrée sur le Gard et l'Hérault : l'ancienne page Arles (13) reste indexée,
+      // on transfère son référencement vers la page zone d'intervention.
+      { source: '/zone-intervention/arles', destination: '/zone-intervention', statusCode: 301 },
+    ]
+  },
 };
 
 module.exports = nextConfig;

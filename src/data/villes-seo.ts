@@ -451,33 +451,6 @@ export const villesSeo: VilleData[] = [
       },
     ],
   },
-  // ── Bouches-du-Rhône (13) ──────────────────────────────────────────────────
-  {
-    slug: 'arles',
-    nom: 'Arles',
-    departement: '13',
-    nomDept: 'Bouches-du-Rhône',
-    lat: 43.6768,
-    lng: 4.6274,
-    metaTitle: "Installation borne de recharge Arles — Electricien IRVE certifié (13)",
-    metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Arles et en Camargue arlésienne (13). Entreprise qualifiée IRVE. Devis gratuit sous 24h.",
-    intro:
-      "AFFRA Réseaux étend son expertise IRVE jusqu'à Arles et en Camargue arlésienne. Première commune de France par sa superficie, Arles présente des besoins très variés : appartements en centre-ville historique, mas camarguais isolés, hôtels touristiques ou exploitations agricoles. Nos équipes interviennent depuis Nîmes (35 km) avec les mêmes délais et garanties que pour nos chantiers gardois.",
-    quartiers: ['Centre-ville', 'Trinquetaille', 'Barriol', 'Le Sambuc', 'Saintes-Maries-de-la-Mer', 'Tarascon'],
-    faqItems: [
-      {
-        question: "Intervenez-vous sur Arles sans surcoût depuis Nîmes ?",
-        answer:
-          "Arles est à 35 km de notre siège à Nîmes. Nous y intervenons régulièrement et sans surcoût de déplacement pour les chantiers de taille standard (1 à 3 bornes). Pour les chantiers plus petits ou très éloignés, un forfait déplacement minimal peut s'appliquer — précisé dans votre devis.",
-      },
-      {
-        question: "Couvrez-vous Saintes-Maries-de-la-Mer et toute la commune d'Arles ?",
-        answer:
-          "Oui, nous couvrons tout le territoire communal d'Arles (le plus grand de France) y compris Saintes-Maries-de-la-Mer, Le Sambuc, Mas-Thibert et la Camargue. Un éventuel surcoût kilométrique est indiqué dans le devis.",
-      },
-    ],
-  },
 ]
 
 export const villesSlugMap = Object.fromEntries(villesSeo.map((v) => [v.slug, v]))

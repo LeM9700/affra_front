@@ -13,6 +13,8 @@ export interface GooglePlacesData {
 }
 
 async function findPlaceId(): Promise<string | null> {
+  // Identifiant exact de la fiche Google : évite une recherche texte (moins fiable et facturée).
+  if (process.env.GOOGLE_PLACE_ID) return process.env.GOOGLE_PLACE_ID
   const res = await fetch('https://places.googleapis.com/v1/places:searchText', {
     method: 'POST',
     headers: {
