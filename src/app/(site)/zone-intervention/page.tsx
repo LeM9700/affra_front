@@ -14,9 +14,9 @@ export const revalidate = false // ISR on-demand
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = buildMetadata({
-  title: "Zone d'intervention Hérault (34), Gard (30), Vaucluse (84), Bouches-du-Rhône (13), Aude (11) et Pyrénées-Orientales (66)",
+  title: "Zone d'intervention : Gard (30) et Hérault (34)",
   description:
-    "AFFRA Réseaux intervient en Hérault (34), Gard (30), Vaucluse (84), Bouches-du-Rhône (13), Aude (11) et Pyrénées-Orientales (66) pour l'installation de bornes de recharge IRVE. Découvrez les communes couvertes.",
+    "AFFRA RESEAUX intervient dans le Gard (30) et l’Hérault (34) pour l’installation de bornes de recharge, notamment autour de Nîmes et de Montpellier. Découvrez les communes couvertes.",
   path: '/zone-intervention',
 })
 
@@ -38,7 +38,6 @@ const fallbackCitiesByDepartment: Record<string, string[]> = {
     'Saint-Geniès-de-Malgoirès',
     'Vergèze',
   ],
-  '13': ['Arles'],
 }
 
 function getDisplayedCities(zones: { ville: string }[], departement: string): string[] {
@@ -49,27 +48,28 @@ function getDisplayedCities(zones: { ville: string }[], departement: string): st
   return fallbackCitiesByDepartment[departement] ?? []
 }
 
+/** Départements couverts : seules leurs communes sont listées, cartographiées et déclarées en JSON-LD. */
+const COVERED_DEPARTMENTS = ['30', '34']
+
 export default async function ZoneInterventionPage() {
-  const zones = await getZones().catch(() => [])
+  const allZones = await getZones().catch(() => [])
+  const zones = allZones.filter((z) => COVERED_DEPARTMENTS.includes(z.departement))
 
   const zones34 = zones.filter((z) => z.departement === '34')
   const zones30 = zones.filter((z) => z.departement === '30')
-  const zones13 = zones.filter((z) => z.departement === '13')
 
   const displayed34 = getDisplayedCities(zones34, '34')
   const displayed30 = getDisplayedCities(zones30, '30')
-  const displayed13 = getDisplayedCities(zones13, '13')
 
   const schemaCities = [
     ...displayed34.map((ville) => ({ ville, departement: '34' })),
     ...displayed30.map((ville) => ({ ville, departement: '30' })),
-    ...displayed13.map((ville) => ({ ville, departement: '13' })),
   ]
 
   const areaSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'AFFRA Réseaux',
+    name: 'AFFRA RESEAUX',
     areaServed: schemaCities.map((z) => ({
       '@type': 'City',
       name: z.ville,
@@ -82,9 +82,9 @@ export default async function ZoneInterventionPage() {
       <SchemaOrg schema={areaSchema} />
       <PageHero
         imageSrc="/images/hero/zone-hero.webp"
-        imageAlt="Zone d'intervention AFFRA Réseaux en Occitanie et PACA"
+        imageAlt="Zone d'intervention AFFRA RESEAUX dans le Gard et l’Hérault"
         title="Zone d'intervention"
-        subtitle="Nous couvrons l'Hérault (34), le Gard (30), Vaucluse (84), les Bouches-du-Rhône (13), l'Aude (11) et les Pyrénées-Orientales (66)."
+        subtitle="Nous intervenons dans le Gard (30) et l’Hérault (34), notamment autour de Nîmes, Montpellier et des communes environnantes."
       />
 
       <section className="bg-white py-20">
@@ -93,7 +93,7 @@ export default async function ZoneInterventionPage() {
           <ZoneMap zones={zones} />
 
           {/* Liste des communes */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-2xl font-bold text-slate-900 mb-6">
                 Hérault Département 34
@@ -134,29 +134,6 @@ export default async function ZoneInterventionPage() {
                     </Link>
                   ) : (
                     <span key={`30-${ville}`} className="bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-full text-sm">
-                      {ville}
-                    </span>
-                  )
-                })}
-              </div>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">
-                Bouches-du-Rhône Département 13
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {displayed13.map((ville) => {
-                  const slug = nameToSlug[ville]
-                  return slug ? (
-                    <Link
-                      key={`13-${ville}`}
-                      href={`/zone-intervention/${slug}`}
-                      className="bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 hover:border-blue-400 px-3 py-1.5 rounded-full text-sm transition-colors"
-                    >
-                      {ville}
-                    </Link>
-                  ) : (
-                    <span key={`13-${ville}`} className="bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-full text-sm">
                       {ville}
                     </span>
                   )

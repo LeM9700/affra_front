@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 const SITE_URL = 'https://affra-reseaux.fr'
-const SITE_NAME = 'AFFRA Réseaux'
+const SITE_NAME = 'AFFRA RESEAUX'
 const DEFAULT_OG = '/images/og/og-default.png'
 
 export function buildMetadata({

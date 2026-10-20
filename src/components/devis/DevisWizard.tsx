@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import DevisScreen1Accroche from './DevisScreen1Accroche'
 import DevisScreen2Projet from './DevisScreen2Projet'
 import DevisScreen3Vehicule from './DevisScreen3Vehicule'
@@ -10,17 +10,33 @@ import DevisScreen6Tableau from './DevisScreen6Tableau'
 import DevisScreen7Coordonnees from './DevisScreen7Coordonnees'
 import { submitDevis } from '@/lib/actions/devis'
 import { trackEvent } from '@/lib/attribution/events'
+import type { ProjetValue } from '@/lib/devis/projet'
 import type { DevisFormData } from '@/types/devis'
 
 type PartialDevis = Partial<DevisFormData>
 
 const TOTAL_QUESTION_SCREENS = 6
 
-export default function DevisWizard() {
-  const [screen, setScreen] = useState(1)
-  const [data, setData] = useState<PartialDevis>({})
+interface DevisWizardProps {
+  /** Type de projet prérempli (`/devis?projet=…`) : l'écran d'accroche et le choix du projet sont sautés. */
+  initialProjet?: ProjetValue
+}
+
+export default function DevisWizard({ initialProjet }: DevisWizardProps) {
+  // Écran 3 = première question restante quand le type de projet est déjà connu.
+  const [screen, setScreen] = useState(initialProjet ? 3 : 1)
+  const [data, setData] = useState<PartialDevis>(initialProjet ? { type_client: initialProjet } : {})
   const [submitting, setSubmitting] = useState(false)
   const [formError, setFormError] = useState<string | null>(null)
+
+  // Sans écran d'accroche, QUOTE_STARTED ne serait jamais émis : on l'envoie à l'arrivée (une seule fois).
+  const startTracked = useRef(false)
+  useEffect(() => {
+    if (initialProjet && !startTracked.current) {
+      startTracked.current = true
+      trackEvent('QUOTE_STARTED')
+    }
+  }, [initialProjet])
 
   const next = (screenData: PartialDevis) => {
     setData((prev) => ({ ...prev, ...screenData }))

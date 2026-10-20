@@ -1,11 +1,9 @@
-export interface UnifiedReview {
+/** Avis prêt à l'affichage sur le site (issu de Google, ou du jeu de secours vérifié). */
+export interface DisplayReview {
   id: string
-  source: 'google' | 'site'
   author: string
+  /** Note de 1 à 5. */
   rating: number
+  /** Texte exact de l'avis, jamais réécrit. */
   text: string
-  sortDate: string | null
-  meta:
-    | { type: 'google'; relativeTime: string; photoUri?: string }
-    | { type: 'site'; ville: string; departement: string; typeClient: string }
 }

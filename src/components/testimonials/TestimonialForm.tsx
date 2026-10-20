@@ -114,7 +114,7 @@ export default function TestimonialForm() {
 
       <div>
         <label htmlFor="temoignage" className="block text-sm font-semibold text-slate-700 mb-1.5">Votre temoignage *</label>
-        <textarea id="temoignage" {...register('temoignage')} rows={6} placeholder="Decrivez votre experience avec AFFRA Reseaux..." className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-800 outline-none focus:ring-2 focus:ring-[#5BBF8A]" />
+        <textarea id="temoignage" {...register('temoignage')} rows={6} placeholder="Decrivez votre experience avec AFFRA RESEAUX..." className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-800 outline-none focus:ring-2 focus:ring-[#5BBF8A]" />
         {errors.temoignage && <p className="text-xs text-red-500 mt-1">{errors.temoignage.message}</p>}
       </div>
 
@@ -132,7 +132,7 @@ export default function TestimonialForm() {
       <label className="flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3">
         <input type="checkbox" className="mt-1" {...register('consent_publication')} />
         <span className="text-sm text-slate-700">
-          J&apos;autorise la publication de ce temoignage sur le site AFFRA Reseaux, avec anonymisation (initiales + ville).
+          J&apos;autorise la publication de ce temoignage sur le site AFFRA RESEAUX, avec anonymisation (initiales + ville).
         </span>
       </label>
       {errors.consent_publication && <p className="text-xs text-red-500">{errors.consent_publication.message}</p>}

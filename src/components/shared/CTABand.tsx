@@ -58,7 +58,7 @@ export default function CTABand() {
         </div>
 
         <p className="mt-6 text-xs text-slate-500">
-          Étude gratuite · Sans engagement · Réponse sous 24h
+          Un expert IRVE vous recontacte gratuitement sous 24h
         </p>
       </div>
     </section>
