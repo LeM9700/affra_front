@@ -81,7 +81,7 @@ const serviceSchema = {
   name: 'Installation bornes de recharge pour professionnels',
   description:
     "Installation de bornes de recharge pour flottes d'entreprise, PME et sites professionnels dans le Gard et l’Hérault.",
-  provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
+  provider: { '@type': 'LocalBusiness', name: 'AFFRA RESEAUX', url: 'https://affra-reseaux.fr' },
   areaServed: { '@type': 'AdministrativeArea', name: 'Gard, Hérault' },
   serviceType: 'Installation IRVE — Borne de recharge professionnels',
 }

@@ -36,7 +36,7 @@ export default async function VillePage({ params }: Props) {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'ElectricalContractor'],
-    name: 'AFFRA Réseaux',
+    name: 'AFFRA RESEAUX',
     url: 'https://affra-reseaux.fr',
     telephone: '+33766304687',
     address: {
@@ -63,7 +63,7 @@ export default async function VillePage({ params }: Props) {
     description: ville.intro,
     provider: {
       '@type': 'LocalBusiness',
-      name: 'AFFRA Réseaux',
+      name: 'AFFRA RESEAUX',
       url: 'https://affra-reseaux.fr',
     },
     areaServed: { '@type': 'City', name: ville.nom },

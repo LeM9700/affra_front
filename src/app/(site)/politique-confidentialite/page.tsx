@@ -3,7 +3,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Politique de confidentialité',
-  description: 'Politique de confidentialité et traitement des données personnelles AFFRA Réseaux.',
+  description: 'Politique de confidentialité et traitement des données personnelles AFFRA RESEAUX.',
   path: '/politique-confidentialite',
 })
 
@@ -19,7 +19,7 @@ export default function PolitiqueConfidentialitePage() {
           {
             title: '1. Responsable du traitement',
             content:
-              "AFFRA Réseaux, [adresse], est responsable du traitement de vos données personnelles collectées via ce site.",
+              "AFFRA RESEAUX, [adresse], est responsable du traitement de vos données personnelles collectées via ce site.",
           },
           {
             title: '2. Données collectées',

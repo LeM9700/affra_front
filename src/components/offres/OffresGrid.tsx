@@ -18,7 +18,7 @@ const OFFRES = [
       'Parfait pour une recharge de nuit',
     ],
     recommandePour: 'Recommandé pour les utilisateurs avec un faible kilométrage quotidien.',
-    imageAlt: "Prise renforcée Green'up Legrand installée par AFFRA Réseaux",
+    imageAlt: "Prise renforcée Green'up Legrand installée par AFFRA RESEAUX",
     image: '/images/GREEN UP LEGRAND.webp',
   },
   {
@@ -40,7 +40,7 @@ const OFFRES = [
       'Écran intégré pour le suivi de charge',
     ],
     recommandePour: 'Le meilleur équilibre entre performance, confort et budget.',
-    imageAlt: 'Borne de recharge DazeBox Home T installée par AFFRA Réseaux',
+    imageAlt: 'Borne de recharge DazeBox Home T installée par AFFRA RESEAUX',
     image: '/images/DAZEBOX HOME T.webp',
   },
   {
@@ -62,7 +62,7 @@ const OFFRES = [
       'Design premium avec éclairage LED',
     ],
     recommandePour: 'Idéal pour les utilisateurs recherchant une solution haut de gamme et évolutive.',
-    imageAlt: 'Borne de recharge V2C Trydan installée par AFFRA Réseaux',
+    imageAlt: 'Borne de recharge V2C Trydan installée par AFFRA RESEAUX',
     image: '/images/V2C TRYDAN.webp',
   },
 ]

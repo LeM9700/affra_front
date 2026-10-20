@@ -49,7 +49,7 @@ const features = [
     icon: '📋',
     title: 'Dossier clé en main',
     description:
-      'De l\'audit technique à la mise en service, AFFRA Réseaux gère l\'intégralité du projet.',
+      'De l\'audit technique à la mise en service, AFFRA RESEAUX gère l\'intégralité du projet.',
   },
 ]
 
@@ -62,7 +62,7 @@ const faq = [
   {
     question: 'Ai-je besoin d\'un électricien certifié IRVE ?',
     answer:
-      'Pour garantir la couverture assurance de votre véhicule et la conformité de votre installation, celle-ci doit être réalisée par un électricien certifié IRVE comme AFFRA Réseaux.',
+      'Pour garantir la couverture assurance de votre véhicule et la conformité de votre installation, celle-ci doit être réalisée par un électricien certifié IRVE comme AFFRA RESEAUX.',
   },
   {
     question: 'Combien de temps dure une installation ?',
@@ -77,7 +77,7 @@ const serviceSchema = {
   name: 'Installation borne de recharge pour particuliers',
   description:
     'Installation de borne de recharge à domicile par un électricien certifié IRVE dans le Gard et l’Hérault.',
-  provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
+  provider: { '@type': 'LocalBusiness', name: 'AFFRA RESEAUX', url: 'https://affra-reseaux.fr' },
   areaServed: { '@type': 'AdministrativeArea', name: 'Gard, Hérault' },
   serviceType: 'Installation IRVE — Borne de recharge électrique',
 }

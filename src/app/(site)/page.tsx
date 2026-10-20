@@ -14,7 +14,7 @@ import { VERIFIED_GOOGLE_REVIEWS } from '@/data/google-reviews'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Installation de bornes de recharge dans le Gard et l’Hérault | AFFRA Réseaux',
+  title: 'Installation de bornes de recharge dans le Gard et l’Hérault | AFFRA RESEAUX',
   description:
     'Entreprise qualifiée IRVE basée à Nîmes : installation de bornes de recharge dans le Gard (30) et l’Hérault (34) pour les particuliers et les petites entreprises. Visite technique gratuite à domicile.',
 }
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'ElectricalContractor'],
-  name: 'AFFRA Réseaux',
+  name: 'AFFRA RESEAUX',
   description: 'Installation de bornes de recharge électrique dans le Gard et l’Hérault',
   url: 'https://affra-reseaux.fr',
   telephone: '+33766304687',

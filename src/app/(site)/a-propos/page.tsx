@@ -4,9 +4,9 @@ import CTABand from '@/components/shared/CTABand'
 import { buildMetadata } from '@/lib/utils/metadata'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'À propos AFFRA Réseaux',
+  title: 'À propos AFFRA RESEAUX',
   description:
-    "Découvrez AFFRA Réseaux, entreprise qualifiée IRVE dans le Gard et l’Hérault : notre équipe, notre accompagnement et notre engagement pour la mobilité électrique.",
+    "Découvrez AFFRA RESEAUX, entreprise qualifiée IRVE dans le Gard et l’Hérault : notre équipe, notre accompagnement et notre engagement pour la mobilité électrique.",
   path: '/a-propos',
 })
 
@@ -15,8 +15,8 @@ export default function AProposPage() {
     <>
       <PageHero
         imageSrc="/images/hero/a-propos-hero.webp"
-        imageAlt="Équipe AFFRA Réseaux sur un chantier d'installation IRVE"
-        title="À propos d'AFFRA Réseaux"
+        imageAlt="Équipe AFFRA RESEAUX sur un chantier d'installation IRVE"
+        title="À propos d'AFFRA RESEAUX"
         subtitle="Entreprise qualifiée IRVE, au service des particuliers et des petites entreprises du Gard et de l’Hérault."
       />
 
@@ -25,7 +25,7 @@ export default function AProposPage() {
           <div>
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Notre mission</h2>
             <p className="text-slate-600 text-lg leading-relaxed">
-              AFFRA Réseaux accompagne la transition vers la mobilité électrique en installant des bornes de recharge
+              AFFRA RESEAUX accompagne la transition vers la mobilité électrique en installant des bornes de recharge
               pour les particuliers et les petites entreprises du Gard et de l’Hérault.
               Notre priorité : une installation fiable, conforme et durable.
             </p>

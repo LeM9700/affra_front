@@ -23,9 +23,9 @@ export const villesSeo: VilleData[] = [
     lng: 3.8767,
     metaTitle: 'Installation borne de recharge Montpellier — entreprise qualifiée IRVE',
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Montpellier et dans la métropole (34). Entreprise qualifiée IRVE. Devis gratuit sous 24h.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Montpellier et dans la métropole (34). Entreprise qualifiée IRVE. Devis gratuit sous 24h.",
     intro:
-      "AFFRA Réseaux intervient à Montpellier et dans toute la métropole pour l'installation de bornes de recharge IRVE. Que vous soyez dans le centre-ville, à Port-Marianne, à La Paillade ou dans les communes périphériques, nos techniciens qualifiés IRVE assurent une installation conforme à la norme NF C 15-100 et aux exigences du programme Advenir.",
+      "AFFRA RESEAUX intervient à Montpellier et dans toute la métropole pour l'installation de bornes de recharge IRVE. Que vous soyez dans le centre-ville, à Port-Marianne, à La Paillade ou dans les communes périphériques, nos techniciens qualifiés IRVE assurent une installation conforme à la norme NF C 15-100 et aux exigences du programme Advenir.",
     quartiers: [
       'Centre historique',
       'Port-Marianne',
@@ -63,9 +63,9 @@ export const villesSeo: VilleData[] = [
     lng: 3.2158,
     metaTitle: 'Installation borne de recharge Béziers — Electricien IRVE certifié Hérault',
     metaDescription:
-      "Installez votre borne de recharge à Béziers avec AFFRA Réseaux, electricien certifié IRVE en Hérault (34). Particuliers, copropriétés et pros. Devis gratuit.",
+      "Installez votre borne de recharge à Béziers avec AFFRA RESEAUX, electricien certifié IRVE en Hérault (34). Particuliers, copropriétés et pros. Devis gratuit.",
     intro:
-      "AFFRA Réseaux installe vos bornes de recharge à Béziers et dans l'agglomération biterroise. Electriciens certifiés IRVE, nous intervenons pour tous types de projets : maison individuelle, résidence en copropriété ou parc de stationnement professionnel. Béziers est la deuxième ville de l'Hérault et connaît un fort développement des véhicules électriques — nous y proposons une offre complète, de l'étude jusqu'à la mise en service.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Béziers et dans l'agglomération biterroise. Electriciens certifiés IRVE, nous intervenons pour tous types de projets : maison individuelle, résidence en copropriété ou parc de stationnement professionnel. Béziers est la deuxième ville de l'Hérault et connaît un fort développement des véhicules électriques — nous y proposons une offre complète, de l'étude jusqu'à la mise en service.",
     quartiers: ['Centre-ville', 'La Devèze', 'Le Plateau', 'Saint-Jacques', 'Agde', 'Pézenas', 'Valras-Plage'],
     faqItems: [
       {
@@ -89,9 +89,9 @@ export const villesSeo: VilleData[] = [
     lng: 3.6965,
     metaTitle: "Installation borne de recharge Sète — IRVE certifié Hérault (34)",
     metaDescription:
-      "Besoin d'une borne de recharge à Sète ? AFFRA Réseaux, electricien certifié IRVE en Hérault, installe votre wallbox sur l'île singulière. Devis gratuit.",
+      "Besoin d'une borne de recharge à Sète ? AFFRA RESEAUX, electricien certifié IRVE en Hérault, installe votre wallbox sur l'île singulière. Devis gratuit.",
     intro:
-      "Besoin d'une borne de recharge à Sète, sur l'île singulière ? AFFRA Réseaux, electricien certifié IRVE en Hérault (34), installe votre wallbox ou borne rapide à Sète et dans le bassin de Thau. Résidences de front de mer, copropriétés en bord d'étang ou commerces du port : nos techniciens tiennent compte des contraintes spécifiques de l'environnement côtier pour choisir le matériel le plus adapté.",
+      "Besoin d'une borne de recharge à Sète, sur l'île singulière ? AFFRA RESEAUX, electricien certifié IRVE en Hérault (34), installe votre wallbox ou borne rapide à Sète et dans le bassin de Thau. Résidences de front de mer, copropriétés en bord d'étang ou commerces du port : nos techniciens tiennent compte des contraintes spécifiques de l'environnement côtier pour choisir le matériel le plus adapté.",
     quartiers: ['Centre-ville', 'La Corniche', 'Les Pierres Blanches', 'Marseillan', 'Mèze', 'Frontignan'],
     faqItems: [
       {
@@ -113,11 +113,11 @@ export const villesSeo: VilleData[] = [
     nomDept: 'Hérault',
     lat: 43.6741,
     lng: 4.1329,
-    metaTitle: "Installation borne de recharge Lunel — AFFRA Réseaux IRVE Hérault",
+    metaTitle: "Installation borne de recharge Lunel — AFFRA RESEAUX IRVE Hérault",
     metaDescription:
-      "AFFRA Réseaux assure l'installation de bornes de recharge IRVE à Lunel et dans le Lunellois (34). Devis gratuit pour particuliers et professionnels.",
+      "AFFRA RESEAUX assure l'installation de bornes de recharge IRVE à Lunel et dans le Lunellois (34). Devis gratuit pour particuliers et professionnels.",
     intro:
-      "AFFRA Réseaux assure l'installation de bornes de recharge IRVE à Lunel et dans le Lunellois. Situé à la frontière du Gard et de l'Hérault, Lunel bénéficie d'une position idéale sur l'axe Montpellier-Nîmes. Notre siège étant à Nîmes, nous intervenons dans les délais les plus courts pour les particuliers et les entreprises du Lunellois.",
+      "AFFRA RESEAUX assure l'installation de bornes de recharge IRVE à Lunel et dans le Lunellois. Situé à la frontière du Gard et de l'Hérault, Lunel bénéficie d'une position idéale sur l'axe Montpellier-Nîmes. Notre siège étant à Nîmes, nous intervenons dans les délais les plus courts pour les particuliers et les entreprises du Lunellois.",
     quartiers: ['Centre-ville', 'Saint-Just', 'Lunel-Viel', 'Marsillargues', 'Saint-Christol', 'Aimargues'],
     faqItems: [
       {
@@ -141,9 +141,9 @@ export const villesSeo: VilleData[] = [
     lng: 3.7066,
     metaTitle: "Installation borne de recharge Ganges — IRVE Hérault (34)",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Ganges et dans les Cévennes héraultaises (34). Electricien certifié IRVE. Devis gratuit sous 24h.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Ganges et dans les Cévennes héraultaises (34). Electricien certifié IRVE. Devis gratuit sous 24h.",
     intro:
-      "AFFRA Réseaux intervient à Ganges et dans les Cévennes héraultaises pour l'installation de bornes de recharge IRVE. Dans ce territoire de piémont en plein essor de la mobilité électrique, nous accompagnons les propriétaires et professionnels dans le choix d'une solution adaptée à leur installation électrique parfois ancienne. L'accès au réseau BT en zone semi-rurale ne pose aucun problème à nos équipes habituées aux configurations atypiques.",
+      "AFFRA RESEAUX intervient à Ganges et dans les Cévennes héraultaises pour l'installation de bornes de recharge IRVE. Dans ce territoire de piémont en plein essor de la mobilité électrique, nous accompagnons les propriétaires et professionnels dans le choix d'une solution adaptée à leur installation électrique parfois ancienne. L'accès au réseau BT en zone semi-rurale ne pose aucun problème à nos équipes habituées aux configurations atypiques.",
     quartiers: ['Ganges centre', 'Saint-Bauzille-de-Putois', 'Sumène', 'Le Vigan', 'Saint-Martin-de-Londres'],
     faqItems: [
       {
@@ -168,9 +168,9 @@ export const villesSeo: VilleData[] = [
     lng: 4.3601,
     metaTitle: "Installation borne de recharge Nîmes — entreprise qualifiée IRVE Gard",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Nîmes et dans le Gard (30). Electricien certifié IRVE. Particuliers, copropriétés, entreprises. Devis gratuit.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Nîmes et dans le Gard (30). Electricien certifié IRVE. Particuliers, copropriétés, entreprises. Devis gratuit.",
     intro:
-      "AFFRA Réseaux, basé à Nîmes, est votre installateur IRVE de proximité dans le Gard. Nous réalisons l'installation de bornes de recharge pour particuliers, copropriétés et professionnels dans tous les quartiers de Nîmes ainsi que dans les communes du Grand Nîmes Métropole. Nos techniciens qualifiés IRVE interviennent rapidement — généralement sous 5 jours ouvrés — et garantissent une installation 100 % conforme à la réglementation IRVE.",
+      "AFFRA RESEAUX, basé à Nîmes, est votre installateur IRVE de proximité dans le Gard. Nous réalisons l'installation de bornes de recharge pour particuliers, copropriétés et professionnels dans tous les quartiers de Nîmes ainsi que dans les communes du Grand Nîmes Métropole. Nos techniciens qualifiés IRVE interviennent rapidement — généralement sous 5 jours ouvrés — et garantissent une installation 100 % conforme à la réglementation IRVE.",
     quartiers: [
       'Centre-ville',
       'Mas de Mingue',
@@ -186,7 +186,7 @@ export const villesSeo: VilleData[] = [
       {
         question: "Quelle borne de recharge choisir pour une maison à Nîmes ?",
         answer:
-          "Pour une maison individuelle, une wallbox 7,4 kW ou 11 kW est idéale. AFFRA Réseaux vous accompagne dans le choix : nous étudions votre installation électrique existante et recommandons la puissance optimale selon votre véhicule et vos usages quotidiens.",
+          "Pour une maison individuelle, une wallbox 7,4 kW ou 11 kW est idéale. AFFRA RESEAUX vous accompagne dans le choix : nous étudions votre installation électrique existante et recommandons la puissance optimale selon votre véhicule et vos usages quotidiens.",
       },
       {
         question: "Pouvez-vous installer une borne en copropriété à Nîmes ?",
@@ -196,7 +196,7 @@ export const villesSeo: VilleData[] = [
       {
         question: "Êtes-vous éligibles aux aides Advenir à Nîmes ?",
         answer:
-          "Oui, AFFRA Réseaux est inscrit au programme Advenir. En tant qu'operateur certifié IRVE, nous vous aidons à constituer votre dossier d'aide qui peut couvrir jusqu'à 50 % du coût pour les particuliers en copropriété.",
+          "Oui, AFFRA RESEAUX est inscrit au programme Advenir. En tant qu'operateur certifié IRVE, nous vous aidons à constituer votre dossier d'aide qui peut couvrir jusqu'à 50 % du coût pour les particuliers en copropriété.",
       },
     ],
   },
@@ -209,9 +209,9 @@ export const villesSeo: VilleData[] = [
     lng: 4.0817,
     metaTitle: "Installation borne de recharge Alès — Electricien IRVE Gard (30)",
     metaDescription:
-      "Installateur IRVE certifié à Alès et dans les Cévennes gardoises. AFFRA Réseaux installe votre borne de recharge. Particuliers et pros. Devis gratuit.",
+      "Installateur IRVE certifié à Alès et dans les Cévennes gardoises. AFFRA RESEAUX installe votre borne de recharge. Particuliers et pros. Devis gratuit.",
     intro:
-      "Installateur IRVE certifié à Alès et dans les Cévennes gardoises, AFFRA Réseaux réalise vos projets d'installation de bornes de recharge électrique. Alès, deuxième pôle urbain du Gard, connaît une adoption croissante des véhicules électriques. Nous intervenons pour les particuliers, copropriétés et entreprises d'Alès Agglomération, avec des solutions adaptées aux besoins spécifiques des territoires cévenols — souvent avec des installations électriques nécessitant une mise à niveau avant pose de la borne.",
+      "Installateur IRVE certifié à Alès et dans les Cévennes gardoises, AFFRA RESEAUX réalise vos projets d'installation de bornes de recharge électrique. Alès, deuxième pôle urbain du Gard, connaît une adoption croissante des véhicules électriques. Nous intervenons pour les particuliers, copropriétés et entreprises d'Alès Agglomération, avec des solutions adaptées aux besoins spécifiques des territoires cévenols — souvent avec des installations électriques nécessitant une mise à niveau avant pose de la borne.",
     quartiers: ['Centre-ville', 'Tamaris', 'Les Près-Saint-Jean', 'La Grand-Combe', 'Saint-Ambroix', 'Saint-Christol-lez-Alès'],
     faqItems: [
       {
@@ -235,9 +235,9 @@ export const villesSeo: VilleData[] = [
     lng: 4.0893,
     metaTitle: "Installation borne de recharge Sommières — IRVE Gard (30)",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Sommières et dans le Vidourle gardois (30). Electricien certifié IRVE. Devis gratuit.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Sommières et dans le Vidourle gardois (30). Electricien certifié IRVE. Devis gratuit.",
     intro:
-      "AFFRA Réseaux intervient à Sommières et dans le bassin du Vidourle pour l'installation de bornes de recharge IRVE. Commune médiévale à mi-chemin entre Nîmes et Montpellier, Sommières attire de nombreux résidents travaillant dans les deux métropoles — un profil idéal pour la recharge à domicile nocturne. Particuliers en maison de village ou en lotissement récent, nous avons la solution adaptée.",
+      "AFFRA RESEAUX intervient à Sommières et dans le bassin du Vidourle pour l'installation de bornes de recharge IRVE. Commune médiévale à mi-chemin entre Nîmes et Montpellier, Sommières attire de nombreux résidents travaillant dans les deux métropoles — un profil idéal pour la recharge à domicile nocturne. Particuliers en maison de village ou en lotissement récent, nous avons la solution adaptée.",
     quartiers: ['Sommières centre', 'Calvisson', 'Villevieille', 'Lecques', 'Aspères', 'Aubais'],
     faqItems: [
       {
@@ -254,11 +254,11 @@ export const villesSeo: VilleData[] = [
     nomDept: 'Gard',
     lat: 44.0134,
     lng: 4.4204,
-    metaTitle: "Installation borne de recharge Uzès — AFFRA Réseaux IRVE Gard",
+    metaTitle: "Installation borne de recharge Uzès — AFFRA RESEAUX IRVE Gard",
     metaDescription:
-      "Installez votre borne de recharge à Uzès avec AFFRA Réseaux, electricien certifié IRVE dans le Gard (30). Devis gratuit pour particuliers et entreprises.",
+      "Installez votre borne de recharge à Uzès avec AFFRA RESEAUX, electricien certifié IRVE dans le Gard (30). Devis gratuit pour particuliers et entreprises.",
     intro:
-      "AFFRA Réseaux intervient à Uzès et dans le pays d'Uzès pour l'installation de bornes de recharge IRVE. Cité ducale réputée pour son patrimoine, Uzès accueille une population aisée très tôt adoptante des véhicules électriques haut de gamme. Maisons de caractère avec tableaux anciens, mas gardois avec longues allées d'entrée ou résidences récentes : nos techniciens adaptent chaque installation à la configuration du lieu.",
+      "AFFRA RESEAUX intervient à Uzès et dans le pays d'Uzès pour l'installation de bornes de recharge IRVE. Cité ducale réputée pour son patrimoine, Uzès accueille une population aisée très tôt adoptante des véhicules électriques haut de gamme. Maisons de caractère avec tableaux anciens, mas gardois avec longues allées d'entrée ou résidences récentes : nos techniciens adaptent chaque installation à la configuration du lieu.",
     quartiers: ["Uzès centre", "Arpaillargues-et-Aureillac", "Saint-Quentin-la-Poterie", "Bagnols-sur-Cèze", "Remoulins"],
     faqItems: [
       {
@@ -282,9 +282,9 @@ export const villesSeo: VilleData[] = [
     lng: 4.2753,
     metaTitle: "Installation borne de recharge Vauvert — IRVE Gard (30)",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Vauvert et en Petite Camargue gardoise (30). Electricien certifié IRVE. Devis gratuit.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Vauvert et en Petite Camargue gardoise (30). Electricien certifié IRVE. Devis gratuit.",
     intro:
-      "AFFRA Réseaux intervient à Vauvert et dans toute la Petite Camargue gardoise pour l'installation de bornes de recharge IRVE. Entre Nîmes et la mer, ce territoire de plaine concentre de nombreuses maisons individuelles récentes avec garage — la configuration idéale pour une wallbox murale. Nous accompagnons particuliers, agriculteurs et professionnels du secteur depuis notre siège nîmois, à moins de 30 km.",
+      "AFFRA RESEAUX intervient à Vauvert et dans toute la Petite Camargue gardoise pour l'installation de bornes de recharge IRVE. Entre Nîmes et la mer, ce territoire de plaine concentre de nombreuses maisons individuelles récentes avec garage — la configuration idéale pour une wallbox murale. Nous accompagnons particuliers, agriculteurs et professionnels du secteur depuis notre siège nîmois, à moins de 30 km.",
     quartiers: ['Vauvert centre', 'Gallician', 'Montcalm', 'Aimargues', 'Vergèze', 'Codognan'],
     faqItems: [
       {
@@ -303,9 +303,9 @@ export const villesSeo: VilleData[] = [
     lng: 4.6406,
     metaTitle: "Installation borne de recharge Beaucaire — Electricien IRVE Gard",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Beaucaire et sur les rives du Rhône (30). Electricien certifié IRVE. Devis gratuit.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Beaucaire et sur les rives du Rhône (30). Electricien certifié IRVE. Devis gratuit.",
     intro:
-      "AFFRA Réseaux intervient à Beaucaire et sur les rives gardoises du Rhône pour l'installation de bornes de recharge IRVE. Entre Nîmes et Arles, Beaucaire est un pôle économique actif avec une zone industrielle en croissance et de nombreux particuliers équipés de véhicules électriques. Nous répondons à la fois aux besoins résidentiels du centre-ville et aux projets de recharge de flotte pour les entreprises de la zone.",
+      "AFFRA RESEAUX intervient à Beaucaire et sur les rives gardoises du Rhône pour l'installation de bornes de recharge IRVE. Entre Nîmes et Arles, Beaucaire est un pôle économique actif avec une zone industrielle en croissance et de nombreux particuliers équipés de véhicules électriques. Nous répondons à la fois aux besoins résidentiels du centre-ville et aux projets de recharge de flotte pour les entreprises de la zone.",
     quartiers: ['Beaucaire centre', 'Zone industrielle', 'Bellegarde', 'Jonquières-Saint-Vincent', 'Comps'],
     faqItems: [
       {
@@ -329,9 +329,9 @@ export const villesSeo: VilleData[] = [
     lng: 4.1335,
     metaTitle: "Installation borne de recharge Le Grau-du-Roi — IRVE Gard (30)",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge au Grau-du-Roi et à Port-Camargue (30). Electricien certifié IRVE. Devis gratuit.",
+      "AFFRA RESEAUX installe vos bornes de recharge au Grau-du-Roi et à Port-Camargue (30). Electricien certifié IRVE. Devis gratuit.",
     intro:
-      "AFFRA Réseaux intervient au Grau-du-Roi, à Port-Camargue et sur le littoral gardois pour l'installation de bornes de recharge IRVE. Station balnéaire prisée, la commune compte de nombreuses résidences secondaires et copropriétés en front de mer. Nous proposons des solutions adaptées à l'environnement marin : matériel résistant à la corrosion saline, câblage protégé contre l'humidité, mise en service certifiée IRVE.",
+      "AFFRA RESEAUX intervient au Grau-du-Roi, à Port-Camargue et sur le littoral gardois pour l'installation de bornes de recharge IRVE. Station balnéaire prisée, la commune compte de nombreuses résidences secondaires et copropriétés en front de mer. Nous proposons des solutions adaptées à l'environnement marin : matériel résistant à la corrosion saline, câblage protégé contre l'humidité, mise en service certifiée IRVE.",
     quartiers: ["Le Grau-du-Roi centre", "Port-Camargue", "L'Espiguette", "Aigues-Mortes", "Saint-Laurent-d'Aigouze"],
     faqItems: [
       {
@@ -355,9 +355,9 @@ export const villesSeo: VilleData[] = [
     lng: 4.4311,
     metaTitle: "Installation borne de recharge Saint-Gilles — IRVE Gard (30)",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Saint-Gilles et en Petite Camargue gardoise (30). Electricien certifié IRVE. Devis gratuit.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Saint-Gilles et en Petite Camargue gardoise (30). Electricien certifié IRVE. Devis gratuit.",
     intro:
-      "AFFRA Réseaux intervient à Saint-Gilles et dans la plaine gardoise pour l'installation de bornes de recharge IRVE. Ville historique aux portes de la Camargue, Saint-Gilles est entourée d'exploitations agricoles et de complexes touristiques qui multiplient les projets de recharge pour leur flotte ou leurs visiteurs. Nous proposons des solutions pour toutes les configurations : maison individuelle avec garage, gîte rural, parking de camping ou exploitation rizicole.",
+      "AFFRA RESEAUX intervient à Saint-Gilles et dans la plaine gardoise pour l'installation de bornes de recharge IRVE. Ville historique aux portes de la Camargue, Saint-Gilles est entourée d'exploitations agricoles et de complexes touristiques qui multiplient les projets de recharge pour leur flotte ou leurs visiteurs. Nous proposons des solutions pour toutes les configurations : maison individuelle avec garage, gîte rural, parking de camping ou exploitation rizicole.",
     quartiers: ['Saint-Gilles centre', 'Gallician', 'Franquevaux', 'Vauvert', 'Aimargues'],
     faqItems: [
       {
@@ -376,9 +376,9 @@ export const villesSeo: VilleData[] = [
     lng: 4.5607,
     metaTitle: "Installation borne de recharge Remoulins — IRVE secteur Pont-du-Gard",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Remoulins et dans le secteur Pont-du-Gard (30). Electricien certifié IRVE. Devis gratuit.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Remoulins et dans le secteur Pont-du-Gard (30). Electricien certifié IRVE. Devis gratuit.",
     intro:
-      "AFFRA Réseaux intervient à Remoulins et dans le secteur du Pont-du-Gard pour l'installation de bornes de recharge IRVE. À mi-chemin entre Nîmes et Avignon sur l'axe A9, Remoulins attire un tourisme de passage important et de nombreux résidents travaillant à Nîmes ou Avignon. Nous intervenons pour les particuliers du secteur, les hôtels et auberges du territoire, et les entreprises de la zone d'activité.",
+      "AFFRA RESEAUX intervient à Remoulins et dans le secteur du Pont-du-Gard pour l'installation de bornes de recharge IRVE. À mi-chemin entre Nîmes et Avignon sur l'axe A9, Remoulins attire un tourisme de passage important et de nombreux résidents travaillant à Nîmes ou Avignon. Nous intervenons pour les particuliers du secteur, les hôtels et auberges du territoire, et les entreprises de la zone d'activité.",
     quartiers: ['Remoulins centre', 'Vers-Pont-du-Gard', 'Castillon-du-Gard', 'Collias', 'Poulx'],
     faqItems: [
       {
@@ -397,9 +397,9 @@ export const villesSeo: VilleData[] = [
     lng: 4.4186,
     metaTitle: "Installation borne de recharge Garons — IRVE Gard (30)",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Garons, à 10 min de Nîmes (30). Entreprise qualifiée IRVE. Devis gratuit.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Garons, à 10 min de Nîmes (30). Entreprise qualifiée IRVE. Devis gratuit.",
     intro:
-      "AFFRA Réseaux intervient à Garons, commune péri-urbaine au sud de Nîmes, pour l'installation de bornes de recharge IRVE. Zone pavillonnaire en fort développement et zone d'activité aéroportuaire : nous répondons aux besoins des particuliers en maison individuelle et des entreprises installées autour de l'aéroport Nîmes-Alès-Camargue-Cévennes. Notre siège nîmois nous permet d'intervenir à Garons sous 48h.",
+      "AFFRA RESEAUX intervient à Garons, commune péri-urbaine au sud de Nîmes, pour l'installation de bornes de recharge IRVE. Zone pavillonnaire en fort développement et zone d'activité aéroportuaire : nous répondons aux besoins des particuliers en maison individuelle et des entreprises installées autour de l'aéroport Nîmes-Alès-Camargue-Cévennes. Notre siège nîmois nous permet d'intervenir à Garons sous 48h.",
     quartiers: ['Garons centre', 'Zone Aéroport', 'Milhaud', 'Caveirac', 'Bernis'],
     faqItems: [
       {
@@ -418,9 +418,9 @@ export const villesSeo: VilleData[] = [
     lng: 3.9987,
     metaTitle: "Installation borne de recharge Quissac — IRVE Piémont gardois",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Quissac et dans le Piémont gardois (30). Electricien certifié IRVE. Devis gratuit.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Quissac et dans le Piémont gardois (30). Electricien certifié IRVE. Devis gratuit.",
     intro:
-      "AFFRA Réseaux intervient à Quissac et dans le Piémont gardois pour l'installation de bornes de recharge IRVE. Ce secteur entre garrigue et Cévennes, apprécié pour son cadre de vie, attire de nombreux propriétaires de véhicules électriques qui souhaitent recharger à domicile. Maisons de village avec cours intérieures ou propriétés rurales avec garage : nous trouvons toujours la solution technique adaptée.",
+      "AFFRA RESEAUX intervient à Quissac et dans le Piémont gardois pour l'installation de bornes de recharge IRVE. Ce secteur entre garrigue et Cévennes, apprécié pour son cadre de vie, attire de nombreux propriétaires de véhicules électriques qui souhaitent recharger à domicile. Maisons de village avec cours intérieures ou propriétés rurales avec garage : nous trouvons toujours la solution technique adaptée.",
     quartiers: ['Quissac', 'Sauve', 'Vic-le-Fesq', 'Conqueyrac', 'Corconne'],
     faqItems: [
       {
@@ -439,9 +439,9 @@ export const villesSeo: VilleData[] = [
     lng: 4.2278,
     metaTitle: "Installation borne de recharge Vergèze — IRVE Gard (30)",
     metaDescription:
-      "AFFRA Réseaux installe vos bornes de recharge à Vergèze et dans la plaine gardoise (30). Electricien certifié IRVE. Devis gratuit.",
+      "AFFRA RESEAUX installe vos bornes de recharge à Vergèze et dans la plaine gardoise (30). Electricien certifié IRVE. Devis gratuit.",
     intro:
-      "AFFRA Réseaux intervient à Vergèze et dans la plaine gardoise pour l'installation de bornes de recharge IRVE. Connue pour sa source Perrier, Vergèze est une commune résidentielle sur l'axe Nîmes-Montpellier, dont la population active profite de la proximité des deux métropoles. Les maisons individuelles récentes avec garage sont nombreuses — une configuration parfaite pour une wallbox 7,4 kW ou 11 kW installée en une demi-journée.",
+      "AFFRA RESEAUX intervient à Vergèze et dans la plaine gardoise pour l'installation de bornes de recharge IRVE. Connue pour sa source Perrier, Vergèze est une commune résidentielle sur l'axe Nîmes-Montpellier, dont la population active profite de la proximité des deux métropoles. Les maisons individuelles récentes avec garage sont nombreuses — une configuration parfaite pour une wallbox 7,4 kW ou 11 kW installée en une demi-journée.",
     quartiers: ['Vergèze centre', 'Codognan', 'Calvisson', 'Gallargues-le-Montueux', 'Aigues-Vives'],
     faqItems: [
       {

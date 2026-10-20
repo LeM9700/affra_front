@@ -56,7 +56,7 @@ const faq = [
   {
     question: 'Quelle est la différence entre pré-équipement et équipement IRVE ?',
     answer:
-      'Le pré-équipement consiste à tirer les gaines, fourreaux et câblages lors du gros œuvre. L’équipement correspond à la pose effective des bornes en phase finition. AFFRA Réseaux intervient aux deux étapes.',
+      'Le pré-équipement consiste à tirer les gaines, fourreaux et câblages lors du gros œuvre. L’équipement correspond à la pose effective des bornes en phase finition. AFFRA RESEAUX intervient aux deux étapes.',
   },
   {
     question: 'Pouvez-vous intervenir dès la phase DCE ?',
@@ -66,7 +66,7 @@ const faq = [
   {
     question: 'Qui gère l’infrastructure après la livraison du programme ?',
     answer:
-      'AFFRA Réseaux assure le transfert de la gestion de l’infrastructure au syndic de copropriété à la livraison, avec la documentation complète (attestations IRVE, CONSUEL, notices techniques).',
+      'AFFRA RESEAUX assure le transfert de la gestion de l’infrastructure au syndic de copropriété à la livraison, avec la documentation complète (attestations IRVE, CONSUEL, notices techniques).',
   },
 ]
 
@@ -89,7 +89,7 @@ const serviceSchema = {
   name: 'Infrastructure IRVE pour promoteurs immobiliers',
   description:
     "Solution d'infrastructure de recharge IRVE pour promoteurs immobiliers dans le Gard et l’Hérault. RT 2020, pré-équipement, solution clé en main.",
-  provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
+  provider: { '@type': 'LocalBusiness', name: 'AFFRA RESEAUX', url: 'https://affra-reseaux.fr' },
   areaServed: { '@type': 'AdministrativeArea', name: 'Gard, Hérault' },
   serviceType: 'Infrastructure IRVE — Promoteurs immobiliers RT 2020',
 }

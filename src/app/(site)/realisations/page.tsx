@@ -69,7 +69,7 @@ const gallerySchema = {
   })),
   provider: {
     '@type': 'LocalBusiness',
-    name: 'AFFRA Réseaux',
+    name: 'AFFRA RESEAUX',
     url: SITE_URL,
     areaServed: [
       { '@type': 'AdministrativeArea', name: 'Gard' },

@@ -69,7 +69,7 @@ export default async function ZoneInterventionPage() {
   const areaSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'AFFRA Réseaux',
+    name: 'AFFRA RESEAUX',
     areaServed: schemaCities.map((z) => ({
       '@type': 'City',
       name: z.ville,
@@ -82,7 +82,7 @@ export default async function ZoneInterventionPage() {
       <SchemaOrg schema={areaSchema} />
       <PageHero
         imageSrc="/images/hero/zone-hero.webp"
-        imageAlt="Zone d'intervention AFFRA Réseaux dans le Gard et l’Hérault"
+        imageAlt="Zone d'intervention AFFRA RESEAUX dans le Gard et l’Hérault"
         title="Zone d'intervention"
         subtitle="Nous intervenons dans le Gard (30) et l’Hérault (34), notamment autour de Nîmes, Montpellier et des communes environnantes."
       />

@@ -8,7 +8,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Partager votre temoignage',
   description:
-    'Formulaire dedie pour partager un retour d\'experience sur une installation IRVE realisee par AFFRA Reseaux.',
+    'Formulaire dedie pour partager un retour d\'experience sur une installation IRVE realisee par AFFRA RESEAUX.',
   path: '/temoignages/partager',
 })
 
@@ -17,7 +17,7 @@ export default function PartagerTemoignagePage() {
     <>
       <PageHero
         imageSrc="/images/hero/blog-hero.webp"
-        imageAlt="Partager un temoignage client AFFRA Reseaux"
+        imageAlt="Partager un temoignage client AFFRA RESEAUX"
         title="Partager votre temoignage"
         subtitle="Votre retour de terrain nous aide a renforcer la confiance des futurs clients."
       />

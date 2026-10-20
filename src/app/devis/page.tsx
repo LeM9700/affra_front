@@ -8,7 +8,7 @@ import { parseProjetParam } from '@/lib/devis/projet'
 export const metadata: Metadata = buildMetadata({
   title: 'Demande de devis gratuit',
   description:
-    "Demandez votre devis gratuit pour l'installation d'une borne de recharge. Réponse sous 24h par AFFRA Réseaux, expert IRVE en Hérault et Gard.",
+    "Demandez votre devis gratuit pour l'installation d'une borne de recharge. Réponse sous 24h par AFFRA RESEAUX, expert IRVE en Hérault et Gard.",
   path: '/devis',
 })
 

@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
 
   return {
-    title: `${post.titre} | AFFRA Réseaux`,
+    title: `${post.titre} | AFFRA RESEAUX`,
     description: post.meta_description ?? undefined,
     openGraph: {
       title: post.titre,
@@ -53,10 +53,10 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.meta_description,
     datePublished: post.published_at,
     dateModified: post.updated_at ?? post.published_at,
-    author: { '@type': 'Organization', name: 'AFFRA Réseaux' },
+    author: { '@type': 'Organization', name: 'AFFRA RESEAUX' },
     publisher: {
       '@type': 'Organization',
-      name: 'AFFRA Réseaux',
+      name: 'AFFRA RESEAUX',
       logo: {
         '@type': 'ImageObject',
         url: 'https://affra-reseaux.fr/icons/affra_logo.png',
