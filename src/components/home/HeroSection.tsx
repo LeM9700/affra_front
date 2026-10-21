@@ -27,22 +27,22 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div className="max-w-2xl lg:max-w-[52%]">
           {/* Logo et arguments */}
-          <div className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-center">
+          <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-center">
             <Image
               src="/icons/affra_logo.png"
               alt="Logo AFFRA RESEAUX"
               width={96}
               height={96}
               priority
-              className="h-20 w-20 flex-shrink-0 object-contain sm:h-24 sm:w-24"
+              className="hidden h-24 w-24 flex-shrink-0 object-contain lg:block"
             />
-            <ul className="flex flex-wrap gap-x-4 gap-y-3 xl:flex-nowrap">
+            <ul className="flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:gap-x-4 xl:flex-nowrap">
               {mentions.map(({ icon: Icon, label }) => (
                 <li key={label} className="flex items-center gap-2 xl:border-l xl:border-slate-200 xl:pl-4 xl:first:border-l-0 xl:first:pl-0">
                   <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#5BBF8A]/15 to-[#29ABE2]/15">
                     <Icon className="h-4 w-4 text-[#29B4C5]" strokeWidth={2} aria-hidden />
                   </span>
-                  <span className="max-w-[7.5rem] text-xs font-semibold leading-snug text-slate-700">{label}</span>
+                  <span className="text-sm font-semibold leading-snug text-slate-700 lg:max-w-[7.5rem] lg:text-xs">{label}</span>
                 </li>
               ))}
             </ul>
