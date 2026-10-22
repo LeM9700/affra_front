@@ -5,6 +5,7 @@ const OFFRES = [
   {
     badge: 'Recharge occasionnelle / petit budget',
     badgeColor: 'bg-slate-100 text-slate-600',
+    ancre: 'green-up-legrand',
     titre: "Green'up Legrand",
     soustitre: 'Prise renforcée sécurisée',
     prix: 'À partir de 499€ TTC',
@@ -24,6 +25,7 @@ const OFFRES = [
   {
     badge: 'Notre recommandation',
     badgeColor: 'bg-[#5BBF8A]/10 text-[#5BBF8A]',
+    ancre: 'dazebox-home-t',
     titre: 'DazeBox Home T',
     soustitre: "Câble Type 2 attaché 5m jusqu'à 22kW",
     prix: 'À partir de 1 250€ TTC',
@@ -46,6 +48,7 @@ const OFFRES = [
   {
     badge: 'La recharge connectée et polyvalente',
     badgeColor: 'bg-[#29ABE2]/10 text-[#29ABE2]',
+    ancre: 'v2c-trydan',
     titre: 'V2C Trydan',
     soustitre: "Câble Type 2 attaché 5m jusqu'à 22kW",
     prix: 'À partir de 1 350€ TTC',
@@ -74,7 +77,8 @@ export default function OffresGrid() {
         {OFFRES.map((offre) => (
           <div
             key={offre.titre}
-            className={`flex flex-col rounded-2xl bg-white shadow-sm transition hover:shadow-md ${
+            id={offre.ancre}
+            className={`flex scroll-mt-28 flex-col rounded-2xl bg-white shadow-sm transition hover:shadow-md ${
               offre.highlight ? 'ring-2 ring-[#5BBF8A] lg:-mt-4 scale-[1.02]' : ''
             }`}
           >

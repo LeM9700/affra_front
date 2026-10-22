@@ -10,6 +10,14 @@ import SchemaOrg from '@/components/shared/SchemaOrg'
 import { getGoogleReviews } from '@/lib/google-places'
 import { selectDisplayReviews } from '@/lib/reviews/select'
 import { VERIFIED_GOOGLE_REVIEWS } from '@/data/google-reviews'
+import {
+  ORGANIZATION_ADDRESS,
+  ORGANIZATION_AREA_SERVED,
+  ORGANIZATION_ID,
+  ORGANIZATION_NAME,
+  ORGANIZATION_SAME_AS,
+  SITE_URL,
+} from '@/lib/schema/organization'
 
 export const dynamic = 'force-dynamic'
 
@@ -22,20 +30,14 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'ElectricalContractor'],
-  name: 'AFFRA RESEAUX',
+  '@id': ORGANIZATION_ID,
+  name: ORGANIZATION_NAME,
   description: 'Installation de bornes de recharge électrique dans le Gard et l’Hérault',
-  url: 'https://affra-reseaux.fr',
+  url: SITE_URL,
   telephone: '+33766304687',
   email: 'affrareseaux@gmail.com',
   image: 'https://affra-reseaux.fr/images/og/og-default.png',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '95 A RUE DE LA HASE',
-    postalCode: '30900',
-    addressLocality: 'Nîmes',
-    addressRegion: 'Occitanie',
-    addressCountry: 'FR',
-  },
+  address: ORGANIZATION_ADDRESS,
   geo: {
     '@type': 'GeoCoordinates',
     latitude: 43.8367,
@@ -50,14 +52,8 @@ const localBusinessSchema = {
     },
   ],
   priceRange: '€€',
-  areaServed: [
-    { '@type': 'State', name: 'Gard', identifier: '30' },
-    { '@type': 'State', name: 'Hérault', identifier: '34' },
-  ],
-  sameAs: [
-    'https://maps.app.goo.gl/rTF6fF7CvZyWMEn68',
-    'https://www.linkedin.com/company/affra-reseaux',
-  ],
+  areaServed: ORGANIZATION_AREA_SERVED,
+  sameAs: ORGANIZATION_SAME_AS,
 }
 
 export default async function HomePage() {
