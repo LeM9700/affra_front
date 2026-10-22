@@ -32,6 +32,7 @@ export const EQUIPE: readonly MembreEquipe[] = [
     nom: 'Fazazi',
     role: 'Cofondateur & Cogérant',
     fondateur: true,
+    linkedin: 'https://www.linkedin.com/in/sofiane-fazazi-68313722b',
     bio: [
       'Après six années passées comme coordinateur de travaux au sein d’une grande entreprise de télécommunications, Sofiane décide de donner vie à son ambition entrepreneuriale.',
       'Son expérience lui a permis de développer une approche structurée de la gestion des interventions, de la coordination des équipes et de la relation client.',
@@ -47,6 +48,7 @@ export const EQUIPE: readonly MembreEquipe[] = [
     nom: 'Belghith',
     role: 'Cofondateur & Cogérant',
     fondateur: true,
+    linkedin: 'https://www.linkedin.com/in/b%C3%A9chir-belghith-164162166',
     bio: [
       'Issu d’un environnement familial profondément ancré dans les métiers du bâtiment, Bechir s’est orienté très tôt vers ce secteur.',
       'Titulaire d’un CAP électricien, il a développé son expérience au fil de différents postes dans le BTP, avant de se lancer dans l’entrepreneuriat et la direction d’entreprises dès 2017. Cette expérience lui apporte une vision concrète des contraintes techniques rencontrées sur les chantiers.',
