@@ -65,6 +65,7 @@ const gallerySchema = {
   image: REALISATIONS.map((r) => ({
     '@type': 'ImageObject',
     contentUrl: `${SITE_URL}${r.image.src}`,
+    name: r.titre,
     description: r.image.alt,
   })),
   provider: {
