@@ -43,7 +43,7 @@ export async function submitTestimonial(payload: TestimonialPayload) {
       return {
         success: false as const,
         errors: {
-          _form: ['Trop de tentatives. Merci de reessayer plus tard.'],
+          _form: ['Trop de tentatives. Merci de réessayer plus tard.'],
         } as Record<string, string[]>,
       }
     }
@@ -51,7 +51,7 @@ export async function submitTestimonial(payload: TestimonialPayload) {
     return {
       success: false as const,
       errors: {
-        _form: ['Impossible d\'envoyer votre temoignage pour le moment.'],
+        _form: ['Impossible d\'envoyer votre témoignage pour le moment.'],
       } as Record<string, string[]>,
     }
   }

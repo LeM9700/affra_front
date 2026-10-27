@@ -10,7 +10,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Borne de recharge pour particuliers',
   description:
-    'Installation de borne de recharge à domicile par un électricien certifié IRVE en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales. Devis gratuit, intervention certifiée.',
+    'Installation de borne de recharge à domicile par un électricien certifié IRVE dans le Gard et l’Hérault. Devis gratuit, intervention certifiée.',
   path: '/services/particuliers',
 })
 
@@ -49,7 +49,7 @@ const features = [
     icon: '📋',
     title: 'Dossier clé en main',
     description:
-      'De l\'audit technique à la mise en service, AFFRA Réseaux gère l\'intégralité du projet.',
+      'De l\'audit technique à la mise en service, AFFRA RESEAUX gère l\'intégralité du projet.',
   },
 ]
 
@@ -62,7 +62,7 @@ const faq = [
   {
     question: 'Ai-je besoin d\'un électricien certifié IRVE ?',
     answer:
-      'Pour garantir la couverture assurance de votre véhicule et la conformité de votre installation, celle-ci doit être réalisée par un électricien certifié IRVE comme AFFRA Réseaux.',
+      'Pour garantir la couverture assurance de votre véhicule et la conformité de votre installation, celle-ci doit être réalisée par un électricien certifié IRVE comme AFFRA RESEAUX.',
   },
   {
     question: 'Combien de temps dure une installation ?',
@@ -76,9 +76,9 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Installation borne de recharge pour particuliers',
   description:
-    'Installation de borne de recharge à domicile par un électricien certifié IRVE en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales.',
-  provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
-  areaServed: { '@type': 'AdministrativeArea', name: 'Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude, Pyrénées-Orientales' },
+    'Installation de borne de recharge à domicile par un électricien certifié IRVE dans le Gard et l’Hérault.',
+  provider: { '@type': 'LocalBusiness', name: 'AFFRA RESEAUX', url: 'https://affra-reseaux.fr' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Gard, Hérault' },
   serviceType: 'Installation IRVE — Borne de recharge électrique',
 }
 
@@ -104,7 +104,7 @@ export default function ParticuliersPage() {
         imageSrc="/images/hero/particuliers-hero.webp"
         imageAlt="Borne de recharge installée dans un garage résidentiel"
         title="Installation borne de recharge pour particuliers"
-        subtitle="Votre wallbox à domicile, installée par un expert certifié IRVE en Occitanie et PACA."
+        subtitle="Votre wallbox à domicile, installée par un expert certifié IRVE dans le Gard et l’Hérault."
       />
       <div className="bg-white pt-8 pb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

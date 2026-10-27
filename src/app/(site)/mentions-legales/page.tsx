@@ -3,7 +3,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Mentions légales',
-  description: 'Mentions légales du site AFFRA Réseaux.',
+  description: 'Mentions légales du site AFFRA RESEAUX.',
   path: '/mentions-legales',
 })
 
@@ -15,8 +15,8 @@ export default function MentionsLegalesPage() {
 
         <h2 className="text-xl font-semibold text-white mt-8 mb-2">Éditeur du site</h2>
         <p className="text-slate-300">
-          <strong>AFFRA Réseaux</strong><br />
-          Raison sociale : AFFRA Réseaux<br />
+          <strong>AFFRA RESEAUX</strong><br />
+          Raison sociale : AFFRA RESEAUX<br />
           Forme juridique : Société à responsabilité limitée (SARL)<br />
           Capital social : 5 000,00 €<br />
           SIRET : 98445144300027<br />
@@ -44,14 +44,14 @@ export default function MentionsLegalesPage() {
         <h2 className="text-xl font-semibold text-white mt-8 mb-2">Propriété intellectuelle</h2>
         <p className="text-slate-300">
           L&apos;ensemble des contenus présents sur ce site (textes, images, graphismes, logo, icônes) est la propriété
-          exclusive d&apos;AFFRA Réseaux ou fait l&apos;objet d&apos;une autorisation d&apos;utilisation.
+          exclusive d&apos;AFFRA RESEAUX ou fait l&apos;objet d&apos;une autorisation d&apos;utilisation.
           Toute reproduction, distribution, modification ou publication sans autorisation préalable est interdite.
         </p>
 
         <h2 className="text-xl font-semibold text-white mt-8 mb-2">Responsabilité</h2>
         <p className="text-slate-300">
-          AFFRA Réseaux s&apos;efforce de fournir des informations exactes et à jour. Les informations présentes sur ce
-          site sont données à titre indicatif. AFFRA Réseaux ne pourra être tenu responsable des dommages directs ou
+          AFFRA RESEAUX s&apos;efforce de fournir des informations exactes et à jour. Les informations présentes sur ce
+          site sont données à titre indicatif. AFFRA RESEAUX ne pourra être tenu responsable des dommages directs ou
           indirects résultant de l&apos;utilisation de ce site.
         </p>
 

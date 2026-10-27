@@ -7,7 +7,7 @@ export const testimonialSchema = z.object({
     .max(10, 'Initiales trop longues')
     .regex(/^[A-Za-z.\s-]+$/, 'Format initiales invalide'),
   ville: z.string().min(2, 'Ville requise').max(100),
-  departement: z.enum(['13', '30', '34'], { error: 'Departement invalide' }),
+  departement: z.enum(['13', '30', '34'], { error: 'Département invalide' }),
   type_client: z.enum(['maison', 'copropriete', 'entreprise', 'autre'], {
     error: 'Type de client invalide',
   }),
@@ -15,8 +15,8 @@ export const testimonialSchema = z.object({
   resultat: z.string().max(160).optional().or(z.literal('')),
   temoignage: z
     .string()
-    .min(40, 'Le temoignage doit faire au moins 40 caracteres')
-    .max(2000, 'Le temoignage est trop long'),
+    .min(40, 'Le témoignage doit faire au moins 40 caractères')
+    .max(2000, 'Le témoignage est trop long'),
   source_channel: z.enum(['formulaire_web', 'email', 'whatsapp', 'sms', 'autre'], {
     error: 'Source invalide',
   }),

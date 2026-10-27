@@ -6,9 +6,7 @@ import CTABand from '@/components/shared/CTABand'
 import SchemaOrg from '@/components/shared/SchemaOrg'
 import { buildMetadata } from '@/lib/utils/metadata'
 import { villesSeo, villesSlugMap } from '@/data/villes-seo'
-import ProcessSection from '@/components/home/ProcessSection'
 import OffresSection from '@/components/home/OffresSection'
-import CertificationsSection from '@/components/home/CertificationsSection'
 import Breadcrumb from '@/components/shared/Breadcrumb'
 
 interface Props {
@@ -38,7 +36,7 @@ export default async function VillePage({ params }: Props) {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'ElectricalContractor'],
-    name: 'AFFRA Réseaux',
+    name: 'AFFRA RESEAUX',
     url: 'https://affra-reseaux.fr',
     telephone: '+33766304687',
     address: {
@@ -65,7 +63,7 @@ export default async function VillePage({ params }: Props) {
     description: ville.intro,
     provider: {
       '@type': 'LocalBusiness',
-      name: 'AFFRA Réseaux',
+      name: 'AFFRA RESEAUX',
       url: 'https://affra-reseaux.fr',
     },
     areaServed: { '@type': 'City', name: ville.nom },
@@ -95,7 +93,7 @@ export default async function VillePage({ params }: Props) {
         imageSrc="/images/hero/zone-hero.webp"
         imageAlt={`Installation borne de recharge ${ville.nom}`}
         title={`Borne de recharge à ${ville.nom}`}
-        subtitle={`Electricien certifié IRVE P1-P2-P3 — ${ville.nomDept} (${ville.departement})`}
+        subtitle={`Entreprise qualifiée IRVE — ${ville.nomDept} (${ville.departement})`}
       />
 
       <section className="bg-white py-16">
@@ -196,7 +194,7 @@ export default async function VillePage({ params }: Props) {
               Besoin d&apos;un devis à {ville.nom} ?
             </h3>
             <p className="text-blue-200 mb-5 text-sm">
-              Réponse gratuite sous 24h — Technicien certifié IRVE P1-P2-P3
+              Réponse gratuite sous 24h — Entreprise qualifiée IRVE
             </p>
             <Link
               href="/devis"
@@ -212,14 +210,12 @@ export default async function VillePage({ params }: Props) {
             <Link href="/zone-intervention" className="text-blue-600 hover:underline">
               zones d&apos;intervention
             </Link>{' '}
-            dans les 6 départements couverts par AFFRA Réseaux.
+            dans toute notre zone d’intervention.
           </p>
         </div>
       </section>
 
-      <ProcessSection />
       <OffresSection />
-      <CertificationsSection />
       <CTABand />
     </>
   )

@@ -41,7 +41,7 @@ const OFFRES: Offre[] = [
     cta: { href: '/devis', label: 'Demander un devis' },
   },
   {
-    badge: 'Notre best-seller',
+    badge: 'Notre recommandation',
     BadgeIcon: Star,
     titre: 'DazeBox Home T',
     soustitre: 'Câble Type 2 attaché 5m jusqu\'\u00e0 22kW',
@@ -60,7 +60,7 @@ const OFFRES: Offre[] = [
     cta: { href: '/devis', label: 'Choisir cette borne' },
   },
   {
-    badge: 'La borne premium ultra connectée',
+    badge: 'La recharge connectée et polyvalente',
     BadgeIcon: Crown,
     titre: 'V2C Trydan',
     soustitre: 'Câble Type 2 attaché 5m jusqu\'\u00e0 22kW',
@@ -91,12 +91,12 @@ export default function OffresSection() {
           accentWord="adaptée"
         />
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3 items-start">
+        <div className="mt-14 grid gap-6 md:grid-cols-3 md:items-stretch">
           {OFFRES.map((offre, i) => (
-            <FadeIn key={offre.titre} delay={i * 0.10}>
+            <FadeIn key={offre.titre} delay={i * 0.10} className="h-full">
             <div
               className={[
-                'group relative flex flex-col rounded-3xl bg-white transition-all duration-300',
+                'group relative flex h-full flex-col rounded-3xl bg-white transition-all duration-300',
                 offre.highlight
                   ? 'scale-[1.03] shadow-[0_8px_32px_rgba(91,191,138,0.20),0_24px_64px_rgba(41,171,226,0.12)] ring-2 ring-[#5BBF8A]/60'
                   : 'shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1',
@@ -115,14 +115,16 @@ export default function OffresSection() {
 
               <div className="flex flex-1 flex-col p-6">
                 {/* Badge */}
-                <div className={[
-                  'mb-3 inline-flex items-center gap-1.5 self-start rounded-full px-2.5 py-1 text-xs font-bold',
-                  offre.highlight
-                    ? 'bg-gradient-to-r from-[#5BBF8A] to-[#29ABE2] text-white'
-                    : 'bg-slate-100 text-slate-600',
-                ].join(' ')}>
-                  <offre.BadgeIcon className="h-3 w-3" strokeWidth={2.5} />
-                  {offre.badge}
+                <div className="mb-3 md:min-h-[3.5rem] lg:min-h-0">
+                  <div className={[
+                    'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold',
+                    offre.highlight
+                      ? 'bg-gradient-to-r from-[#5BBF8A] to-[#29ABE2] text-white'
+                      : 'bg-slate-100 text-slate-600',
+                  ].join(' ')}>
+                    <offre.BadgeIcon className="h-3 w-3 flex-shrink-0" strokeWidth={2.5} />
+                    {offre.badge}
+                  </div>
                 </div>
 
                 {/* Titre */}

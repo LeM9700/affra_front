@@ -10,7 +10,7 @@ import { buildMetadata } from '@/lib/utils/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Bornes de recharge en copropriété',
   description:
-    'Solution de recharge collective certifiée IRVE pour copropriétés en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales. Droits à la prise, installation clé en main.',
+    'Solution de recharge collective certifiée IRVE pour copropriétés dans le Gard et l’Hérault. Droits à la prise, installation clé en main.',
   path: '/services/coproprietes',
 })
 
@@ -18,7 +18,7 @@ const features = [
   {
     icon: '🏢',
     title: 'Dossier administratif complet',
-    description: 'AFFRA Réseaux gère l\'intégralité des démarches administratives liées à votre projet de recharge collective.',
+    description: 'AFFRA RESEAUX gère l\'intégralité des démarches administratives liées à votre projet de recharge collective.',
   },
   {
     icon: '⚖️',
@@ -43,7 +43,7 @@ const features = [
   {
     icon: '📋',
     title: 'Interlocuteur unique',
-    description: 'AFFRA Réseaux coordonne syndic, conseil syndical et travaux pour un projet sans friction.',
+    description: 'AFFRA RESEAUX coordonne syndic, conseil syndical et travaux pour un projet sans friction.',
   },
 ]
 
@@ -56,7 +56,7 @@ const faq = [
   {
     question: 'Combien de bornes peut-on installer dans une copropriété ?',
     answer:
-      'Il n\'y a pas de limite. AFFRA Réseaux peut équiper de 2 à plus de 50 emplacements avec une infrastructure mutualisée optimisée.',
+      'Il n\'y a pas de limite. AFFRA RESEAUX peut équiper de 2 à plus de 50 emplacements avec une infrastructure mutualisée optimisée.',
   },
 
 ]
@@ -79,9 +79,9 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Installation borne de recharge en copropriété',
   description:
-    'Solution de recharge collective certifiée IRVE pour copropriétés en Occitanie et PACA. Droit à la prise, installation clé en main.',
-  provider: { '@type': 'LocalBusiness', name: 'AFFRA Réseaux', url: 'https://affra-reseaux.fr' },
-  areaServed: { '@type': 'AdministrativeArea', name: 'Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude, Pyrénées-Orientales' },
+    'Solution de recharge collective certifiée IRVE pour copropriétés dans le Gard et l’Hérault. Droit à la prise, installation clé en main.',
+  provider: { '@type': 'LocalBusiness', name: 'AFFRA RESEAUX', url: 'https://affra-reseaux.fr' },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Gard, Hérault' },
   serviceType: 'Installation IRVE — Borne de recharge copropriété',
 }
 
@@ -92,7 +92,7 @@ export default function CopropriétésPage() {
       <SchemaOrg schema={faqSchema} />
       <ServiceHero
         imageSrc="/images/hero/coproprietes-hero.webp"
-        imageAlt="Parking collectif de copropriété avec bornes de recharge AFFRA Réseaux"
+        imageAlt="Parking collectif de copropriété avec bornes de recharge AFFRA RESEAUX"
         title="Recharge électrique en copropriété"
         subtitle="Solution collective IRVE certifiée, droits à la prise et infrastructure évolutive."
       />

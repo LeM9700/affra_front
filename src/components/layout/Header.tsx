@@ -22,10 +22,10 @@ const navLinks: NavLink[] = [
     ],
   },
   { href: '/offres', label: 'Nos offres' },
-  { href: '/realisations', label: 'Réalisations' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/realisations', label: 'Nos réalisations' },
   { href: '/zone-intervention', label: "Zone d'intervention" },
-  { href: '/a-propos', label: 'À propos' },
+  { href: '/a-propos', label: 'Qui sommes-nous ?' },
+  { href: '/blog', label: 'Blog' },
 ]
 
 function isActivePath(pathname: string, href: string) {
@@ -43,6 +43,8 @@ export default function Header() {
   const pathname = usePathname()
 
   const isActiveSolutions = pathname.startsWith('/services/')
+  // Accueil desktop : le logo est présenté dans le hero, pas dans la barre de navigation.
+  const isHome = pathname === '/'
 
   useEffect(() => {
     setOpen(false)
@@ -61,10 +63,14 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/80 backdrop-blur-xl shadow-[0_1px_0_rgba(15,23,42,0.06),0_4px_16px_rgba(15,23,42,0.04)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between gap-4">
-          <Link href="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
+          <Link
+            href="/"
+            className={`flex min-w-0 items-center gap-3 ${isHome ? 'lg:hidden' : ''}`}
+            onClick={() => setOpen(false)}
+          >
             <Image
               src="/icons/affra_logo.png"
-              alt="Logo AFFRA Réseaux"
+              alt="Logo AFFRA RESEAUX"
               width={44}
               height={44}
               className="h-11 w-11 object-contain"
@@ -72,7 +78,7 @@ export default function Header() {
             />
           </Link>
 
-          <nav className="hidden xl:flex items-center gap-1 rounded-full border border-slate-100 bg-slate-50/80 p-1.5 shadow-[var(--shadow-sm)]">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1">
             {navLinks.map((item) => {
               if (item.children) {
                 return (
@@ -89,10 +95,10 @@ export default function Header() {
                   >
                     <button
                       onClick={() => setDropdownOpen((v) => !v)}
-                      className={`flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                      className={`relative flex items-center gap-1 whitespace-nowrap px-1.5 py-2 text-[13px] xl:px-3 xl:text-sm font-medium transition-colors ${
                         isActiveSolutions
-                          ? 'bg-gradient-to-r from-[#5BBF8A] via-[#29B4C5] to-[#29ABE2] text-white shadow-sm'
-                          : 'text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-[var(--shadow-sm)]'
+                          ? 'text-[#3a9e6c] after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-[#5BBF8A]'
+                          : 'text-slate-600 hover:text-slate-900'
                       }`}
                     >
                       {item.label}
@@ -126,10 +132,10 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                  className={`relative whitespace-nowrap px-1.5 py-2 text-[13px] xl:px-3 xl:text-sm font-medium transition-colors ${
                     isActivePath(pathname, item.href)
-                      ? 'bg-gradient-to-r from-[#5BBF8A] via-[#29B4C5] to-[#29ABE2] text-white shadow-sm'
-                      : 'text-slate-600 transition-colors duration-200 hover:bg-white hover:text-slate-900 hover:shadow-[var(--shadow-sm)]'
+                      ? 'text-[#3a9e6c] after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-[#5BBF8A]'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   {item.label}
@@ -139,21 +145,19 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <div className="hidden lg:flex items-center gap-2 rounded-full border border-slate-100 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
-              <span className="h-2 w-2 rounded-full bg-[#5BBF8A] shadow-[0_0_8px_rgba(91,191,138,0.6)]" />
-              Occitanie & PACA
-            </div>
             <Link
               href="/devis"
-              className="hidden sm:inline-flex items-center rounded-full bg-gradient-to-r from-[#5BBF8A] via-[#29B4C5] to-[#29ABE2] px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
+              className="hidden sm:inline-flex items-center whitespace-nowrap rounded-full bg-gradient-to-r from-[#5BBF8A] via-[#29B4C5] to-[#29ABE2] px-5 py-3 text-sm font-semibold lg:px-4 xl:px-5 text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
               style={{ boxShadow: 'var(--shadow-green)' }}
             >
-              Demander un devis
+              {/* Libellé court entre 1024 et 1280 px : le menu complet et le logo doivent tenir sur une ligne */}
+              <span className="lg:hidden xl:inline">Demander un devis</span>
+              <span className="hidden lg:inline xl:hidden">Devis gratuit</span>
             </Link>
 
             <button
               type="button"
-              className="group inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-100 xl:hidden"
+              className="group inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-100 lg:hidden"
               onClick={() => setOpen((value) => !value)}
               aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
               aria-expanded={open}
@@ -182,7 +186,7 @@ export default function Header() {
       </div>
 
       <div
-        className={`absolute inset-x-0 top-full border-b border-slate-200 bg-white/96 backdrop-blur-xl transition-all duration-300 xl:hidden ${
+        className={`absolute inset-x-0 top-full border-b border-slate-200 bg-white/96 backdrop-blur-xl transition-all duration-300 lg:hidden ${
           open ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
       >

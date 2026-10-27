@@ -6,25 +6,22 @@ import { TrackedEmailLink, TrackedPhoneLink } from '@/components/attribution/Tra
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164 } from '@/lib/contact'
 
 const navLinks = [
-  { href: '/services/particuliers', label: 'Particuliers' },
-  { href: '/services/coproprietes', label: 'Copropriétés' },
-  { href: '/services/professionnels', label: 'Professionnels' },
-  { href: '/services/promoteurs', label: 'Promoteurs' },
-  { href: '/realisations', label: 'Réalisations' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/', label: 'Accueil' },
+  { href: '/offres', label: 'Nos offres' },
+  { href: '/realisations', label: 'Nos réalisations' },
   { href: '/zone-intervention', label: "Zone d'intervention" },
+  { href: '/a-propos', label: 'Qui sommes-nous ?' },
+  { href: '/blog', label: 'Blog' },
 ]
 
 const legalLinks = [
-  { href: '/a-propos', label: 'À propos' },
   { href: '/mentions-legales', label: 'Mentions légales' },
   { href: '/politique-confidentialite', label: 'Politique de confidentialité' },
   { href: '/temoignages/partager', label: 'Partager un témoignage' },
 ]
 
 const certifications = [
-  'Certification IRVE P1–P2–P3',
-  'AFNOR NF C 15-100',
+  'Entreprise qualifiée IRVE',
 ]
 
 export default function Footer() {
@@ -45,25 +42,22 @@ export default function Footer() {
             <div className="mb-5 flex items-center gap-3">
               <Image
                 src="/icons/affra_logo.png"
-                alt="Logo AFFRA Réseaux"
+                alt="Logo AFFRA RESEAUX"
                 width={40}
                 height={40}
                 className="h-10 w-10 object-contain opacity-90"
               />
               <div>
-                <span className="block text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-[#5BBF8A]">
-                  IRVE certifié
-                </span>
-                <span className="block text-lg font-bold text-white">AFFRA Réseaux</span>
+                <span className="block text-lg font-bold text-white">AFFRA RESEAUX</span>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-slate-500 mb-5">
-              Spécialiste de l&apos;installation de bornes de recharge électrique IRVE en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales.
+              Spécialiste de l&apos;installation de bornes de recharge électrique IRVE dans le Gard et l’Hérault.
             </p>
             <div className="flex flex-col gap-2 text-sm">
               <div className="flex items-center gap-2 text-slate-400">
                 <MapPin className="h-3.5 w-3.5 flex-shrink-0 text-[#5BBF8A]" strokeWidth={1.75} />
-                Occitanie &amp; PACA
+                Gard (30) &amp; Hérault (34)
               </div>
               <TrackedPhoneLink phone={CONTACT_PHONE_E164} placement="footer" className="flex items-center gap-2 text-slate-400 transition-colors hover:text-[#5BBF8A]">
                 <Phone className="h-3.5 w-3.5 flex-shrink-0 text-[#5BBF8A]" strokeWidth={1.75} />
@@ -96,7 +90,7 @@ export default function Footer() {
 
           {/* Colonne 3 — Certifications */}
           <div>
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-slate-300">Certifications</p>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-slate-300">Qualification</p>
             <ul className="space-y-2.5">
               {certifications.map((cert) => (
                 <li key={cert} className="flex items-start gap-2 text-sm text-slate-400">
@@ -135,7 +129,7 @@ export default function Footer() {
         {/* Signature gradient */}
         <div className="mt-12 flex flex-col items-center gap-4 border-t border-slate-800 pt-8 sm:flex-row sm:justify-between">
           <p className="text-xs text-slate-600">
-            © {new Date().getFullYear()} AFFRA Réseaux Tous droits réservés
+            © {new Date().getFullYear()} AFFRA RESEAUX — Tous droits réservés.
           </p>
           <div className="h-px w-24 rounded-full bg-gradient-to-r from-[#5BBF8A] to-[#29ABE2]" />
         </div>

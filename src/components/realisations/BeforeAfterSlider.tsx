@@ -29,6 +29,9 @@ export default function BeforeAfterSlider({
   const [position, setPosition] = useState(50)
   const containerRef = useRef<HTMLDivElement>(null)
   const isDragging = useRef(false)
+  // Verrouillage d'axe au toucher : un geste vertical défile la page, il ne doit pas déplacer le curseur.
+  const touchOrigin = useRef<{ x: number; y: number } | null>(null)
+  const touchAxis = useRef<'x' | 'y' | null>(null)
 
   const updatePosition = useCallback((clientX: number) => {
     const container = containerRef.current
@@ -48,18 +51,41 @@ export default function BeforeAfterSlider({
   const onMouseUp = () => {
     isDragging.current = false
   }
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchOrigin.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    touchAxis.current = null
+  }
   const onTouchMove = (e: React.TouchEvent) => {
-    updatePosition(e.touches[0].clientX)
+    const origin = touchOrigin.current
+    if (!origin) return
+    const touch = e.touches[0]
+    if (touchAxis.current === null) {
+      const dx = Math.abs(touch.clientX - origin.x)
+      const dy = Math.abs(touch.clientY - origin.y)
+      if (Math.max(dx, dy) < 6) return
+      touchAxis.current = dx > dy ? 'x' : 'y'
+    }
+    if (touchAxis.current === 'x') updatePosition(touch.clientX)
+  }
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    const step = e.shiftKey ? 20 : 5
+    if (e.key === 'ArrowLeft') setPosition((p) => Math.max(p - step, 0))
+    else if (e.key === 'ArrowRight') setPosition((p) => Math.min(p + step, 100))
+    else if (e.key === 'Home') setPosition(0)
+    else if (e.key === 'End') setPosition(100)
+    else return
+    e.preventDefault()
   }
 
   return (
     <div className="flex flex-col gap-3">
       <div
         ref={containerRef}
-        className={`relative ${aspectRatio} w-full overflow-hidden rounded-2xl border border-slate-200 shadow-card cursor-col-resize select-none`}
+        className={`relative ${aspectRatio} w-full overflow-hidden rounded-2xl border border-slate-200 shadow-card cursor-col-resize select-none touch-pan-y`}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
         onMouseLeave={onMouseUp}
+        onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
       >
         {/* Image AVANT */}
@@ -105,6 +131,11 @@ export default function BeforeAfterSlider({
             className="absolute flex items-center justify-center w-9 h-9 rounded-full bg-white shadow-lg border border-slate-200"
             onMouseDown={onMouseDown}
             onTouchStart={() => (isDragging.current = true)}
+            onKeyDown={onKeyDown}
+            role="slider"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={Math.round(position)}
             aria-label="Glisser pour comparer avant et après"
           >
             <span className="text-slate-600 text-xs font-bold select-none">⇔</span>

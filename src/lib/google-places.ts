@@ -13,6 +13,8 @@ export interface GooglePlacesData {
 }
 
 async function findPlaceId(): Promise<string | null> {
+  // Identifiant exact de la fiche Google : évite une recherche texte (moins fiable et facturée).
+  if (process.env.GOOGLE_PLACE_ID) return process.env.GOOGLE_PLACE_ID
   const res = await fetch('https://places.googleapis.com/v1/places:searchText', {
     method: 'POST',
     headers: {
@@ -20,7 +22,9 @@ async function findPlaceId(): Promise<string | null> {
       'X-Goog-FieldMask': 'places.id',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ textQuery: 'AFFRA Réseaux Nîmes' }),
+    // includePureServiceAreaBusinesses : la fiche n'a pas d'adresse (zone d'intervention) ;
+    // sans ce paramètre, la recherche texte exclut ces entreprises.
+    body: JSON.stringify({ textQuery: 'AFFRA Réseaux', includePureServiceAreaBusinesses: true }),
     next: { revalidate: 86400 },
   })
   if (!res.ok) return null

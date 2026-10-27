@@ -3,15 +3,21 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import DevisWizard from '@/components/devis/DevisWizard'
 import { buildMetadata } from '@/lib/utils/metadata'
+import { parseProjetParam } from '@/lib/devis/projet'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Demande de devis gratuit',
   description:
-    "Demandez votre devis gratuit pour l'installation d'une borne de recharge. Réponse sous 24h par AFFRA Réseaux, expert IRVE en Hérault et Gard.",
+    "Demandez votre devis gratuit pour l'installation d'une borne de recharge. Réponse sous 24h par AFFRA RESEAUX, expert IRVE en Hérault et Gard.",
   path: '/devis',
 })
 
-export default function DevisPage() {
+interface DevisPageProps {
+  searchParams: Promise<{ projet?: string | string[] }>
+}
+
+export default async function DevisPage({ searchParams }: DevisPageProps) {
+  const { projet } = await searchParams
   return (
     <>
       <Header />
@@ -22,7 +28,7 @@ export default function DevisPage() {
             <p className="text-slate-500">Réponse sous 24h sans engagement</p>
           </div>
           <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
-            <DevisWizard />
+            <DevisWizard initialProjet={parseProjetParam(projet)} />
           </div>
         </div>
       </main>

@@ -5,6 +5,8 @@ const nextConfig = {
   
   // Image optimization
   images: {
+    // AVIF en priorité (plus léger), WebP en repli
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -16,6 +18,20 @@ const nextConfig = {
   
   // Performance optimizations (Turbopack handles this)
   productionBrowserSourceMaps: false,
+
+  // Pré-production (NEXT_PUBLIC_SITE_ENV=preview) : en-tête noindex sur toutes les réponses.
+  async headers() {
+    if (process.env.NEXT_PUBLIC_SITE_ENV?.trim().toLowerCase() !== 'preview') return []
+    return [{ source: '/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] }]
+  },
+
+  async redirects() {
+    return [
+      // Zone recentrée sur le Gard et l'Hérault : l'ancienne page Arles (13) reste indexée,
+      // on transfère son référencement vers la page zone d'intervention.
+      { source: '/zone-intervention/arles', destination: '/zone-intervention', statusCode: 301 },
+    ]
+  },
 };
 
 module.exports = nextConfig;

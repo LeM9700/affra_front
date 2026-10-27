@@ -9,6 +9,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import { backendHeaders, backendUrl, readVisitorIdFromRequest } from '@/lib/attribution/server'
 import { isValidVisitorId } from '@/lib/attribution/visitor'
+import { IS_PREVIEW } from '@/lib/site-env'
 
 const MAX_BODY_BYTES = 4096
 const BACKEND_TIMEOUT_MS = 3000
@@ -19,6 +20,8 @@ const noContent = () => new NextResponse(null, { status: 204 })
 export async function POST(request: NextRequest, { params }: { params: Promise<{ kind: string }> }) {
   const { kind } = await params
   if (!KINDS.has(kind)) return NextResponse.json({ message: 'Not found' }, { status: 404 })
+  // Pré-production : les visites de test ne doivent pas fausser l'attribution ni les commissions.
+  if (IS_PREVIEW) return noContent()
 
   const raw = await request.text()
   if (raw.length > MAX_BODY_BYTES) return NextResponse.json({ message: 'Payload too large' }, { status: 413 })
