@@ -25,7 +25,7 @@ export const villesSeo: VilleData[] = [
     metaDescription:
       "AFFRA RESEAUX installe vos bornes de recharge à Montpellier et dans la métropole (34). Entreprise qualifiée IRVE. Devis gratuit sous 24h.",
     intro:
-      "AFFRA RESEAUX intervient à Montpellier et dans toute la métropole pour l'installation de bornes de recharge IRVE. Que vous soyez dans le centre-ville, à Port-Marianne, à La Paillade ou dans les communes périphériques, nos techniciens qualifiés IRVE assurent une installation conforme à la norme NF C 15-100 et aux exigences du programme Advenir.",
+      "AFFRA RESEAUX intervient à Montpellier et dans toute la métropole pour l'installation de bornes de recharge IRVE. Que vous soyez dans le centre-ville, à Port-Marianne, à La Paillade ou dans les communes périphériques, nos techniciens qualifiés IRVE assurent une installation conforme aux normes en vigueur et aux exigences du programme Advenir.",
     quartiers: [
       'Centre historique',
       'Port-Marianne',

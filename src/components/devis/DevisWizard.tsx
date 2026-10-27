@@ -57,10 +57,10 @@ export default function DevisWizard({ initialProjet }: DevisWizardProps) {
     try {
       const result = await submitDevis(fullData)
       if (result && !result.success) {
-        setFormError(result.errors?.['_form']?.[0] ?? 'Une erreur est survenue. Veuillez reessayer.')
+        setFormError(result.errors?.['_form']?.[0] ?? 'Une erreur est survenue. Veuillez réessayer.')
       }
     } catch {
-      setFormError('Une erreur est survenue. Veuillez reessayer.')
+      setFormError('Une erreur est survenue. Veuillez réessayer.')
     } finally {
       setSubmitting(false)
     }

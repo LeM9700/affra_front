@@ -26,7 +26,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Combien de temps prend l'installation ?",
-    a: "Une installation standard prend entre 2 et 4 heures. Cela inclut la pose de la borne, le câblage, la mise en service et les tests de bon fonctionnement. Dans certains cas — passage de gaines sur une longue distance, adaptation du tableau électrique — la durée peut s'étendre à une journée complète. Nos techniciens certifiés IRVE s'occupent de l'intégralité des travaux et vous remettent un compte-rendu d'installation conforme aux normes NF C 15-100.",
+    a: "Une installation standard prend entre 2 et 4 heures. Cela inclut la pose de la borne, le câblage, la mise en service et les tests de bon fonctionnement. Dans certains cas — passage de gaines sur une longue distance, adaptation du tableau électrique — la durée peut s'étendre à une journée complète. Nos techniciens certifiés IRVE s'occupent de l'intégralité des travaux et vous remettent un compte-rendu d'installation conforme aux normes en vigueur.",
   },
   {
     q: 'Est-ce compatible avec mes panneaux solaires ?',

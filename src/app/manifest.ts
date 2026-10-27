@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'AFFRA RESEAUX — Installation IRVE',
     short_name: 'AFFRA RESEAUX',
     description:
-      'Installateur certifié IRVE en Hérault, Gard, Vaucluse, Bouches-du-Rhône, Aude et Pyrénées-Orientales.',
+      'Installateur qualifié IRVE de bornes de recharge dans le Gard (30) et l’Hérault (34).',
     start_url: '/',
     display: 'standalone',
     background_color: '#F8FAFC',
