@@ -5,7 +5,7 @@ import PageHero from '@/components/shared/PageHero'
 import Breadcrumb from '@/components/shared/Breadcrumb'
 import SectionTitle from '@/components/shared/SectionTitle'
 import SchemaOrg from '@/components/shared/SchemaOrg'
-import TeamCard from '@/components/apropos/TeamCard'
+import TeamTabs from '@/components/apropos/TeamTabs'
 import { EQUIPE } from '@/data/equipe'
 import { DEVIS_HREF } from '@/lib/devis/projet'
 import { GOOGLE_REVIEWS_URL } from '@/lib/contact'
@@ -236,10 +236,8 @@ export default function AProposPage() {
             accentWord="une exigence commune"
             size="md"
           />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 md:items-stretch">
-            {EQUIPE.map((membre) => (
-              <TeamCard key={membre.id} membre={membre} />
-            ))}
+          <div className="mt-12">
+            <TeamTabs equipe={EQUIPE} />
           </div>
         </div>
       </section>
