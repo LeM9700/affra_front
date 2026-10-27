@@ -2,9 +2,10 @@
  * Équipe AFFRA RESEAUX : source unique des fiches de la page « Qui sommes-nous ? »
  * et des données structurées `Person` (schema.org).
  *
- * Pour compléter une fiche : renseigner `linkedin` (URL complète du profil), `nom`
- * ou `photo` (fichier dans public/images/equipe/, format portrait 4:5 conseillé).
- * Un champ absent n'affiche rien : jamais de lien vide ni d'image cassée.
+ * Pour compléter une fiche : renseigner `linkedin` (URL du profil sans paramètres utm),
+ * `nom` ou `photo` (fichier dans public/images/equipe/, cadrage centré sur le visage,
+ * affiché en 4:3). Un champ absent n'affiche rien : sans photo, la fiche commence
+ * directement par le nom (pas de vignette de remplacement).
  */
 
 export interface MembreEquipe {
@@ -59,10 +60,12 @@ export const EQUIPE: readonly MembreEquipe[] = [
     expertises: ['Électricité', 'Bâtiment et travaux publics', 'Travaux de génie civil', 'Direction d’entreprise'],
   },
   {
-    id: 'yazid',
+    id: 'yazid-el-ouarki',
     prenom: 'Yazid',
+    nom: 'El Ouarki',
     role: 'Technicien installateur & Référent technique',
     fondateur: false,
+    linkedin: 'https://www.linkedin.com/in/yazid-el-ouarki-39997a189',
     bio: [
       'Titulaire d’un baccalauréat STI2D, spécialité Architecture et Construction, puis d’un BTS Maintenance des systèmes, option Systèmes de production, Yazid a construit son parcours autour des installations techniques et électriques.',
       'Après une expérience en électricité générale, il a exercé pendant quatre ans comme inspecteur de conformité des installations électriques. Ses missions l’ont amené à contrôler des installations dans des logements, des bâtiments professionnels et des environnements industriels, notamment à travers des mesures de terre et des vérifications réglementaires.',

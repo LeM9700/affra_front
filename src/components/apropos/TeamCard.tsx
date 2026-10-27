@@ -12,17 +12,13 @@ function LinkedInIcon() {
   )
 }
 
-function initiales(membre: MembreEquipe) {
-  return `${membre.prenom[0] ?? ''}${membre.nom?.[0] ?? ''}`.toUpperCase()
-}
-
 interface TeamCardProps {
   membre: MembreEquipe
 }
 
 /**
- * Fiche d'un membre de l'équipe. Sans photo, affiche ses initiales sur un fond aux couleurs
- * du site. Sur mobile, seul le premier paragraphe est visible jusqu'au clic sur « Lire la suite ».
+ * Fiche d'un membre de l'équipe. La photo n'est affichée que si elle est renseignée ;
+ * sinon la fiche commence par le nom. Sur mobile, seul le premier paragraphe est visible jusqu'au clic sur « Lire la suite ».
  */
 export default function TeamCard({ membre }: TeamCardProps) {
   const [ouvert, setOuvert] = useState(false)
@@ -30,18 +26,13 @@ export default function TeamCard({ membre }: TeamCardProps) {
   const [premier, ...suite] = membre.bio
 
   return (
-    <article id={membre.id} className="flex h-full scroll-mt-28 flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[var(--shadow-card)]">
-      <div className="relative aspect-[4/3] w-full bg-gradient-to-br from-[#5BBF8A]/15 via-white to-[#29ABE2]/15">
-        {membre.photo ? (
+    <article id={membre.id} className="flex h-full scroll-mt-28 flex-col overflow-hidden rounded-3xl border border-slate-200/80 border-t-4 border-t-[#5BBF8A] bg-white shadow-[var(--shadow-card)]">
+      {/* Bloc photo affiché uniquement quand une photo existe : pas de vignette de remplacement en prod. */}
+      {membre.photo && (
+        <div className="relative aspect-[4/3] w-full bg-slate-100">
           <Image src={membre.photo} alt={`${nom}, ${membre.role} chez AFFRA RESEAUX`} fill sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" className="object-cover object-top" />
-        ) : (
-          <div className="flex h-full items-center justify-center">
-            <span aria-hidden className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-[#5BBF8A] to-[#29ABE2] text-3xl font-black tracking-wide text-white shadow-[0_12px_40px_rgba(41,171,226,0.25)]">
-              {initiales(membre)}
-            </span>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
 
       <div className="flex flex-1 flex-col p-6 sm:p-7">
         <h3 className="text-xl font-bold text-slate-900">{nom}</h3>
