@@ -176,9 +176,12 @@ export const OFFRES: Readonly<Record<OffreId, Offre>> = {
       soustitre: "Borne de recharge jusqu'à 22 kW",
       features: [
         'Fabriquée en France',
+        'Disponible en monophasé (7,4 kW) et triphasé (22 kW)',
         'Format compact et design moderne',
         'Gestion intelligente de la puissance (délestage)',
         'Pilotage de la recharge via application mobile',
+        'Connectivité Wi-Fi, Bluetooth, Ethernet et 4G',
+        'Démarrage de la charge par badge NFC ou application',
         'Compatible avec une installation photovoltaïque',
       ],
       recommandePour: 'Idéal pour les utilisateurs qui veulent une borne connectée et fabriquée en France.',
@@ -188,10 +191,12 @@ export const OFFRES: Readonly<Record<OffreId, Offre>> = {
       "Borne de recharge fabriquée en France, jusqu'à 22 kW, au format compact, avec gestion intelligente de la puissance, pilotage via application mobile et compatible photovoltaïque. Installée par AFFRA RESEAUX, entreprise qualifiée IRVE.",
     comparatif: {
       puissanceMax: '22 kW',
-      cableType2: null,
+      // Sources : fabricant (labornetricolore-fabrique.com, page « Nos produits ») pour la
+      // connectivité et les puissances ; client pour le câble (non fourni) ; photo produit pour l'écran.
+      cableType2: false,
       compatibleSolaire: true,
-      wifiBluetooth: null,
-      ecranIntegre: null,
+      wifiBluetooth: true,
+      ecranIntegre: false,
       design: 'Compact et moderne',
       idealPour: 'Made in France',
     },
