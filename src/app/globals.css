@@ -62,3 +62,9 @@ html {
   animation: marquee 20s linear infinite;
   will-change: transform;
 }
+
+/* Rouleau des offres : jauge du temps restant avant la carte suivante */
+@keyframes rouleau-progression {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}

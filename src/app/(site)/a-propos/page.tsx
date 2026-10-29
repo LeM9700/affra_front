@@ -67,7 +67,8 @@ function Finitions() {
       Cheminements soignés, percements rebouchés et étanchéifiés, équipements électriques de marques reconnues
       (prise renforcée{' '}
       <Link href="/offres#green-up-legrand" className={lien}>Green’up de Legrand</Link>, bornes{' '}
-      <Link href="/offres#dazebox-home-t" className={lien}>DazeBox Home T</Link> et{' '}
+      <Link href="/offres#dazebox-home-t" className={lien}>DazeBox Home T</Link>,{' '}
+      <Link href="/offres#la-borne-tricolore" className={lien}>La Borne Tricolore</Link> fabriquée en France et{' '}
       <Link href="/offres#v2c-trydan" className={lien}>V2C Trydan</Link>) et solutions adaptées à l’esthétique du
       logement.{' '}
       <Link href="/realisations" className={lien}>Voir nos réalisations dans le Gard</Link>.
