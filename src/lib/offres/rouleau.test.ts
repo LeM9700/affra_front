@@ -24,3 +24,16 @@ test('choisit le sens le plus court, vers l’avant à égalité', () => {
   assert.equal(sensVers(0, 3, 4), -1)
   assert.equal(sensVers(0, 1, 4), 1)
 })
+
+test('glissement lent : change de carte au-delà de 20 % de la carte', async () => {
+  const { decisionGlisse } = await import('./rouleau.ts')
+  assert.equal(decisionGlisse(-80, 360, 0.1), 1)
+  assert.equal(decisionGlisse(80, 360, 0.1), -1)
+  assert.equal(decisionGlisse(-60, 360, 0.1), null)
+})
+
+test('glissement lancé : un geste court mais rapide suffit, pas un micro-mouvement', async () => {
+  const { decisionGlisse } = await import('./rouleau.ts')
+  assert.equal(decisionGlisse(-40, 360, 0.8), 1)
+  assert.equal(decisionGlisse(-10, 360, 2), null)
+})
