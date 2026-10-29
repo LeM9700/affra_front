@@ -37,10 +37,20 @@ type Axe = 'x' | 'y'
 const MEDIA_HORIZONTAL = '(max-width: 767.98px)'
 /** Écart entre deux cartes du rouleau, en % de la taille d'une carte. */
 const DECALAGE_POURCENT = 112
-const DUREE_S = 0.85
-/** Courbe avec dépassement : la carte va un peu trop loin puis revient (rebond à l'arrêt). */
-const EASE_REBOND = [0.34, 1.32, 0.64, 1] as const
-const FLOU = 'blur(6px)'
+const DUREE_S = 1.05
+/**
+ * Démarrage progressif, puis léger dépassement (≈ 3 %) avant l'arrêt : le rebond reste perceptible
+ * sans à-coup. Une courbe qui démarre en flèche (y1 > 1) donne une impression de saut.
+ */
+const EASE_REBOND = [0.6, 0, 0.2, 1.12] as const
+const FLOU = 'blur(3px)'
+/**
+ * Fin d'un glissement au doigt : ressort qui reprend la vitesse du doigt, légèrement amorti
+ * (petit rebond, pas de flou : le mouvement prolonge le geste).
+ */
+const RESSORT_GLISSE = { type: 'spring', stiffness: 170, damping: 22, mass: 1 } as const
+/** Retour en place d'une carte relâchée trop tôt. */
+const RESSORT_RETOUR = { type: 'spring', stiffness: 260, damping: 24, mass: 1 } as const
 const NET = 'blur(0px)'
 /** Déplacement à partir duquel un appui devient un glissement (en deçà : simple clic / tap). */
 const SEUIL_DEMARRAGE_PX = 8
@@ -129,10 +139,10 @@ export default function OffreRouleau({ elements, label, className }: OffreRoulea
 
   const aller = useCallback(
     /**
-     * @param depuisGlisse La carte a été déplacée au doigt : on repart de sa position actuelle
-     * au lieu de la position de départ habituelle.
+     * @param glisse Fin d'un glissement au doigt : on repart de la position actuelle des cartes,
+     * avec la vitesse du doigt (en % de carte par seconde), au lieu de l'animation habituelle.
      */
-    async (vers: number, sens: SensRouleau, depuisGlisse = false) => {
+    async (vers: number, sens: SensRouleau, glisse?: { vitesse: number }) => {
       const depuis = actifRef.current
       const entrante = cartesRef.current[vers]
       const sortante = cartesRef.current[depuis]
@@ -150,31 +160,38 @@ export default function OffreRouleau({ elements, label, className }: OffreRoulea
         ])
       } else {
         const autreAxe: Axe = axe === 'x' ? 'y' : 'x'
-        // Même durée et même courbe pour les deux cartes : elles avancent comme une bande continue.
-        const depart = (valeur: string) => (depuisGlisse ? [] : [valeur])
-        await Promise.all([
-          animate(
-            entrante,
-            {
-              [axe]: [...depart(`${DECALAGE_POURCENT * sens}%`), '0%'],
-              [autreAxe]: '0%',
-              opacity: 1,
-              filter: [...depart(FLOU), NET],
-            },
-            {
-              duration: DUREE_S,
-              ease: EASE_REBOND,
-              filter: { duration: DUREE_S * 0.65, ease: 'easeOut' },
-              [autreAxe]: { duration: 0 },
-              opacity: { duration: 0 },
-            },
-          ),
-          animate(
-            sortante,
-            { [axe]: [...depart('0%'), `${-DECALAGE_POURCENT * sens}%`], filter: [NET, FLOU] },
-            { duration: DUREE_S, ease: EASE_REBOND, filter: { duration: DUREE_S * 0.35, ease: 'easeIn' } },
-          ),
-        ])
+        if (glisse) {
+          // Même ressort et même distance à parcourir : les deux cartes restent collées comme une bande.
+          const ressort = { ...RESSORT_GLISSE, velocity: glisse.vitesse }
+          await Promise.all([
+            animate(
+              entrante,
+              { [axe]: '0%', [autreAxe]: '0%', opacity: 1, filter: NET },
+              { [axe]: ressort, [autreAxe]: { duration: 0 }, opacity: { duration: 0 }, filter: { duration: 0 } },
+            ),
+            animate(sortante, { [axe]: `${-DECALAGE_POURCENT * sens}%` }, ressort),
+          ])
+        } else {
+          // Même durée et même courbe pour les deux cartes : elles avancent comme une bande continue.
+          await Promise.all([
+            animate(
+              entrante,
+              { [axe]: [`${DECALAGE_POURCENT * sens}%`, '0%'], [autreAxe]: '0%', opacity: 1, filter: [FLOU, NET] },
+              {
+                duration: DUREE_S,
+                ease: EASE_REBOND,
+                filter: { duration: DUREE_S * 0.8, ease: 'easeInOut' },
+                [autreAxe]: { duration: 0 },
+                opacity: { duration: 0 },
+              },
+            ),
+            animate(
+              sortante,
+              { [axe]: ['0%', `${-DECALAGE_POURCENT * sens}%`], filter: [NET, FLOU] },
+              { duration: DUREE_S, ease: EASE_REBOND, filter: { duration: DUREE_S * 0.6, ease: 'easeIn' } },
+            ),
+          ])
+        }
       }
 
       sortante.style.visibility = 'hidden'
@@ -246,12 +263,12 @@ export default function OffreRouleau({ elements, label, className }: OffreRoulea
   /** Geste abandonné ou trop court : la carte revient en place, la voisine repart. */
   const remettreEnPlace = (geste: Geste) => {
     const carteActive = cartesRef.current[actifRef.current]
-    if (carteActive) animate(carteActive, { [axe]: '0%' }, { type: 'spring', bounce: 0.35, duration: 0.5 })
+    if (carteActive) animate(carteActive, { [axe]: '0%' }, RESSORT_RETOUR)
     if (geste.candidate === null || geste.candidate === actifRef.current) return
     const carteCandidate = cartesRef.current[geste.candidate]
     const sens: SensRouleau = geste.deplacement < 0 ? 1 : -1
     if (carteCandidate) {
-      void animate(carteCandidate, { [axe]: `${DECALAGE_POURCENT * sens}%` }, { duration: 0.3, ease: 'easeOut' }).then(
+      void animate(carteCandidate, { [axe]: `${DECALAGE_POURCENT * sens}%` }, RESSORT_RETOUR).then(
         () => {
           if (actifRef.current !== geste.candidate) carteCandidate.style.visibility = 'hidden'
         },
@@ -326,7 +343,9 @@ export default function OffreRouleau({ elements, label, className }: OffreRoulea
       if (suivi) remettreEnPlace(geste)
       return
     }
-    void aller(indexVoisin(actifRef.current, total, sens), sens, suivi)
+    // Vitesse du doigt convertie en % de carte par seconde, plafonnée pour éviter un départ en flèche.
+    const vitessePourcent = taille > 0 ? Math.max(-400, Math.min(400, (vitesse * 1000 * 100) / taille)) : 0
+    void aller(indexVoisin(actifRef.current, total, sens), sens, suivi ? { vitesse: vitessePourcent } : undefined)
   }
 
   /** Trackpad : un glissement horizontal à deux doigts fait tourner le rouleau. */
