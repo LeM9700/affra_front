@@ -7,6 +7,7 @@
  */
 import { NextRequest, NextResponse } from 'next/server'
 
+import { isBotUserAgent } from '@/lib/attribution/bots'
 import { backendHeaders, backendUrl, readVisitorIdFromRequest } from '@/lib/attribution/server'
 import { isValidVisitorId } from '@/lib/attribution/visitor'
 import { IS_PREVIEW } from '@/lib/site-env'
@@ -22,6 +23,8 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
   if (!KINDS.has(kind)) return NextResponse.json({ message: 'Not found' }, { status: 404 })
   // Pré-production : les visites de test ne doivent pas fausser l'attribution ni les commissions.
   if (IS_PREVIEW) return noContent()
+  // Robots (Googlebot exécute le JavaScript), aperçus de liens, navigateurs automatisés : ignorés.
+  if (isBotUserAgent(request.headers.get('user-agent'))) return noContent()
 
   const raw = await request.text()
   if (raw.length > MAX_BODY_BYTES) return NextResponse.json({ message: 'Payload too large' }, { status: 413 })

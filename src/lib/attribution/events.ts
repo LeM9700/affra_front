@@ -51,7 +51,7 @@ function setSessionFlag(): void {
  * arrivée porteuse d'un signal d'acquisition (UTM, click ID, referrer externe).
  */
 export function recordLanding(): void {
-  if (typeof window === 'undefined') return
+  if (typeof window === 'undefined' || isAutomated()) return
   const anonymousId = getOrCreateVisitorId()
   if (!anonymousId) return
 
@@ -62,8 +62,13 @@ export function recordLanding(): void {
   send('/api/attribution/visit', { anonymous_id: anonymousId, client_event_id: randomUUID(), ...signals })
 }
 
+/** Navigateur piloté par un script (tests, robots qui exécutent le JavaScript) : rien n'est envoyé. */
+function isAutomated(): boolean {
+  return typeof navigator !== 'undefined' && navigator.webdriver === true
+}
+
 export function trackEvent(eventType: ClientEventType, metadata?: EventMetadata): void {
-  if (typeof window === 'undefined') return
+  if (typeof window === 'undefined' || isAutomated()) return
   const anonymousId = getOrCreateVisitorId()
   if (!anonymousId) return
   send('/api/attribution/event', {
@@ -73,4 +78,9 @@ export function trackEvent(eventType: ClientEventType, metadata?: EventMetadata)
     page_path: window.location.pathname,
     metadata,
   })
+}
+
+/** Page vue : appelée à chaque changement de page (premier affichage compris). */
+export function trackPageView(): void {
+  trackEvent('PAGE_VIEW')
 }

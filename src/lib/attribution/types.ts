@@ -6,7 +6,7 @@
  */
 
 /** Événements que le navigateur est autorisé à émettre (LANDING passe par /visit). */
-export type ClientEventType = 'QUOTE_STARTED' | 'PHONE_CLICK' | 'EMAIL_CLICK' | 'WHATSAPP_CLICK'
+export type ClientEventType = 'QUOTE_STARTED' | 'PHONE_CLICK' | 'EMAIL_CLICK' | 'WHATSAPP_CLICK' | 'PAGE_VIEW'
 
 /** Métadonnées plates et courtes : jamais de données personnelles ni de secrets. */
 export type EventMetadata = Record<string, string | number | boolean | null>
