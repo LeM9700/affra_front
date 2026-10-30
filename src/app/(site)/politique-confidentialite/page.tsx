@@ -24,27 +24,27 @@ export default function PolitiqueConfidentialitePage() {
           {
             title: '2. Données collectées',
             content:
-              "Nous collectons uniquement les données que vous nous transmettez volontairement via le formulaire de demande de devis : prénom, nom, adresse e-mail, téléphone, code postal, type de projet et description. Ces données sont nécessaires pour traiter votre demande.",
+              "Nous collectons uniquement les données que vous nous transmettez volontairement : via le formulaire de demande de devis (prénom, nom, adresse e-mail, téléphone, code postal, type de projet et description) et via le bouton « Être appelé pour une visite technique gratuite » (nom et téléphone). Ces données sont nécessaires pour traiter votre demande. Lorsque vous nous transmettez une demande, elle est associée à votre parcours sur le site (pages consultées, provenance, clics sur nos coordonnées), enregistré grâce au cookie décrit à l'article 8.",
           },
           {
             title: '3. Finalités du traitement',
             content:
-              "Vos données sont utilisées exclusivement pour : (a) vous contacter suite à votre demande de devis, (b) vous envoyer un accusé de réception par e-mail, (c) améliorer notre service client.",
+              "Vos données sont utilisées exclusivement pour : (a) vous contacter suite à votre demande de devis ou de rappel, et vous recontacter au sujet de votre projet, (b) vous envoyer un accusé de réception par e-mail, (c) améliorer notre service client et mesurer l'efficacité de nos actions de communication.",
           },
           {
             title: '4. Base juridique',
             content:
-              "Le traitement est fondé sur votre consentement explicite donné lors de la soumission du formulaire (case à cocher).",
+              "Le traitement est fondé sur votre consentement explicite donné lors de l'envoi du formulaire de devis ou de la demande de rappel (case à cocher). Vous pouvez retirer ce consentement à tout moment en nous écrivant.",
           },
           {
             title: '5. Destinataires des données',
             content:
-              "Vos données ne sont partagées avec aucun tiers à des fins commerciales. Elles peuvent être transmises à notre prestataire d'envoi d'e-mail (Resend) dans le seul but de vous contacter.",
+              "Vos données ne sont partagées avec aucun tiers à des fins commerciales. Elles peuvent être transmises à nos prestataires techniques dans le seul but de traiter votre demande : notre prestataire d'envoi d'e-mail (Resend) et la messagerie Telegram, utilisée pour prévenir notre équipe de chaque nouvelle demande.",
           },
           {
             title: '6. Durée de conservation',
             content:
-              "Vos données de demande de devis sont conservées pendant 12 mois maximum à compter de votre demande, puis supprimées automatiquement.",
+              "Vos données de demande de devis sont conservées pendant 12 mois maximum à compter de votre demande, puis supprimées automatiquement. Une demande de rappel (nom, téléphone) et le parcours associé sont supprimés automatiquement après 13 mois sans nouvelle visite, sauf si vous êtes devenu client (les données nécessaires à la facturation sont conservées selon les obligations comptables).",
           },
           {
             title: '7. Vos droits',
@@ -54,7 +54,7 @@ export default function PolitiqueConfidentialitePage() {
           {
             title: '8. Cookies',
             content:
-              "Ce site n'utilise aucun cookie publicitaire ni cookie tiers. Il dépose un unique cookie first-party, « affra_vid », contenant un identifiant aléatoire (aucune donnée personnelle, aucune empreinte de navigateur). Il sert à mesurer la provenance des visites (moteur de recherche, fiche Google, assistant IA, campagne…) et à la rattacher à une éventuelle demande de devis ou à un clic sur nos coordonnées, afin d'évaluer l'efficacité de nos actions de communication. Il expire au bout de 13 mois ; les données de visite associées sont supprimées au-delà de cette durée lorsqu'elles ne sont liées à aucune demande. Vous pouvez le supprimer à tout moment depuis les paramètres de votre navigateur.",
+              "Ce site n'utilise aucun cookie publicitaire ni cookie tiers. Il dépose un unique cookie first-party, « affra_vid », contenant un identifiant aléatoire (aucune donnée personnelle, aucune empreinte de navigateur). Il sert à mesurer la provenance des visites (moteur de recherche, fiche Google, assistant IA, campagne…) et les pages consultées, et à les rattacher à une éventuelle demande de devis ou de rappel ou à un clic sur nos coordonnées, afin d'évaluer l'efficacité de nos actions de communication. Il expire au bout de 13 mois ; les données de visite associées sont supprimées au-delà de cette durée lorsqu'elles ne sont liées à aucune demande. Vous pouvez le supprimer à tout moment depuis les paramètres de votre navigateur.",
           },
           {
             title: '9. Sécurité',

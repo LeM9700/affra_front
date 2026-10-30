@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test --experimental-strip-types src/lib/attribution/*.test.ts src/lib/devis/*.test.ts src/lib/reviews/*.test.ts src/lib/site-env.test.ts src/lib/schema/*.test.ts src/lib/offres/*.test.ts src/data/*.test.ts"
+    "test": "node --test --experimental-strip-types src/lib/attribution/*.test.ts src/lib/devis/*.test.ts src/lib/reviews/*.test.ts src/lib/site-env.test.ts src/lib/schema/*.test.ts src/lib/offres/*.test.ts src/data/*.test.ts src/lib/validations/*.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

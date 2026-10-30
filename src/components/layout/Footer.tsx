@@ -26,7 +26,8 @@ const certifications = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-slate-900 text-slate-400">
+    <footer className="relative overflow-hidden bg-slate-900 pb-20 text-slate-400 sm:pb-0">
+      {/* pb-20 sur mobile : le bouton fixe « visite technique gratuite » ne masque pas le bas du pied de page. */}
       {/* Halo décoratif */}
       <div
         aria-hidden
