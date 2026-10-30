@@ -1,5 +1,10 @@
 import type { Metadata } from 'next'
 import { buildMetadata } from '@/lib/utils/metadata'
+import { CONTACT_EMAIL } from '@/lib/contact'
+import { ORGANIZATION_ADDRESS, ORGANIZATION_NAME } from '@/lib/schema/organization'
+
+// Mêmes coordonnées que les mentions légales et les données structurées (source unique).
+const SIEGE = `${ORGANIZATION_ADDRESS.streetAddress}, ${ORGANIZATION_ADDRESS.postalCode} ${ORGANIZATION_ADDRESS.addressLocality}`
 
 export const metadata: Metadata = buildMetadata({
   title: 'Politique de confidentialité',
@@ -19,7 +24,7 @@ export default function PolitiqueConfidentialitePage() {
           {
             title: '1. Responsable du traitement',
             content:
-              "AFFRA RESEAUX, [adresse], est responsable du traitement de vos données personnelles collectées via ce site.",
+              `${ORGANIZATION_NAME}, SARL dont le siège social est situé ${SIEGE}, est responsable du traitement de vos données personnelles collectées via ce site.`,
           },
           {
             title: '2. Données collectées',
@@ -49,7 +54,7 @@ export default function PolitiqueConfidentialitePage() {
           {
             title: '7. Vos droits',
             content:
-              "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation et de portabilité de vos données. Pour exercer ces droits, contactez-nous à : contact@affra-reseaux.fr. Vous pouvez également introduire une réclamation auprès de la CNIL (www.cnil.fr).",
+              `Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation et de portabilité de vos données. Pour exercer ces droits, contactez-nous à : ${CONTACT_EMAIL}. Vous pouvez également introduire une réclamation auprès de la CNIL (www.cnil.fr).`,
           },
           {
             title: '8. Cookies',
@@ -70,8 +75,8 @@ export default function PolitiqueConfidentialitePage() {
 
         <p className="text-slate-300 mt-8">
           Pour toute question relative à nos pratiques de confidentialité, contactez-nous à{' '}
-          <a href="mailto:contact@affra-reseaux.fr" className="text-emerald-400 hover:underline">
-            contact@affra-reseaux.fr
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-emerald-400 hover:underline">
+            {CONTACT_EMAIL}
           </a>.
         </p>
       </div>
