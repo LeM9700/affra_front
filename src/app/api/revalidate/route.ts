@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
+import { IS_PREVIEW } from '@/lib/site-env'
+import { SITE_URL } from '@/lib/schema/organization'
+import { submitToIndexNow } from '@/lib/seo/indexnow'
 
 export async function POST(request: NextRequest) {
   const secret = request.headers.get('X-Revalidation-Secret')
@@ -31,5 +34,10 @@ export async function POST(request: NextRequest) {
 
   revalidatePath(path)
 
-  return NextResponse.json({ revalidated: true, path })
+  // Signale la page mise à jour aux moteurs IndexNow (Bing → ChatGPT/Copilot). Attendu ici car
+  // une fonction serverless peut être coupée dès la réponse envoyée ; l'échec reste sans effet
+  // sur la revalidation. Jamais depuis une pré-production : ses URLs ne doivent pas être indexées.
+  const indexNow = IS_PREVIEW ? null : await submitToIndexNow(SITE_URL, [`${SITE_URL}${path}`])
+
+  return NextResponse.json({ revalidated: true, path, indexNow })
 }
