@@ -86,7 +86,6 @@ export default function CallbackButton() {
   const [pending, startTransition] = useTransition()
   const panelRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
-  const firstFieldRef = useRef<HTMLInputElement>(null)
   const ids = { panel: useId(), title: useId(), nom: useId(), tel: useId(), consent: useId() }
 
   // Lu après l'hydratation : localStorage / sessionStorage n'existent pas côté serveur.
@@ -105,11 +104,12 @@ export default function CallbackButton() {
     if (open || fields.nom || fields.telephone) saveDraft({ open, ...fields })
   }, [open, fields, sent])
 
-  // Panneau ouvert = fenêtre modale : focus dans le panneau, Échap pour fermer, Tab qui reste
-  // dans le panneau, et page derrière bloquée (pas de défilement sous le voile).
+  // Panneau ouvert = fenêtre modale : focus sur le panneau lui-même (pas sur un champ, pour ne pas
+  // ouvrir le clavier du téléphone : le visiteur touche le champ quand il le souhaite), Échap pour
+  // fermer, Tab qui reste dans le panneau, et page derrière bloquée (pas de défilement sous le voile).
   useEffect(() => {
     if (!open) return
-    firstFieldRef.current?.focus()
+    panelRef.current?.focus({ preventScroll: true })
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpen(false)
@@ -125,7 +125,8 @@ export default function CallbackButton() {
       if (focusable.length === 0) return
       const first = focusable[0]
       const last = focusable[focusable.length - 1]
-      if (e.shiftKey && document.activeElement === first) {
+      // Le focus démarre sur le panneau lui-même : Maj+Tab depuis là doit rester dans le panneau.
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === panelRef.current)) {
         e.preventDefault()
         last.focus()
       } else if (!e.shiftKey && document.activeElement === last) {
@@ -182,7 +183,8 @@ export default function CallbackButton() {
 
   return (
     <>
-      {/* Voile « verre dépoli » : la page reste visible, floutée et éclaircie ; un clic dessus ferme. */}
+      {/* Voile « verre dépoli » : la page reste visible, floutée et éclaircie. Un clic ou un tap en dehors
+          du panneau le ferme (onClick et non onPointerDown : évite un « clic fantôme » sur la page dessous). */}
       {open && (
         <div
           aria-hidden="true"
@@ -202,7 +204,8 @@ export default function CallbackButton() {
             role="dialog"
             aria-modal="true"
             aria-labelledby={ids.title}
-            className="animate-callback-panel w-[min(22rem,calc(100vw-2rem))] rounded-2xl border border-white/70 bg-white/95 p-5 shadow-[0_24px_64px_rgba(15,23,42,0.22)] ring-1 ring-slate-900/5"
+            tabIndex={-1}
+            className="animate-callback-panel outline-none w-[min(22rem,calc(100vw-2rem))] rounded-2xl border border-white/70 bg-white/95 p-5 shadow-[0_24px_64px_rgba(15,23,42,0.22)] ring-1 ring-slate-900/5"
           >
             <div className="mb-3 flex items-start justify-between gap-3">
               <h2 id={ids.title} className="text-base font-bold leading-snug text-slate-900">
@@ -240,7 +243,6 @@ export default function CallbackButton() {
                     Nom
                   </label>
                   <input
-                    ref={firstFieldRef}
                     id={ids.nom}
                     name="nom"
                     type="text"
