@@ -18,6 +18,10 @@ import {
   ORGANIZATION_SAME_AS,
   SITE_URL,
 } from '@/lib/schema/organization'
+import { buildWebsiteSchema } from '@/lib/schema/website'
+
+// Nom du site affiché par Google : « AFFRA RESEAUX » (graphie unique de la marque).
+const websiteSchema = buildWebsiteSchema({ name: ORGANIZATION_NAME, url: SITE_URL, organizationId: ORGANIZATION_ID })
 
 export const dynamic = 'force-dynamic'
 
@@ -84,6 +88,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <SchemaOrg schema={websiteSchema} />
       <SchemaOrg schema={schema} />
       <HeroSection />
       <OffresSection />
