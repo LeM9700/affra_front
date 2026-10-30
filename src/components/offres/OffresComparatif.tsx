@@ -1,16 +1,26 @@
-const ROWS = [
-  { label: 'Puissance max', values: ['3,7 kW', '22 kW', '22 kW'] },
-  { label: 'Prix indicatif TTC', values: ['À partir de 499 €', 'À partir de 1 250 €', 'À partir de 1 350 €'] },
-  { label: 'Câble Type 2 inclus', values: ['Non', 'Oui (5 m)', 'Oui (5 m)'] },
-  { label: 'Compatible solaire', values: ['Non', 'Oui', 'Oui'] },
-  { label: 'Wi-Fi / Bluetooth', values: ['Non', 'Oui', 'Oui'] },
-  { label: 'Écran intégré', values: ['Non', 'Oui', 'Non'] },
-  { label: 'Design', values: ['Discret', 'Moderne', 'Premium'] },
-  { label: 'Idéal pour', values: ['Petits trajets', 'Usage quotidien', 'Haut de gamme'] },
-]
+import DrapeauFrance from '@/components/shared/DrapeauFrance'
+import {
+  LIGNES_COMPARATIF,
+  OFFRES,
+  OFFRE_RECOMMANDEE,
+  ORDRE_OFFRES,
+  type Offre,
+  type ValeurComparatif,
+} from '@/data/offres'
+import { formatPrixTtc } from '@/lib/offres/prix'
 
-const HEADERS = ["Green'up Legrand", 'DazeBox Home T', 'V2C Trydan']
-const HIGHLIGHT_COL = 1
+const COLONNES = ORDRE_OFFRES.map((id) => OFFRES[id])
+
+function valeur(offre: Offre, cle: (typeof LIGNES_COMPARATIF)[number]['cle']): ValeurComparatif {
+  return cle === 'prix' ? `À partir de ${formatPrixTtc(offre.prixTtc)}` : offre.comparatif[cle]
+}
+
+function Cellule({ v }: { v: ValeurComparatif }) {
+  if (v === true) return <span className="text-[#5BBF8A] font-bold">✓</span>
+  if (v === false) return <span className="text-slate-300">—</span>
+  if (v === null) return <span className="text-xs italic text-slate-400">Nous consulter</span>
+  return <>{v}</>
+}
 
 export default function OffresComparatif() {
   return (
@@ -21,43 +31,48 @@ export default function OffresComparatif() {
           <thead>
             <tr className="bg-slate-50 border-b border-slate-200">
               <th className="py-3 px-4 font-semibold text-slate-500 w-40">Critère</th>
-              {HEADERS.map((h, i) => (
-                <th
-                  key={h}
-                  className={`py-3 px-4 font-bold text-center ${
-                    i === HIGHLIGHT_COL
-                      ? 'text-[#5BBF8A] bg-[#5BBF8A]/5'
-                      : 'text-slate-700'
-                  }`}
-                >
-                  {h}
-                  {i === HIGHLIGHT_COL && (
-                    <span className="ml-2 inline-block rounded-full bg-[#5BBF8A]/10 text-[#5BBF8A] text-xs px-2 py-0.5 font-semibold">
-                      Best-seller
-                    </span>
-                  )}
-                </th>
-              ))}
+              {COLONNES.map((offre) => {
+                const recommandee = offre.id === OFFRE_RECOMMANDEE
+                return (
+                  <th
+                    key={offre.id}
+                    className={`py-3 px-4 font-bold text-center ${
+                      recommandee
+                        ? 'text-[#5BBF8A] bg-[#5BBF8A]/5'
+                        : offre.fabriqueEnFrance
+                          ? 'text-[#002395]'
+                          : 'text-slate-700'
+                    }`}
+                  >
+                    {offre.titre}
+                    {recommandee && (
+                      <span className="ml-2 inline-block rounded-full bg-[#5BBF8A]/10 text-[#5BBF8A] text-xs px-2 py-0.5 font-semibold">
+                        Best-seller
+                      </span>
+                    )}
+                    {offre.fabriqueEnFrance && (
+                      <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-[#002395]/[0.07] text-[#002395] text-xs px-2 py-0.5 font-semibold whitespace-nowrap">
+                        <DrapeauFrance className="h-2 w-3 flex-shrink-0" />
+                        Made in France
+                      </span>
+                    )}
+                  </th>
+                )
+              })}
             </tr>
           </thead>
           <tbody>
-            {ROWS.map((row, ri) => (
-              <tr key={row.label} className={ri % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}>
-                <td className="py-3 px-4 font-medium text-slate-600 whitespace-nowrap">{row.label}</td>
-                {row.values.map((v, ci) => (
+            {LIGNES_COMPARATIF.map((ligne, ri) => (
+              <tr key={ligne.cle} className={ri % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}>
+                <td className="py-3 px-4 font-medium text-slate-600 whitespace-nowrap">{ligne.label}</td>
+                {COLONNES.map((offre) => (
                   <td
-                    key={ci}
+                    key={offre.id}
                     className={`py-3 px-4 text-center ${
-                      ci === HIGHLIGHT_COL ? 'bg-[#5BBF8A]/5 font-semibold text-slate-800' : 'text-slate-600'
+                      offre.id === OFFRE_RECOMMANDEE ? 'bg-[#5BBF8A]/5 font-semibold text-slate-800' : 'text-slate-600'
                     }`}
                   >
-                    {v === 'Oui' ? (
-                      <span className="text-[#5BBF8A] font-bold">✓</span>
-                    ) : v === 'Non' ? (
-                      <span className="text-slate-300">—</span>
-                    ) : (
-                      v
-                    )}
+                    <Cellule v={valeur(offre, ligne.cle)} />
                   </td>
                 ))}
               </tr>
