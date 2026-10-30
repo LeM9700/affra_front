@@ -4,6 +4,13 @@ import { IS_PREVIEW } from '@/lib/site-env'
 import { SITE_URL } from '@/lib/schema/organization'
 import { submitToIndexNow } from '@/lib/seo/indexnow'
 
+/**
+ * Délai maximal accordé à IndexNow. Le backend coupe l'appel de revalidation au bout de 5 s :
+ * en restant bien en dessous, un IndexNow lent ne fait jamais passer une revalidation réussie
+ * pour un échec dans ses logs.
+ */
+const INDEXNOW_TIMEOUT_MS = 2000
+
 export async function POST(request: NextRequest) {
   const secret = request.headers.get('X-Revalidation-Secret')
 
@@ -37,7 +44,7 @@ export async function POST(request: NextRequest) {
   // Signale la page mise à jour aux moteurs IndexNow (Bing → ChatGPT/Copilot). Attendu ici car
   // une fonction serverless peut être coupée dès la réponse envoyée ; l'échec reste sans effet
   // sur la revalidation. Jamais depuis une pré-production : ses URLs ne doivent pas être indexées.
-  const indexNow = IS_PREVIEW ? null : await submitToIndexNow(SITE_URL, [`${SITE_URL}${path}`])
+  const indexNow = IS_PREVIEW ? null : await submitToIndexNow(SITE_URL, [`${SITE_URL}${path}`], fetch, INDEXNOW_TIMEOUT_MS)
 
   return NextResponse.json({ revalidated: true, path, indexNow })
 }

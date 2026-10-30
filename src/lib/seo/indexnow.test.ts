@@ -57,3 +57,22 @@ test('une erreur réseau ne lève pas d’exception', async () => {
   })
   assert.deepEqual(result, { ok: false, status: null, submitted: 0 })
 })
+
+test('abandonne un IndexNow trop lent sans lever d’exception', async (t) => {
+  // AbortSignal.timeout ne retient pas la boucle d'événements : sans ce minuteur, Node
+  // terminerait le test avant l'expiration (un serveur, lui, reste actif).
+  const keepAlive = setTimeout(() => {}, 5000)
+  t.after(() => clearTimeout(keepAlive))
+  const started = Date.now()
+  const result = await submitToIndexNow(
+    SITE,
+    [`${SITE}/`],
+    (_url, init) =>
+      new Promise((_resolve, reject) => {
+        init?.signal?.addEventListener('abort', () => reject(init.signal!.reason))
+      }),
+    50,
+  )
+  assert.deepEqual(result, { ok: false, status: null, submitted: 0 })
+  assert.ok(Date.now() - started < 1000)
+})
