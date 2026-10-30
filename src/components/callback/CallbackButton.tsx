@@ -1,7 +1,6 @@
 'use client'
 
 import { CheckCircle2, Loader2, PhoneCall, X } from 'lucide-react'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useId, useRef, useState, useTransition, type FormEvent } from 'react'
 
@@ -12,6 +11,44 @@ import { CONTACT_PHONE_DISPLAY_NATIONAL, CONTACT_PHONE_E164 } from '@/lib/contac
 /** Après une demande envoyée, le bouton disparaît pendant 30 jours sur ce navigateur. */
 const SENT_KEY = 'affra_callback_sent_at'
 const HIDE_AFTER_SENT_MS = 30 * 24 * 60 * 60 * 1000
+/**
+ * Brouillon conservé le temps de la visite (sessionStorage) : panneau ouvert, nom, téléphone.
+ * Si le navigateur recharge la page (lien, retour arrière sur mobile), la saisie n'est pas perdue.
+ * Le consentement n'est jamais conservé : il doit être coché volontairement à chaque envoi.
+ */
+const DRAFT_KEY = 'affra_callback_draft'
+
+interface Draft {
+  open: boolean
+  nom: string
+  telephone: string
+}
+
+function readDraft(): Draft | null {
+  try {
+    const raw = window.sessionStorage.getItem(DRAFT_KEY)
+    if (!raw) return null
+    const value: unknown = JSON.parse(raw)
+    if (!value || typeof value !== 'object') return null
+    const d = value as Record<string, unknown>
+    return {
+      open: d.open === true,
+      nom: typeof d.nom === 'string' ? d.nom.slice(0, 100) : '',
+      telephone: typeof d.telephone === 'string' ? d.telephone.slice(0, 30) : '',
+    }
+  } catch {
+    return null
+  }
+}
+
+function saveDraft(draft: Draft | null): void {
+  try {
+    if (draft) window.sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft))
+    else window.sessionStorage.removeItem(DRAFT_KEY)
+  } catch {
+    // stockage indisponible : le brouillon ne survivra pas à un rechargement, sans autre conséquence
+  }
+}
 
 type Errors = Extract<CallbackResult, { success: false }>['errors']
 
@@ -43,6 +80,7 @@ export default function CallbackButton() {
   const pathname = usePathname()
   const [hidden, setHidden] = useState(true)
   const [open, setOpen] = useState(false)
+  const [fields, setFields] = useState({ nom: '', telephone: '' })
   const [sent, setSent] = useState(false)
   const [errors, setErrors] = useState<Errors>({})
   const [pending, startTransition] = useTransition()
@@ -51,8 +89,21 @@ export default function CallbackButton() {
   const firstFieldRef = useRef<HTMLInputElement>(null)
   const ids = { panel: useId(), title: useId(), nom: useId(), tel: useId(), consent: useId() }
 
-  // Lu après l'hydratation : localStorage n'existe pas côté serveur.
-  useEffect(() => setHidden(sentRecently()), [])
+  // Lu après l'hydratation : localStorage / sessionStorage n'existent pas côté serveur.
+  useEffect(() => {
+    setHidden(sentRecently())
+    const draft = readDraft()
+    if (draft) {
+      setFields({ nom: draft.nom, telephone: draft.telephone })
+      setOpen(draft.open)
+    }
+  }, [])
+
+  // Le brouillon suit l'état du panneau et la saisie ; il est effacé après l'envoi.
+  useEffect(() => {
+    if (sent) return saveDraft(null)
+    if (open || fields.nom || fields.telephone) saveDraft({ open, ...fields })
+  }, [open, fields, sent])
 
   useEffect(() => {
     if (!open) return
@@ -60,7 +111,8 @@ export default function CallbackButton() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpen(false)
-        buttonRef.current?.focus()
+        // Le bouton réapparaît à la fermeture : on lui rend le focus.
+        window.setTimeout(() => buttonRef.current?.focus(), 0)
       }
     }
     document.addEventListener('keydown', onKey)
@@ -72,6 +124,8 @@ export default function CallbackButton() {
   const close = () => {
     setOpen(false)
     if (sent) setHidden(true)
+    // Le bouton réapparaît à la fermeture : on lui rend le focus (navigation au clavier).
+    window.setTimeout(() => buttonRef.current?.focus(), 0)
   }
 
   const submit = (e: FormEvent<HTMLFormElement>) => {
@@ -80,8 +134,8 @@ export default function CallbackButton() {
     setErrors({})
     startTransition(async () => {
       const result = await requestCallback({
-        nom: String(form.get('nom') ?? ''),
-        telephone: String(form.get('telephone') ?? ''),
+        nom: fields.nom,
+        telephone: fields.telephone,
         consent: form.get('consent') === 'on',
         website: String(form.get('website') ?? ''),
         pagePath: pathname ?? undefined,
@@ -156,6 +210,8 @@ export default function CallbackButton() {
                   autoComplete="name"
                   required
                   maxLength={100}
+                  value={fields.nom}
+                  onChange={(e) => setFields((f) => ({ ...f, nom: e.target.value }))}
                   aria-invalid={Boolean(errors.nom?.length)}
                   aria-describedby={errors.nom?.length ? `${ids.nom}-error` : undefined}
                   className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-[#29B4C5] focus:ring-2 focus:ring-[#29B4C5]/20"
@@ -176,6 +232,8 @@ export default function CallbackButton() {
                   required
                   maxLength={30}
                   placeholder="06 12 34 56 78"
+                  value={fields.telephone}
+                  onChange={(e) => setFields((f) => ({ ...f, telephone: e.target.value }))}
                   aria-invalid={Boolean(errors.telephone?.length)}
                   aria-describedby={errors.telephone?.length ? `${ids.tel}-error` : undefined}
                   className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-[#29B4C5] focus:ring-2 focus:ring-[#29B4C5]/20"
@@ -196,9 +254,15 @@ export default function CallbackButton() {
                   />
                   <span>
                     J&apos;accepte d&apos;être rappelé par AFFRA RESEAUX et que ma visite du site soit associée à ma demande.{' '}
-                    <Link href="/politique-confidentialite" className="underline hover:text-slate-700">
-                      En savoir plus
-                    </Link>
+                    {/* Nouvel onglet : le formulaire reste ouvert et rempli derrière. */}
+                    <a
+                      href="/politique-confidentialite"
+                      target="_blank"
+                      rel="noopener"
+                      className="underline hover:text-slate-700"
+                    >
+                      En savoir plus<span className="sr-only"> (nouvel onglet)</span>
+                    </a>
                   </span>
                 </label>
                 {fieldError('consent', ids.consent)}
@@ -230,13 +294,13 @@ export default function CallbackButton() {
         </div>
       )}
 
-      {!sent && (
+      {/* Masqué pendant que le panneau est ouvert : on le ferme avec la croix ou Échap. */}
+      {!sent && !open && (
         <button
           ref={buttonRef}
           type="button"
-          onClick={() => setOpen((o) => !o)}
-          aria-expanded={open}
-          aria-controls={open ? ids.panel : undefined}
+          onClick={() => setOpen(true)}
+          aria-expanded={false}
           className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#5BBF8A] to-[#29ABE2] py-3 pl-4 pr-5 text-sm font-bold text-white shadow-[0_8px_24px_rgba(41,171,226,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(41,171,226,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#29B4C5]"
         >
           <PhoneCall className="h-4 w-4 flex-shrink-0" strokeWidth={2.25} />
