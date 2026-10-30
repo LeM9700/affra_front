@@ -52,8 +52,8 @@ export default function OffresComparatif() {
                     )}
                     {offre.fabriqueEnFrance && (
                       <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-[#002395]/[0.07] text-[#002395] text-xs px-2 py-0.5 font-semibold whitespace-nowrap">
-                        Made in France
                         <DrapeauFrance className="h-2 w-3 flex-shrink-0" />
+                        Made in France
                       </span>
                     )}
                   </th>

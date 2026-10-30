@@ -45,8 +45,8 @@ function CarteOffreDetaillee({ offre }: { offre: Offre }) {
           <span
             className={`inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-semibold ${COULEURS_BADGE[offre.badgeVariante]}`}
           >
-            {offre.badge}
             {offre.badgeVariante === 'france' && <DrapeauFrance className="h-2.5 w-[0.9375rem] flex-shrink-0" />}
+            {offre.badge}
           </span>
         </div>
         <h3 className="text-xl font-bold text-slate-900">{offre.titre}</h3>

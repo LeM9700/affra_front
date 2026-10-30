@@ -30,8 +30,8 @@ function BadgeOffre({ offre }: { offre: Offre }) {
   if (offre.badgeVariante === 'france') {
     return (
       <div className={classes}>
-        {offre.badge}
         <DrapeauFrance className="h-2.5 w-[0.9375rem] flex-shrink-0" />
+        {offre.badge}
       </div>
     )
   }
