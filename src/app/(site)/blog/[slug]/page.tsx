@@ -11,6 +11,8 @@ import { formatDateFR } from '@/lib/utils/date'
 import PhotoPlaceholder from '@/components/shared/PhotoPlaceholder'
 import { TrackedPhoneLink } from '@/components/attribution/TrackedLinks'
 import { CONTACT_PHONE_DISPLAY_NATIONAL, CONTACT_PHONE_E164 } from '@/lib/contact'
+import { extractFaq } from '@/lib/blog/faq'
+import { ORGANIZATION_ID, ORGANIZATION_NAME, SITE_URL } from '@/lib/schema/organization'
 
 export const revalidate = false // ISR on-demand
 
@@ -25,12 +27,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogPost(slug).catch(() => null)
   if (!post) return {}
 
+  const url = `${SITE_URL}/blog/${post.slug}`
   return {
     title: `${post.titre} | AFFRA RESEAUX`,
     description: post.meta_description ?? undefined,
+    alternates: { canonical: url },
     openGraph: {
+      type: 'article',
+      url,
       title: post.titre,
       description: post.meta_description ?? undefined,
+      publishedTime: post.published_at ?? undefined,
+      modifiedTime: post.updated_at ?? post.published_at ?? undefined,
       images: post.og_image_url ? [{ url: post.og_image_url }] : undefined,
     },
   }
@@ -53,13 +61,15 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.meta_description,
     datePublished: post.published_at,
     dateModified: post.updated_at ?? post.published_at,
-    author: { '@type': 'Organization', name: 'AFFRA RESEAUX' },
+    // Même `@id` que l'accueil : l'article est attribué à l'entreprise déjà connue des moteurs.
+    author: { '@type': 'Organization', '@id': ORGANIZATION_ID, name: ORGANIZATION_NAME },
     publisher: {
       '@type': 'Organization',
-      name: 'AFFRA RESEAUX',
+      '@id': ORGANIZATION_ID,
+      name: ORGANIZATION_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://affra-reseaux.fr/icons/affra_logo.png',
+        url: `${SITE_URL}/icons/affra_logo.png`,
       },
     },
     mainEntityOfPage: {
@@ -69,9 +79,24 @@ export default async function BlogPostPage({ params }: Props) {
     image: post.og_image_url,
   }
 
+  const faq = extractFaq(post.contenu_markdown ?? '')
+  const faqSchema =
+    faq.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faq.map(({ question, answer }) => ({
+            '@type': 'Question',
+            name: question,
+            acceptedAnswer: { '@type': 'Answer', text: answer },
+          })),
+        }
+      : null
+
   return (
     <>
       <SchemaOrg schema={articleSchema} />
+      {faqSchema && <SchemaOrg schema={faqSchema} />}
 
       {/* Image d'en-tête — [photo: blog_posts.og_image_url] */}
       <div className="relative h-[500px] overflow-hidden">
