@@ -68,3 +68,19 @@ html {
   from { transform: scaleX(0); }
   to   { transform: scaleX(1); }
 }
+
+/* Bouton de rappel : apparition du voile « verre dépoli » et du panneau */
+@keyframes callback-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes callback-panel-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-callback-overlay { animation: callback-overlay-in 220ms ease-out both; }
+.animate-callback-panel { animation: callback-panel-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-callback-overlay,
+  .animate-callback-panel { animation: none; }
+}
