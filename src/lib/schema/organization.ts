@@ -18,6 +18,12 @@ export const ORGANIZATION_ADDRESS = {
   addressCountry: 'FR',
 } as const
 
+/**
+ * Point de départ des interventions (centre de Nîmes, mêmes coordonnées que le `geo` de
+ * l'accueil) : sert au calcul des distances arrondies affichées sur les pages villes.
+ */
+export const ORGANIZATION_BASE_COORDS = { lat: 43.8367, lng: 4.3601 } as const
+
 export const ORGANIZATION_AREA_SERVED = [
   { '@type': 'State', name: 'Gard', identifier: '30' },
   { '@type': 'State', name: 'Hérault', identifier: '34' },

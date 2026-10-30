@@ -8,6 +8,21 @@ import { buildMetadata } from '@/lib/utils/metadata'
 import { villesSeo, villesSlugMap } from '@/data/villes-seo'
 import OffresSection from '@/components/home/OffresSection'
 import Breadcrumb from '@/components/shared/Breadcrumb'
+import VilleEnBref from '@/components/zones/VilleEnBref'
+import VilleChantiers from '@/components/zones/VilleChantiers'
+import VilleDeroulement from '@/components/zones/VilleDeroulement'
+import VillesProches from '@/components/zones/VillesProches'
+import { REALISATIONS } from '@/data/realisations'
+import { buildVoisinage } from '@/lib/geo/voisinage'
+import { CONTACT_PHONE_E164 } from '@/lib/contact'
+import { aVille, deVille } from '@/lib/utils/preposition'
+import {
+  ORGANIZATION_ADDRESS,
+  ORGANIZATION_BASE_COORDS,
+  ORGANIZATION_ID,
+  ORGANIZATION_NAME,
+  SITE_URL,
+} from '@/lib/schema/organization'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -33,40 +48,39 @@ export default async function VillePage({ params }: Props) {
   const ville = villesSlugMap[slug]
   if (!ville) notFound()
 
+  const voisinage = buildVoisinage(ville, villesSeo, REALISATIONS, ORGANIZATION_BASE_COORDS)
+
+  const city = {
+    '@type': 'City',
+    name: ville.nom,
+    geo: { '@type': 'GeoCoordinates', latitude: ville.lat, longitude: ville.lng },
+    containedInPlace: {
+      '@type': 'AdministrativeArea',
+      name: `${ville.nomDept} (${ville.departement})`,
+    },
+  }
+
+  // Même `@id` que l'accueil et /a-propos : les moteurs et les IA rattachent cette page à
+  // l'entreprise déjà connue au lieu de créer une entité « AFFRA RESEAUX » de plus.
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'ElectricalContractor'],
-    name: 'AFFRA RESEAUX',
-    url: 'https://affra-reseaux.fr',
-    telephone: '+33766304687',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '95 A Rue de la Hase',
-      addressLocality: 'Nîmes',
-      postalCode: '30900',
-      addressCountry: 'FR',
-    },
-    areaServed: {
-      '@type': 'City',
-      name: ville.nom,
-      containedInPlace: {
-        '@type': 'AdministrativeArea',
-        name: `Département ${ville.departement} — ${ville.nomDept}`,
-      },
-    },
+    '@id': ORGANIZATION_ID,
+    name: ORGANIZATION_NAME,
+    url: SITE_URL,
+    telephone: CONTACT_PHONE_E164,
+    address: ORGANIZATION_ADDRESS,
+    areaServed: city,
   }
 
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: `Installation borne de recharge ${ville.nom}`,
+    '@id': `${SITE_URL}/zone-intervention/${ville.slug}#service`,
+    name: `Installation de borne de recharge ${aVille(ville.nom)}`,
     description: ville.intro,
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'AFFRA RESEAUX',
-      url: 'https://affra-reseaux.fr',
-    },
-    areaServed: { '@type': 'City', name: ville.nom },
+    provider: { '@id': ORGANIZATION_ID },
+    areaServed: city,
     serviceType: 'Installation IRVE — Borne de recharge électrique',
   }
 
@@ -92,7 +106,7 @@ export default async function VillePage({ params }: Props) {
       <PageHero
         imageSrc="/images/hero/zone-hero.webp"
         imageAlt={`Installation borne de recharge ${ville.nom}`}
-        title={`Borne de recharge à ${ville.nom}`}
+        title={`Borne de recharge ${aVille(ville.nom)}`}
         subtitle={`Entreprise qualifiée IRVE — ${ville.nomDept} (${ville.departement})`}
       />
 
@@ -108,15 +122,22 @@ export default async function VillePage({ params }: Props) {
 
           {/* Intro */}
           <h2 className="text-2xl font-bold text-slate-900 mb-4">
-            Installation IRVE à {ville.nom} ({ville.departement})
+            Installation IRVE {aVille(ville.nom)} ({ville.departement})
           </h2>
           <p className="text-slate-600 text-lg leading-relaxed mb-10">{ville.intro}</p>
+
+          <VilleEnBref
+            nom={ville.nom}
+            departement={ville.departement}
+            nomDept={ville.nomDept}
+            distanceBaseKm={voisinage.distanceBaseKm}
+          />
 
           {/* Zones couvertes */}
           {ville.quartiers.length > 0 && (
             <div className="mb-10">
               <h3 className="text-lg font-semibold text-slate-800 mb-3">
-                Zones couvertes autour de {ville.nom}
+                Zones couvertes autour {deVille(ville.nom)}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {ville.quartiers.map((q) => (
@@ -137,17 +158,17 @@ export default async function VillePage({ params }: Props) {
               {
                 titre: 'Particuliers',
                 href: '/services/particuliers',
-                desc: `Installation de wallbox pour votre maison ou appartement à ${ville.nom}. Certifié IRVE, éligible aux aides Advenir.`,
+                desc: `Installation de wallbox pour votre maison ou appartement ${aVille(ville.nom)}. Certifié IRVE, éligible aux aides Advenir.`,
               },
               {
                 titre: 'Copropriétés',
                 href: '/services/coproprietes',
-                desc: `Accompagnement droit à la prise et installation collective dans les résidences de ${ville.nom}.`,
+                desc: `Accompagnement droit à la prise et installation collective dans les résidences ${deVille(ville.nom)}.`,
               },
               {
                 titre: 'Professionnels',
                 href: '/services/professionnels',
-                desc: `Bornes de recharge pour flottes d'entreprise, parkings et zones d'activité à ${ville.nom} et environs.`,
+                desc: `Bornes de recharge pour flottes d'entreprise, parkings et zones d'activité ${aVille(ville.nom)} et environs.`,
               },
             ].map(({ titre, href, desc }) => (
               <Link
@@ -162,6 +183,10 @@ export default async function VillePage({ params }: Props) {
               </Link>
             ))}
           </div>
+
+          <VilleChantiers nom={ville.nom} chantiers={voisinage.chantiers} />
+
+          <VilleDeroulement nom={ville.nom} />
 
           {/* FAQ */}
           {ville.faqItems.length > 0 && (
@@ -191,7 +216,7 @@ export default async function VillePage({ params }: Props) {
           {/* CTA inline */}
           <div className="bg-blue-950 rounded-2xl p-8 text-center mb-8">
             <h3 className="text-xl font-bold text-white mb-2">
-              Besoin d&apos;un devis à {ville.nom} ?
+              Besoin d&apos;un devis {aVille(ville.nom)} ?
             </h3>
             <p className="text-blue-200 mb-5 text-sm">
               Réponse gratuite sous 24h — Entreprise qualifiée IRVE
@@ -203,6 +228,8 @@ export default async function VillePage({ params }: Props) {
               Demander un devis gratuit
             </Link>
           </div>
+
+          <VillesProches nom={ville.nom} villes={voisinage.villesProches} />
 
           {/* Lien retour */}
           <p className="text-sm text-slate-500 text-center">
