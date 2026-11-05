@@ -44,3 +44,13 @@ export function formatProjectLocation(project: CityProject): string {
     ? `Chantier à ${project.city}`
     : `Chantier à ${project.city}, à ${project.distanceKm} km`
 }
+
+/**
+ * Préposition « de » avec élision devant voyelle ou h muet : « d'Aimargues », « de Nîmes ».
+ *
+ * @param name - Nom de commune.
+ * @returns « d'{name} » ou « de {name} ».
+ */
+export function withDe(name: string): string {
+  return /^[aeiouyhàâäéèêëîïôöùûü]/i.test(name) ? `d’${name}` : `de ${name}`
+}

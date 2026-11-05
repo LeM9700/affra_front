@@ -8,6 +8,10 @@ import { buildMetadata } from '@/lib/utils/metadata'
 import { cities, getCityBySlug } from '@/data/villes-seo'
 import OffresSection from '@/components/home/OffresSection'
 import Breadcrumb from '@/components/shared/Breadcrumb'
+import NearbyCities from '@/components/cities/NearbyCities'
+import LocalProjects from '@/components/cities/LocalProjects'
+import { REALISATIONS } from '@/data/realisations'
+import { resolveCityProjects } from '@/lib/cities/projects'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -32,6 +36,7 @@ export default async function VillePage({ params }: Props) {
   const { slug } = await params
   const ville = getCityBySlug(slug)
   if (!ville) notFound()
+  const localProjects = resolveCityProjects(ville, REALISATIONS)
 
   return (
     <>
@@ -111,6 +116,9 @@ export default async function VillePage({ params }: Props) {
             ))}
           </div>
 
+          {/* Réalisations proches */}
+          <LocalProjects cityName={ville.name} projects={localProjects} />
+
           {/* FAQ */}
           {ville.faq.length > 0 && (
             <div className="mb-10">
@@ -135,6 +143,9 @@ export default async function VillePage({ params }: Props) {
               </div>
             </div>
           )}
+
+          {/* Maillage interne */}
+          <NearbyCities city={ville} cities={cities} />
 
           {/* CTA inline */}
           <div className="bg-blue-950 rounded-2xl p-8 text-center mb-8">
