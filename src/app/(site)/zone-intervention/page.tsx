@@ -6,9 +6,9 @@ import { buildMetadata } from '@/lib/utils/metadata'
 import { getZones } from '@/lib/api/zones'
 import ZoneMap from '@/components/map/ZoneMap'
 import SchemaOrg from '@/components/shared/SchemaOrg'
-import { villesSeo } from '@/data/villes-seo'
-
-const nameToSlug = Object.fromEntries(villesSeo.map((v) => [v.nom, v.slug]))
+import { cities } from '@/data/villes-seo'
+import { FALLBACK_CITIES_BY_DEPARTMENT } from '@/data/zones-fallback'
+import { createZoneLinkResolver, normalizeCityName, type ZoneLike } from '@/lib/cities/zone-links'
 
 export const revalidate = false // ISR on-demand
 export const dynamic = 'force-dynamic'
@@ -20,32 +20,32 @@ export const metadata: Metadata = buildMetadata({
   path: '/zone-intervention',
 })
 
-const fallbackCitiesByDepartment: Record<string, string[]> = {
-  '34': ['Montpellier', 'Lunel', 'Béziers', 'Sète', 'Ganges'],
-  '30': [
-    'Nîmes',
-    'Alès',
-    'Sommières',
-    'Uzès',
-    'Garons',
-    'Aimargues',
-    'Vauvert',
-    'Le Grau-du-Roi',
-    'Saint-Gilles',
-    'Beaucaire',
-    'Remoulins',
-    'Quissac',
-    'Saint-Geniès-de-Malgoirès',
-    'Vergèze',
-  ],
+/** Commune affichée, avec le slug de sa page ville (null : pas de page, pas de lien). */
+interface DisplayedCity {
+  name: string
+  slug: string | null
 }
 
-function getDisplayedCities(zones: { ville: string }[], departement: string): string[] {
-  if (zones.length > 0) {
-    const uniques = new Set(zones.map((z) => z.ville.trim()).filter(Boolean))
-    return Array.from(uniques).sort((a, b) => a.localeCompare(b, 'fr'))
+/**
+ * Communes d'un département : zones de l'API (dédoublonnées, triées) ou, à défaut, liste de secours.
+ */
+function getDisplayedCities(
+  zones: ZoneLike[],
+  departement: '30' | '34',
+  resolveSlug: (zone: ZoneLike) => string | null,
+): DisplayedCity[] {
+  const source: ZoneLike[] =
+    zones.length > 0
+      ? zones
+      : // Liste de secours : slug = nom normalisé (correspondance garantie par zones-fallback.test.ts).
+        FALLBACK_CITIES_BY_DEPARTMENT[departement].map((ville) => ({ ville, departement, slug: normalizeCityName(ville) }))
+
+  const byName = new Map<string, DisplayedCity>()
+  for (const zone of source) {
+    const name = zone.ville.trim()
+    if (name && !byName.has(name)) byName.set(name, { name, slug: resolveSlug({ ...zone, ville: name }) })
   }
-  return fallbackCitiesByDepartment[departement] ?? []
+  return Array.from(byName.values()).sort((a, b) => a.name.localeCompare(b.name, 'fr'))
 }
 
 /** Départements couverts : seules leurs communes sont listées, cartographiées et déclarées en JSON-LD. */
@@ -58,12 +58,13 @@ export default async function ZoneInterventionPage() {
   const zones34 = zones.filter((z) => z.departement === '34')
   const zones30 = zones.filter((z) => z.departement === '30')
 
-  const displayed34 = getDisplayedCities(zones34, '34')
-  const displayed30 = getDisplayedCities(zones30, '30')
+  const resolveSlug = createZoneLinkResolver(cities)
+  const displayed34 = getDisplayedCities(zones34, '34', resolveSlug)
+  const displayed30 = getDisplayedCities(zones30, '30', resolveSlug)
 
   const schemaCities = [
-    ...displayed34.map((ville) => ({ ville, departement: '34' })),
-    ...displayed30.map((ville) => ({ ville, departement: '30' })),
+    ...displayed34.map(({ name }) => ({ ville: name, departement: '34' })),
+    ...displayed30.map(({ name }) => ({ ville: name, departement: '30' })),
   ]
 
   const areaSchema = {
@@ -99,8 +100,7 @@ export default async function ZoneInterventionPage() {
                 Hérault Département 34
               </h2>
               <div className="flex flex-wrap gap-2">
-                {displayed34.map((ville) => {
-                  const slug = nameToSlug[ville]
+                {displayed34.map(({ name: ville, slug }) => {
                   return slug ? (
                     <Link
                       key={`34-${ville}`}
@@ -122,8 +122,7 @@ export default async function ZoneInterventionPage() {
                 Gard Département 30
               </h2>
               <div className="flex flex-wrap gap-2">
-                {displayed30.map((ville) => {
-                  const slug = nameToSlug[ville]
+                {displayed30.map(({ name: ville, slug }) => {
                   return slug ? (
                     <Link
                       key={`30-${ville}`}
