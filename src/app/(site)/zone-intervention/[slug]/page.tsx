@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHero from '@/components/shared/PageHero'
 import CTABand from '@/components/shared/CTABand'
-import SchemaOrg from '@/components/shared/SchemaOrg'
+import LocalBusinessJsonLd from '@/components/seo/LocalBusinessJsonLd'
 import { buildMetadata } from '@/lib/utils/metadata'
 import { cities, getCityBySlug } from '@/data/villes-seo'
 import OffresSection from '@/components/home/OffresSection'
@@ -33,61 +33,9 @@ export default async function VillePage({ params }: Props) {
   const ville = getCityBySlug(slug)
   if (!ville) notFound()
 
-  const localBusinessSchema = {
-    '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'ElectricalContractor'],
-    name: 'AFFRA RESEAUX',
-    url: 'https://affra-reseaux.fr',
-    telephone: '+33766304687',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '95 A Rue de la Hase',
-      addressLocality: 'Nîmes',
-      postalCode: '30900',
-      addressCountry: 'FR',
-    },
-    areaServed: {
-      '@type': 'City',
-      name: ville.name,
-      containedInPlace: {
-        '@type': 'AdministrativeArea',
-        name: `Département ${ville.department} — ${ville.departmentName}`,
-      },
-    },
-  }
-
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: `Installation borne de recharge ${ville.name}`,
-    description: ville.intro,
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'AFFRA RESEAUX',
-      url: 'https://affra-reseaux.fr',
-    },
-    areaServed: { '@type': 'City', name: ville.name },
-    serviceType: 'Installation IRVE — Borne de recharge électrique',
-  }
-
-  const faqSchema =
-    ville.faq.length > 0
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: ville.faq.map((item) => ({
-            '@type': 'Question',
-            name: item.question,
-            acceptedAnswer: { '@type': 'Answer', text: item.answer },
-          })),
-        }
-      : null
-
   return (
     <>
-      <SchemaOrg schema={localBusinessSchema} />
-      <SchemaOrg schema={serviceSchema} />
-      {faqSchema && <SchemaOrg schema={faqSchema} />}
+      <LocalBusinessJsonLd city={ville} />
 
       <PageHero
         imageSrc="/images/hero/zone-hero.webp"
