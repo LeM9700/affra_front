@@ -67,7 +67,7 @@ export function buildAboutPageSchema(equipe: readonly MembreEquipe[], org: Organ
         mainEntity: { '@id': org.id },
       },
       {
-        '@type': ['LocalBusiness', 'ElectricalContractor'],
+        '@type': 'Electrician',
         '@id': org.id,
         name: org.name,
         url: org.url,
