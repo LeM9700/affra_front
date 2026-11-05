@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { villesSeo } from '@/data/villes-seo'
+import { cities } from '@/data/villes-seo'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://affra-reseaux.fr'
 
@@ -50,7 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  const villeEntries: MetadataRoute.Sitemap = villesSeo.map((v) => ({
+  const villeEntries: MetadataRoute.Sitemap = cities.map((v) => ({
     url: `${BASE_URL}/zone-intervention/${v.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

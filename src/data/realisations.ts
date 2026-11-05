@@ -12,6 +12,11 @@ export interface Realisation {
   ville: string
   codePostal: string
   departement: string
+  /**
+   * Centre de la commune (source : référentiel des communes, data.gouv.fr), jamais l'adresse du
+   * client. Sert à afficher la distance depuis les pages ville.
+   */
+  geo: { latitude: number; longitude: number }
   /** Titre SEO local (« borne de recharge » + modèle + commune), affiché en H3. */
   titre: string
   /** Description courte validée par le client, affichée sur toutes les cartes. */
@@ -34,6 +39,7 @@ export const REALISATIONS: readonly Realisation[] = [
     ville: 'Montmirat',
     codePostal: '30260',
     departement: '30',
+    geo: { latitude: 43.9, longitude: 4.103 },
     titre: 'Borne de recharge DazeBox Home T à Montmirat',
     resume:
       'Installation soignée d’une borne 7,4 kW en façade, avec câble attaché pour une recharge simple et pratique au quotidien.',
@@ -52,6 +58,7 @@ export const REALISATIONS: readonly Realisation[] = [
     ville: 'Aigues-Vives',
     codePostal: '30670',
     departement: '30',
+    geo: { latitude: 43.74, longitude: 4.18 },
     titre: 'Borne de recharge V2C Trydan à Aigues-Vives',
     resume:
       'Installation d’une borne triphasée 22 kW avec cheminement du câble en hauteur, adapté aux contraintes du bâtiment.',
@@ -70,6 +77,7 @@ export const REALISATIONS: readonly Realisation[] = [
     ville: 'Vauvert',
     codePostal: '30600',
     departement: '30',
+    geo: { latitude: 43.6937, longitude: 4.2753 },
     titre: 'Borne de recharge DazeBox Home T à Vauvert',
     resume:
       'Pose d’une borne 7,4 kW en façade, avec passage de l’alimentation à travers le mur pour une finition soignée.',
