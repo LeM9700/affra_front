@@ -4,7 +4,7 @@ import Link from 'next/link'
 import PageHero from '@/components/shared/PageHero'
 import CTABand from '@/components/shared/CTABand'
 import LocalBusinessJsonLd from '@/components/seo/LocalBusinessJsonLd'
-import { buildMetadata } from '@/lib/utils/metadata'
+import { buildCityMetadata } from '@/lib/cities/metadata'
 import { cities, getCityBySlug } from '@/data/villes-seo'
 import OffresSection from '@/components/home/OffresSection'
 import Breadcrumb from '@/components/shared/Breadcrumb'
@@ -25,11 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const ville = getCityBySlug(slug)
   if (!ville) return {}
-  return buildMetadata({
-    title: `Borne de recharge ${ville.name} (${ville.department})`,
-    description: ville.metaDescription,
-    path: `/zone-intervention/${slug}`,
-  })
+  return buildCityMetadata(ville)
 }
 
 export default async function VillePage({ params }: Props) {
