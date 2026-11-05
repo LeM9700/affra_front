@@ -5,7 +5,7 @@ import { REALISATIONS } from '@/data/realisations'
 
 export default function RealisationsGallery() {
   return (
-    <section className="bg-slate-50 py-20">
+    <section id="nos-chantiers" className="bg-slate-50 py-20 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
           eyebrow="Nos chantiers"
