@@ -33,7 +33,8 @@ export const metadata: Metadata = {
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'ElectricalContractor'],
+  // Electrician est un sous-type de LocalBusiness (ElectricalContractor n'existe pas dans schema.org).
+  '@type': 'Electrician',
   '@id': ORGANIZATION_ID,
   name: ORGANIZATION_NAME,
   description: 'Installation de bornes de recharge électrique dans le Gard et l’Hérault',

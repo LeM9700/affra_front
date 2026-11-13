@@ -3,97 +3,46 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHero from '@/components/shared/PageHero'
 import CTABand from '@/components/shared/CTABand'
-import SchemaOrg from '@/components/shared/SchemaOrg'
-import { buildMetadata } from '@/lib/utils/metadata'
-import { villesSeo, villesSlugMap } from '@/data/villes-seo'
+import LocalBusinessJsonLd from '@/components/seo/LocalBusinessJsonLd'
+import { buildCityMetadata } from '@/lib/cities/metadata'
+import { cities, getCityBySlug } from '@/data/villes-seo'
 import OffresSection from '@/components/home/OffresSection'
 import Breadcrumb from '@/components/shared/Breadcrumb'
+import NearbyCities from '@/components/cities/NearbyCities'
+import LocalProjects from '@/components/cities/LocalProjects'
+import { REALISATIONS } from '@/data/realisations'
+import { resolveCityProjects } from '@/lib/cities/projects'
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  return villesSeo.map((v) => ({ slug: v.slug }))
+  return cities.map((city) => ({ slug: city.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const ville = villesSlugMap[slug]
+  const ville = getCityBySlug(slug)
   if (!ville) return {}
-  return buildMetadata({
-    title: ville.metaTitle,
-    description: ville.metaDescription,
-    path: `/zone-intervention/${slug}`,
-  })
+  return buildCityMetadata(ville)
 }
 
 export default async function VillePage({ params }: Props) {
   const { slug } = await params
-  const ville = villesSlugMap[slug]
+  const ville = getCityBySlug(slug)
   if (!ville) notFound()
-
-  const localBusinessSchema = {
-    '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'ElectricalContractor'],
-    name: 'AFFRA RESEAUX',
-    url: 'https://affra-reseaux.fr',
-    telephone: '+33766304687',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '95 A Rue de la Hase',
-      addressLocality: 'Nîmes',
-      postalCode: '30900',
-      addressCountry: 'FR',
-    },
-    areaServed: {
-      '@type': 'City',
-      name: ville.nom,
-      containedInPlace: {
-        '@type': 'AdministrativeArea',
-        name: `Département ${ville.departement} — ${ville.nomDept}`,
-      },
-    },
-  }
-
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: `Installation borne de recharge ${ville.nom}`,
-    description: ville.intro,
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'AFFRA RESEAUX',
-      url: 'https://affra-reseaux.fr',
-    },
-    areaServed: { '@type': 'City', name: ville.nom },
-    serviceType: 'Installation IRVE — Borne de recharge électrique',
-  }
-
-  const faqSchema =
-    ville.faqItems.length > 0
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: ville.faqItems.map((item) => ({
-            '@type': 'Question',
-            name: item.question,
-            acceptedAnswer: { '@type': 'Answer', text: item.answer },
-          })),
-        }
-      : null
+  const localProjects = resolveCityProjects(ville, REALISATIONS)
 
   return (
     <>
-      <SchemaOrg schema={localBusinessSchema} />
-      <SchemaOrg schema={serviceSchema} />
-      {faqSchema && <SchemaOrg schema={faqSchema} />}
+      <LocalBusinessJsonLd city={ville} />
 
       <PageHero
         imageSrc="/images/hero/zone-hero.webp"
-        imageAlt={`Installation borne de recharge ${ville.nom}`}
-        title={`Borne de recharge à ${ville.nom}`}
-        subtitle={`Entreprise qualifiée IRVE — ${ville.nomDept} (${ville.departement})`}
+        imageAlt={`Installation borne de recharge ${ville.name}`}
+        title={`Borne de recharge à ${ville.name}`}
+        subtitle={`Entreprise qualifiée IRVE — ${ville.departmentName} (${ville.department})`}
       />
 
       <section className="bg-white py-16">
@@ -102,24 +51,24 @@ export default async function VillePage({ params }: Props) {
             items={[
               { label: 'Accueil', href: '/' },
               { label: "Zone d'intervention", href: '/zone-intervention' },
-              { label: ville.nom },
+              { label: ville.name },
             ]}
           />
 
           {/* Intro */}
           <h2 className="text-2xl font-bold text-slate-900 mb-4">
-            Installation IRVE à {ville.nom} ({ville.departement})
+            Installation IRVE à {ville.name} ({ville.department})
           </h2>
           <p className="text-slate-600 text-lg leading-relaxed mb-10">{ville.intro}</p>
 
           {/* Zones couvertes */}
-          {ville.quartiers.length > 0 && (
+          {ville.coveredAreas.length > 0 && (
             <div className="mb-10">
               <h3 className="text-lg font-semibold text-slate-800 mb-3">
-                Zones couvertes autour de {ville.nom}
+                Zones couvertes autour de {ville.name}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {ville.quartiers.map((q) => (
+                {ville.coveredAreas.map((q) => (
                   <span
                     key={q}
                     className="bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-full text-sm"
@@ -137,17 +86,17 @@ export default async function VillePage({ params }: Props) {
               {
                 titre: 'Particuliers',
                 href: '/services/particuliers',
-                desc: `Installation de wallbox pour votre maison ou appartement à ${ville.nom}. Certifié IRVE, éligible aux aides Advenir.`,
+                desc: `Installation de wallbox pour votre maison ou appartement à ${ville.name}. Certifié IRVE, éligible aux aides Advenir.`,
               },
               {
                 titre: 'Copropriétés',
                 href: '/services/coproprietes',
-                desc: `Accompagnement droit à la prise et installation collective dans les résidences de ${ville.nom}.`,
+                desc: `Accompagnement droit à la prise et installation collective dans les résidences de ${ville.name}.`,
               },
               {
                 titre: 'Professionnels',
                 href: '/services/professionnels',
-                desc: `Bornes de recharge pour flottes d'entreprise, parkings et zones d'activité à ${ville.nom} et environs.`,
+                desc: `Bornes de recharge pour flottes d'entreprise, parkings et zones d'activité à ${ville.name} et environs.`,
               },
             ].map(({ titre, href, desc }) => (
               <Link
@@ -163,14 +112,17 @@ export default async function VillePage({ params }: Props) {
             ))}
           </div>
 
+          {/* Réalisations proches */}
+          <LocalProjects cityName={ville.name} projects={localProjects} />
+
           {/* FAQ */}
-          {ville.faqItems.length > 0 && (
+          {ville.faq.length > 0 && (
             <div className="mb-10">
               <h3 className="text-xl font-bold text-slate-900 mb-4">
-                Questions fréquentes — {ville.nom}
+                Questions fréquentes — {ville.name}
               </h3>
               <div className="space-y-3">
-                {ville.faqItems.map((item) => (
+                {ville.faq.map((item) => (
                   <details
                     key={item.question}
                     className="bg-slate-50 rounded-xl border border-slate-200 p-5 group"
@@ -188,10 +140,13 @@ export default async function VillePage({ params }: Props) {
             </div>
           )}
 
+          {/* Maillage interne */}
+          <NearbyCities city={ville} cities={cities} />
+
           {/* CTA inline */}
           <div className="bg-blue-950 rounded-2xl p-8 text-center mb-8">
             <h3 className="text-xl font-bold text-white mb-2">
-              Besoin d&apos;un devis à {ville.nom} ?
+              Besoin d&apos;un devis à {ville.name} ?
             </h3>
             <p className="text-blue-200 mb-5 text-sm">
               Réponse gratuite sous 24h — Entreprise qualifiée IRVE
